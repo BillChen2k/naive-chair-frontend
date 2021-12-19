@@ -4,13 +4,12 @@ import config from '@/config';
 
 // Include all stylesheets.
 import '@/styles/index.scss';
+import Dashboard from './Dashboard';
 
 function App() {
   return (
     <ThemeProvider theme={config.theme}>
-      <Box>
-        Naive Chair.
-      </Box>
+      <Dashboard></Dashboard>
     </ThemeProvider>
   );
 }
