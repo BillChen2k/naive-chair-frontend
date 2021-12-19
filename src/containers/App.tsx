@@ -1,10 +1,10 @@
 import React from 'react';
-import {AppBar, Box, Grid, ThemeProvider, Toolbar} from '@mui/material';
+import {ThemeProvider} from '@mui/material';
 import config from '@/config';
 
 // Include all stylesheets.
 import '@/styles/index.scss';
-import Dashboard from './Dashboard';
+import Dashboard from '@/components/dashboard';
 
 function App() {
   return (

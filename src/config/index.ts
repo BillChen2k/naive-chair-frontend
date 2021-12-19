@@ -2,6 +2,9 @@ import {createTheme} from '@mui/material';
 import {blueGrey, cyan} from '@mui/material/colors';
 
 const config = {
+  apperance: {
+    drawerWidth: '15rem',
+  },
   // MuiThemeProvider options
   theme: createTheme({
     palette: {
@@ -11,7 +14,6 @@ const config = {
     },
     typography: {
       fontFamily: 'Roboto, Helvetica, -apple-system, Segoe UI, Helvetica Neue, Arial',
-      fontSize: 12,
     },
   }),
   API: 'https://412505r54f.imdo.co/naivechair/',
