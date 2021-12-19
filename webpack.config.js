@@ -73,7 +73,6 @@ const config = {
     extensions: ['.tsx', '.ts', '.js', 'json'],
     alias: {
       '@': path.resolve(__dirname, './src'),
-      '@dataset': path.resolve(__dirname, './src/dataset'),
     },
   },
 };

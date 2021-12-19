@@ -25,11 +25,10 @@ module.exports = {
   },
   settings: {
     'import/resolver': {
-      // Allow `@/` to map to `src/client/`
+      // Allow `@/` to map to `src/`
       alias: {
         map: [
           ['@', './src'],
-          ['@dataset', './src/dataset'],
         ],
         extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
       },
