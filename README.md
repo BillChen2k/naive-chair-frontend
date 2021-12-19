@@ -26,3 +26,7 @@ Repo: https://github.com/1249091417/NaiveChair
 Endpoint: https://412505r54f.imdo.co/naivechair/
 
 Document:
+
+## Deployment
+
+Vercel will automatically inspect new pushes on the main branch and deploy the project to [naivechair.vercel.app](naivechair.vercel.app).
