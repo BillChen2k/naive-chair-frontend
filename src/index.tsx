@@ -2,8 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import '@/styles/index.scss';
 import App from '@/containers/App';
+import { BrowserRouter } from "react-router-dom";
 
 ReactDOM.render(
+  <BrowserRouter>
     <React.StrictMode>
       <link
         rel="stylesheet"
@@ -11,6 +13,7 @@ ReactDOM.render(
       />
       <App />
     </React.StrictMode>,
+    </BrowserRouter>,
     document.getElementById('root'),
     () => {
       console.log('App finished loading.');
