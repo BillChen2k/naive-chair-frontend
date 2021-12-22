@@ -1,7 +1,7 @@
 import { Component } from "react";
 
-import UserService from "../services/user.service";
-import EventBus from "../common/EventBus";
+import UserService from "@/services/user.service";
+import EventBus from "@/common/EventBus";
 
 type Props = {};
 
