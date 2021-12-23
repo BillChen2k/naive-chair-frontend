@@ -1,15 +1,11 @@
 import { Component } from "react";
-import { RouteComponentProps } from "react-router-dom";
-import { Formik, Field, Form, ErrorMessage } from "formik";
+import { useFormik} from "formik";
 import * as Yup from "yup";
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 
-import AuthService from "../services/auth.service";
 
-interface RouterProps {
-  history: string;
-}
-
-type Props = RouteComponentProps<RouterProps>;
+import AuthService from "@/services/auth.service";
 
 type State = {
   username: string,
@@ -17,6 +13,8 @@ type State = {
   loading: boolean,
   message: string
 };
+
+type Props = {};
 
 export default class Login extends Component<Props, State> {
   constructor(props: Props) {
@@ -31,106 +29,67 @@ export default class Login extends Component<Props, State> {
     };
   }
 
-  validationSchema() {
-    return Yup.object().shape({
-      username: Yup.string().required("This field is required!"),
-      password: Yup.string().required("This field is required!"),
-    });
-  }
+  validationSchema = Yup.object({
+    email: Yup.string()
+      .email("This is not a valid email.")
+      .required("This field is required!"),
+    password: Yup.string()
+      .min(6, "Password must be at least 6 characters.")
+      .required("This field is required!"),
+  });
 
-  handleLogin(formValue: { username: string; password: string }) {
-    const { username, password } = formValue;
-
-    this.setState({
-      message: "",
-      loading: true
-    });
-
-
-    AuthService.login(username, password).then(
-      () => {
-        this.props.history.push("/profile");
-        window.location.reload();
+  WithMaterialUI = () => {
+    const formik = useFormik({
+      initialValues : { 
+        username: "",
+        password: "",
       },
-      error => {
-        const resMessage =
-          (error.response &&
-            error.response.data &&
-            error.response.data.message) ||
-          error.message ||
-          error.toString();
-
-        this.setState({
-          loading: false,
-          message: resMessage
-        });
-      }
+      validationSchema: this.validationSchema,
+      onSubmit: this.handleLogin,
+    });
+  
+    return (
+      <div>
+        <form onSubmit={formik.handleSubmit}>
+          <TextField
+            fullWidth
+            id="email"
+            name="email"
+            label="Email"
+            value={formik.values.username}
+            onChange={formik.handleChange}
+            error={formik.touched.username && Boolean(formik.errors.username)}
+            helperText={formik.touched.username && formik.errors.username}
+          />
+          <TextField
+            fullWidth
+            id="password"
+            name="password"
+            label="Password"
+            type="password"
+            value={formik.values.password}
+            onChange={formik.handleChange}
+            error={formik.touched.password && Boolean(formik.errors.password)}
+            helperText={formik.touched.password && formik.errors.password}
+          />
+          <Button color="primary" variant="contained" fullWidth type="submit">
+            Submit
+          </Button>
+        </form>
+      </div>
     );
+  };
+
+  async handleLogin(formValue: { username: string; password: string }) {
+    const { username, password } = formValue;
+    let formData = new FormData();
+    formData.append('username', username);
+    formData.append('password', password);
+
+    let result = await AuthService.login(formData);
   }
 
   render() {
-    const { loading, message } = this.state;
-
-    const initialValues = {
-      username: "",
-      password: "",
-    };
-
-    return (
-      <div className="col-md-12">
-        <div className="card card-container">
-          <img
-            src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
-            alt="profile-img"
-            className="profile-img-card"
-          />
-
-          <Formik
-            initialValues={initialValues}
-            validationSchema={this.validationSchema}
-            onSubmit={this.handleLogin}
-          >
-            <Form>
-              <div className="form-group">
-                <label htmlFor="username">Username</label>
-                <Field name="username" type="text" className="form-control" />
-                <ErrorMessage
-                  name="username"
-                  component="div"
-                  className="alert alert-danger"
-                />
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="password">Password</label>
-                <Field name="password" type="password" className="form-control" />
-                <ErrorMessage
-                  name="password"
-                  component="div"
-                  className="alert alert-danger"
-                />
-              </div>
-
-              <div className="form-group">
-                <button type="submit" className="btn btn-primary btn-block" disabled={loading}>
-                  {loading && (
-                    <span className="spinner-border spinner-border-sm"></span>
-                  )}
-                  <span>Login</span>
-                </button>
-              </div>
-
-              {message && (
-                <div className="form-group">
-                  <div className="alert alert-danger" role="alert">
-                    {message}
-                  </div>
-                </div>
-              )}
-            </Form>
-          </Formik>
-        </div>
-      </div>
-    );
+    return <this.WithMaterialUI />;
   }
 }

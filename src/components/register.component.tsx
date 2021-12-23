@@ -1,8 +1,10 @@
 import { Component } from "react";
-import { Formik, Field, Form, ErrorMessage } from "formik";
+import { useFormik } from "formik";
 import * as Yup from "yup";
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 
-import AuthService from "../services/auth.service";
+import AuthService from "@/services/auth.service";
 
 type Props = {};
 
@@ -28,151 +30,115 @@ export default class Register extends Component<Props, State> {
     };
   }
 
-  validationSchema() {
-    return Yup.object().shape({
-      username: Yup.string()
-        .test(
-          "len",
-          "The username must be between 3 and 20 characters.",
-          (val: any) =>
-            val &&
-            val.toString().length >= 3 &&
-            val.toString().length <= 20
-        )
-        .required("This field is required!"),
-      email: Yup.string()
-        .email("This is not a valid email.")
-        .required("This field is required!"),
-      password: Yup.string()
-        .test(
-          "len",
-          "The password must be between 6 and 40 characters.",
-          (val: any) =>
-            val &&
-            val.toString().length >= 6 &&
-            val.toString().length <= 40
-        )
-        .required("This field is required!"),
-    });
-  }
+  validationSchema = Yup.object({
+    username: Yup.string()
+      .min(3, "Username must be at least 3 characters.")
+      .max(20, "Username cannot be longer than 20 characters.")
+      .required("Username is required!"),
+    email: Yup.string()
+      .email("This is not a valid email.")
+      .required("Email is required!"),
+    password: Yup.string()
+      .min(6, "Password must be at least 6 characters.")
+      .required("Password is required!"),
+  });
 
-  handleRegister(formValue: { username: string; email: string; password: string }) {
+  async handleRegister(formValue: { username: string; email: string; password: string }) {
     const { username, email, password } = formValue;
+    let formData = new FormData();
+    formData.append('username', username);
+    formData.append('email', email);
+    formData.append('password', password);
 
     this.setState({
       message: "",
       successful: false
     });
 
-    AuthService.register(
-      username,
-      email,
-      password
-    ).then(
-      response => {
-        this.setState({
-          message: response.data.message,
-          successful: true
-        });
-      },
-      error => {
-        const resMessage =
-          (error.response &&
-            error.response.data &&
-            error.response.data.message) ||
-          error.message ||
-          error.toString();
+    let result = await AuthService.register(formData);
 
+    switch (result.statusCode) {
+      case 1: {
         this.setState({
-          successful: false,
-          message: resMessage
+          successful: true,
+          message: "Registration successful! Please login."
         });
       }
-    );
+      case 0: {
+        this.setState({
+          successful: false,
+          message: "Username is already registered. Please try again."
+        })
+      }
+      case -1: {
+        this.setState({
+          successful: false,
+          message: "The parameters are missing. Please try again."
+        })
+      }
+      case -2: {
+        this.setState({
+          successful: false,
+          message: "Please use POST method"
+        })
+      }
+    }
   }
 
-  render() {
-    const { successful, message } = this.state;
-
-    const initialValues = {
-      username: "",
-      email: "",
-      password: "",
-    };
-
+  WithMaterialUI = () => {
+    const formik = useFormik({
+      initialValues: {
+        username: "",
+        email: "",
+        password: ""
+      },
+      validationSchema: this.validationSchema,
+      onSubmit: this.handleRegister,
+    });
     return (
-      <div className="col-md-12">
-        <div className="card card-container">
-          <img
-            src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
-            alt="profile-img"
-            className="profile-img-card"
+      <div>
+        <form onSubmit={formik.handleSubmit}>
+          <TextField
+            fullWidth
+            id="username"
+            name="username"
+            label="Username"
+            value={formik.values.username}
+            onChange={formik.handleChange}
+            error={formik.touched.username && Boolean(formik.errors.username)}
+            helperText={formik.touched.username && formik.errors.username}
           />
-
-          <Formik
-            initialValues={initialValues}
-            validationSchema={this.validationSchema}
-            onSubmit={this.handleRegister}
-          >
-            <Form>
-              {!successful && (
-                <div>
-                  <div className="form-group">
-                    <label htmlFor="username"> Username </label>
-                    <Field name="username" type="text" className="form-control" />
-                    <ErrorMessage
-                      name="username"
-                      component="div"
-                      className="alert alert-danger"
-                    />
-                  </div>
-
-                  <div className="form-group">
-                    <label htmlFor="email"> Email </label>
-                    <Field name="email" type="email" className="form-control" />
-                    <ErrorMessage
-                      name="email"
-                      component="div"
-                      className="alert alert-danger"
-                    />
-                  </div>
-
-                  <div className="form-group">
-                    <label htmlFor="password"> Password </label>
-                    <Field
-                      name="password"
-                      type="password"
-                      className="form-control"
-                    />
-                    <ErrorMessage
-                      name="password"
-                      component="div"
-                      className="alert alert-danger"
-                    />
-                  </div>
-
-                  <div className="form-group">
-                    <button type="submit" className="btn btn-primary btn-block">Sign Up</button>
-                  </div>
-                </div>
-              )}
-
-              {message && (
-                <div className="form-group">
-                  <div
-                    className={
-                      successful ? "alert alert-success" : "alert alert-danger"
-                    }
-                    role="alert"
-                  >
-                    {message}
-                  </div>
-                </div>
-              )}
-            </Form>
-          </Formik>
-        </div>
+          <TextField
+            fullWidth
+            id="email"
+            name="email"
+            label="Email"
+            value={formik.values.email}
+            onChange={formik.handleChange}
+            error={formik.touched.email && Boolean(formik.errors.email)}
+            helperText={formik.touched.email && formik.errors.email}
+          />
+          <TextField
+            fullWidth
+            id="password"
+            name="password"
+            label="Password"
+            type="password"
+            value={formik.values.password}
+            onChange={formik.handleChange}
+            error={formik.touched.password && Boolean(formik.errors.password)}
+            helperText={formik.touched.password && formik.errors.password}
+          />
+          <Button color="primary" variant="contained" fullWidth type="submit">
+            Submit
+          </Button>
+        </form>
       </div>
     );
+  };
+
+
+  render() {
+    return <this.WithMaterialUI />;
   }
 }

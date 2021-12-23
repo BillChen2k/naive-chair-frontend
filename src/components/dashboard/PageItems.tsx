@@ -1,11 +1,14 @@
 import * as React from 'react';
+import {Link} from "react-router-dom";
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import ListSubheader from '@mui/material/ListSubheader';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import BugReportIcon from '@mui/icons-material/BugReport';
-import WorkIcon from '@mui/icons-material/WorkOutline';
+import LoginIcon from '@mui/icons-material/Login';
+import LogoutIcon from '@mui/icons-material/Logout';
+import LockIcon from '@mui/icons-material/Lock';
 import MemoryIcon from '@mui/icons-material/Memory';
 
 export const mainPageItems = (() => {
@@ -43,23 +46,30 @@ export const mainPageItems = (() => {
 export const secondaryPageItems = (() => {
   const items = [
     {
-      icon: <BugReportIcon />,
-      text: 'Bug',
+      icon: <LoginIcon />,
+      text: 'Login',
+      linkPath: '/login',
     },
     {
-      icon: <WorkIcon />,
-      text: 'System',
+      icon: <LockIcon />,
+      text: 'Register',
+      linkPath: '/register',
     },
+    {
+      icon: <LogoutIcon />,
+      text: 'Logout',
+      linkPath: '/logout',
+    }
   ];
   const listItems = items.map((item, index) => (
-    <ListItem button key={index}>
+    <ListItem button key={index} component={Link} to={item.linkPath}>
       <ListItemIcon>{item.icon}</ListItemIcon>
       <ListItemText primary={item.text} />
     </ListItem>
   ));
   return (
     <div>
-      <ListSubheader inset>Track</ListSubheader>
+      <ListSubheader inset>User</ListSubheader>
       {listItems}
     </div>
   );
