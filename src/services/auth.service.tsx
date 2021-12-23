@@ -1,33 +1,46 @@
 import axios from "axios";
 
-const API_URL = "http://412505r54f.imdo.co/naivechair/author/";
+const API_URL = "https://412505r54f.imdo.co/naivechair/author/";
 
 class AuthService {
-  login(username: string, password: string) {
-    return axios
-      .post(API_URL + "signin", {
-        username,
-        password
-      })
-      .then(response => {
-        if (response.data.accessToken) {
-          localStorage.setItem("user", JSON.stringify(response.data));
-        }
+  async login(formData: FormData) {
+    console.log(formData);
+    let response = await axios({
+      method: "post",
+      url: API_URL + "signin/",
+      data: formData,
+      headers: { "Content-Type": "multipart/form-data" }
+    }
+    );
+    if (response.status == 200) {
+      if (response.data.accessToken) {
+        localStorage.setItem("user", JSON.stringify(response.data));
+      }
+    }
+    return response.data;
 
-        return response.data;
-      });
   }
 
   logout() {
     localStorage.removeItem("user");
   }
 
-  register(username: string, email: string, password: string) {
-    return axios.post(API_URL + "signup", {
-      username,
-      password,
-      email
-    });
+  async register(formData: FormData) {
+    console.log(formData);
+    let response = await axios({
+      method: "post",
+      url: API_URL + "signup/",
+      data: formData,
+      headers: { "Content-Type": "multipart/form-data" }
+    }
+    );
+
+    console.log(response);
+
+    if (response.status != 200) {
+      console.log("Error: " + response.statusText);
+    }
+    return response.data;
   }
 
   getCurrentUser() {
