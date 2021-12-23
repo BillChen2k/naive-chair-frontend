@@ -4,7 +4,6 @@ const API_URL = "https://412505r54f.imdo.co/naivechair/author/";
 
 class AuthService {
   async login(formData: FormData) {
-    console.log(formData);
     let response = await axios({
       method: "post",
       url: API_URL + "signin/",
@@ -12,17 +11,22 @@ class AuthService {
       headers: { "Content-Type": "multipart/form-data" }
     }
     );
-    if (response.status == 200) {
-      if (response.data.accessToken) {
-        localStorage.setItem("user", JSON.stringify(response.data));
-      }
+    console.log(response);
+    if (response.status != 200) {
+      console.log("Error: " + response.statusText);
+      return;
     }
+    // set the token if status is 1
+    if (response.data.accessToken && response.data.status == 1) {
+      localStorage.setItem("token", response.data.token);
+    }
+
     return response.data;
 
   }
 
   logout() {
-    localStorage.removeItem("user");
+    localStorage.removeItem("token");
   }
 
   async register(formData: FormData) {
@@ -39,15 +43,13 @@ class AuthService {
 
     if (response.status != 200) {
       console.log("Error: " + response.statusText);
+      return;
     }
     return response.data;
   }
 
   getCurrentUser() {
-    const userStr = localStorage.getItem("user");
-    if (userStr) return JSON.parse(userStr);
-
-    return null;
+    return localStorage.getItem("token");
   }
 }
 
