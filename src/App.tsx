@@ -63,8 +63,8 @@ class App extends Component<Props, State> {
 
     if (user) {
       this.setState({
-        currentUser: user,
-        showAdminBoard: user.roles.includes("ROLE_ADMIN"),
+        // currentUser: user,
+        // showAdminBoard: user.roles.includes("ROLE_ADMIN"),
       });
     }
 
