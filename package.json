@@ -15,6 +15,8 @@
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.24.0",
     "d3": "^7.1.1",
+    "formik": "^2.2.9",
+    "history": "5",
     "leaflet": "^1.7.1",
     "leaflet-panel-layers": "^1.2.7",
     "plotly.js": "^2.7.0",
@@ -22,6 +24,7 @@
     "react-dom": "^17.0.2",
     "react-leaflet": "^3.2.2",
     "react-plotly.js": "^2.5.1",
+    "react-router": "5",
     "react-router-dom": "6",
     "react-scripts": "4.0.3",
     "react-vega": "^7.4.4",
@@ -30,7 +33,8 @@
     "vega-embed": "^6.20.5",
     "vega-lite": "^5.2.0",
     "webpack-cli": "^4.9.1",
-    "webpack-dev-server": "^4.6.0"
+    "webpack-dev-server": "^4.6.0",
+    "yup": "^0.32.11"
   },
   "scripts": {
     "start": "webpack serve --mode development",
