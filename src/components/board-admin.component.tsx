@@ -1,7 +1,8 @@
-import { Component } from "react";
+import {Component} from 'react';
+import * as React from 'react';
 
-import UserService from "@/services/user.service";
-import EventBus from "@/common/EventBus";
+import UserService from '@/services/user.service';
+import EventBus from '@/common/EventBus';
 
 type Props = {};
 
@@ -14,31 +15,31 @@ export default class BoardAdmin extends Component<Props, State> {
     super(props);
 
     this.state = {
-      content: ""
+      content: '',
     };
   }
 
   componentDidMount() {
     UserService.getAdminBoard().then(
-      response => {
-        this.setState({
-          content: response.data
-        });
-      },
-      error => {
-        this.setState({
-          content:
+        (response) => {
+          this.setState({
+            content: response.data,
+          });
+        },
+        (error) => {
+          this.setState({
+            content:
             (error.response &&
               error.response.data &&
               error.response.data.message) ||
             error.message ||
-            error.toString()
-        });
+            error.toString(),
+          });
 
-        if (error.response && error.response.status === 401) {
-          EventBus.dispatch("logout");
-        }
-      }
+          if (error.response && error.response.status === 401) {
+            EventBus.dispatch('logout');
+          }
+        },
     );
   }
 

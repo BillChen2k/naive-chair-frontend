@@ -1,6 +1,6 @@
-import { Component } from "react";
-
-import UserService from "../services/user.service";
+import {Component} from 'react';
+import * as React from 'react';
+import UserService from '../services/user.service';
 
 type Props = {};
 
@@ -13,26 +13,26 @@ export default class Home extends Component<Props, State> {
     super(props);
 
     this.state = {
-      content: ""
+      content: '',
     };
   }
 
   componentDidMount() {
-//    UserService.getPublicContent().then(
-//      response => {
-//        this.setState({
-//          content: response.data
-//        });
-//      },
-//      error => {
-//        this.setState({
-//          content:
-//            (error.response && error.response.data) ||
-//            error.message ||
-//            error.toString()
-//        });
-//      }
-//    );
+    //    UserService.getPublicContent().then(
+    //      response => {
+    //        this.setState({
+    //          content: response.data
+    //        });
+    //      },
+    //      error => {
+    //        this.setState({
+    //          content:
+    //            (error.response && error.response.data) ||
+    //            error.message ||
+    //            error.toString()
+    //        });
+    //      }
+    //    );
   }
 
   render() {

@@ -1,12 +1,12 @@
-import { Component } from "react";
+import {Component} from 'react';
 
-import AppBar from "@/components/dashboard/AppBar"
-import Drawer from "@/components/dashboard/Drawer"
+import AppBar from '@/components/dashboard/AppBar';
+import Drawer from '@/components/dashboard/Drawer';
 
-import {mainPageItems, secondaryPageItems} from "@/components/dashboard/PageItems"
+import {mainPageItems, secondaryPageItems} from '@/components/dashboard/PageItems';
 
 import * as React from 'react';
-import { styled, createTheme, responsiveFontSizes, ThemeProvider } from '@mui/material/styles';
+import {styled, createTheme, responsiveFontSizes, ThemeProvider} from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -23,17 +23,17 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 
-import AuthService from "@/services/auth.service";
+import AuthService from '@/services/auth.service';
 import IUser from '@/types/user.type';
 
-import Login from "@/components/login.component";
-import Register from "@/components/register.component";
-import Home from "@/components/home.component";
-import BoardUser from "@/components/board-user.component";
-import BoardModerator from "@/components/board-moderator.component";
-import BoardAdmin from "@/components/board-admin.component";
+import Login from '@/components/login.component';
+import Register from '@/components/register.component';
+import Home from '@/components/home.component';
+import BoardUser from '@/components/board-user.component';
+import BoardModerator from '@/components/board-moderator.component';
+import BoardAdmin from '@/components/board-admin.component';
 
-import EventBus from "@/common/EventBus";
+import EventBus from '@/common/EventBus';
 
 type Props = {};
 
@@ -44,7 +44,6 @@ type State = {
 
 let theme = createTheme();
 theme = responsiveFontSizes(theme);
-
 
 
 class App extends Component<Props, State> {
@@ -68,11 +67,11 @@ class App extends Component<Props, State> {
       });
     }
 
-    EventBus.on("logout", this.logOut);
+    EventBus.on('logout', this.logOut);
   }
 
   componentWillUnmount() {
-    EventBus.remove("logout", this.logOut);
+    EventBus.remove('logout', this.logOut);
   }
 
   logOut() {
@@ -84,8 +83,6 @@ class App extends Component<Props, State> {
   }
 
 
-
-
   DashboardContent() {
     const [open, setOpen] = React.useState(true);
     const toggleDrawer = () => {
@@ -94,7 +91,7 @@ class App extends Component<Props, State> {
 
     return (
       <ThemeProvider theme={theme}>
-        <Box sx={{ display: 'flex' }}>
+        <Box sx={{display: 'flex'}}>
           <CssBaseline />
           <AppBar position="absolute" open={open}>
             <Toolbar
@@ -109,7 +106,7 @@ class App extends Component<Props, State> {
                 onClick={toggleDrawer}
                 sx={{
                   marginRight: '36px',
-                  ...(open && { display: 'none' }),
+                  ...(open && {display: 'none'}),
                 }}
               >
                 <MenuIcon />
@@ -119,7 +116,7 @@ class App extends Component<Props, State> {
                 variant="h6"
                 color="inherit"
                 noWrap
-                sx={{ flexGrow: 1 }}
+                sx={{flexGrow: 1}}
               >
                 Dashboard
               </Typography>
@@ -152,16 +149,16 @@ class App extends Component<Props, State> {
             component="main"
             sx={{
               backgroundColor: (theme) =>
-                theme.palette.mode === 'light'
-                  ? theme.palette.grey[100]
-                  : theme.palette.grey[900],
+                theme.palette.mode === 'light' ?
+                  theme.palette.grey[100] :
+                  theme.palette.grey[900],
               flexGrow: 1,
               height: '100vh',
               overflow: 'auto',
             }}
           >
             <Toolbar />
-            <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+            <Container maxWidth="lg" sx={{mt: 4, mb: 4}}>
               <Grid container spacing={3}>
                 {/* Chart */}
                 <Grid item xs={12} md={8} lg={9}>
@@ -191,7 +188,7 @@ class App extends Component<Props, State> {
                 </Grid>
                 {/* Recent Orders */}
                 <Grid item xs={12}>
-                  <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
+                  <Paper sx={{p: 2, display: 'flex', flexDirection: 'column'}}>
                     {/* <Orders /> */}
                   </Paper>
                 </Grid>

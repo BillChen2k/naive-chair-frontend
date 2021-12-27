@@ -1,15 +1,16 @@
-import { Component } from "react";
-import { useFormik } from "formik";
-import * as Yup from "yup";
+import * as React from 'react';
+import {Component} from 'react';
+import {useFormik} from 'formik';
+import * as Yup from 'yup';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 
-import AlertMessage from "@/services/alert.service";
-import { Alert, AlertColor } from "@mui/material";
+import {AlertMessage} from '@/services/alert.service';
+import {Alert, AlertColor} from '@mui/material';
 
-import AuthService from "@/services/auth.service";
+import AuthService from '@/services/auth.service';
 
-interface ErrorMessage {
+export interface ErrorMessage {
   alertType: AlertColor,
   message: string,
 }
@@ -36,26 +37,26 @@ export default class Login extends Component<Props, State> {
 
     this.state = {
       status: LoginStatus.NOT_ATTEMPTED,
-      message: ""
+      message: '',
     };
   }
 
   validationSchema = Yup.object({
     username: Yup.string()
-      .min(3, "Username must be at least 3 characters.")
-      .required("This field is required!"),
+        .min(3, 'Username must be at least 3 characters.')
+        .required('This field is required!'),
     password: Yup.string()
-      .min(6, "Password must be at least 6 characters.")
-      .required("This field is required!"),
+        .min(6, 'Password must be at least 6 characters.')
+        .required('This field is required!'),
   });
 
-  async handleLogin(formValue: { username: string; password: string }) {
-    const { username, password } = formValue;
-    let formData = new FormData();
+  async handleLogin(formValue: { username: string; password: string }): Promise<JSX.Element> {
+    const {username, password} = formValue;
+    const formData = new FormData();
     formData.append('username', username);
     formData.append('password', password);
 
-    let result = await AuthService.login(formData);
+    const result = await AuthService.login(formData);
 
     console.log(result);
 
@@ -63,33 +64,33 @@ export default class Login extends Component<Props, State> {
       case -2: {
         this.setState({
           status: LoginStatus.WRONG_HTTP_REQ,
-          message: "Wrong HTTP request."
+          message: 'Wrong HTTP request.',
         });
         break;
       }
       case 0: {
         this.setState({
           status: LoginStatus.WRONG_CREDENTIALS,
-          message: "Wrong credentials."
+          message: 'Wrong credentials.',
         });
-        let msg : ErrorMessage = {
+        const msg: ErrorMessage = {
           alertType: 'error',
-          message: "Wrong credentials."
-        }
-        return <AlertMessage alertInfo={...msg}/>;
+          message: 'Wrong credentials.',
+        };
+        return <AlertMessage alertInfo={msg}/>;
         break;
       }
       case 1: {
         this.setState({
           status: LoginStatus.SUCCESS,
-          message: "Login successful."
+          message: 'Login successful.',
         });
         break;
       }
       case -1: {
         this.setState({
           status: LoginStatus.MISSING_PARAMETERS,
-          message: "Missing parameters."
+          message: 'Missing parameters.',
         });
         break;
       }
@@ -99,13 +100,11 @@ export default class Login extends Component<Props, State> {
   }
 
 
-
-
   WithMaterialUI = () => {
     const formik = useFormik({
       initialValues: {
-        username: "",
-        password: "",
+        username: '',
+        password: '',
       },
       validationSchema: this.validationSchema,
       onSubmit: this.handleLogin,

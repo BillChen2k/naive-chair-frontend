@@ -18,11 +18,12 @@ module.exports = {
   plugins: ['react', '@typescript-eslint', 'import'],
   rules: {
     'require-jsdoc': 'warn',
-    'max-len': 'warn',
+    'max-len': ['warn', {'code': 120}],
     'no-unused-vars': 'warn',
     'spaced-comment': 'warn',
     'valid-jsdoc': 'off',
     'require-jsdoc': 'off',
+    'no-invalid-this': 'warn',
   },
   settings: {
     'import/resolver': {

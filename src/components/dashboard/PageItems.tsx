@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Link} from "react-router-dom";
+import {Link} from 'react-router-dom';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
@@ -59,7 +59,7 @@ export const secondaryPageItems = (() => {
       icon: <LogoutIcon />,
       text: 'Logout',
       linkPath: '/logout',
-    }
+    },
   ];
   const listItems = items.map((item, index) => (
     <ListItem button key={index} component={Link} to={item.linkPath}>

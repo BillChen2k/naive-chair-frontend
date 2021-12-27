@@ -1,10 +1,10 @@
-import { Component } from "react";
-import { useFormik } from "formik";
-import * as Yup from "yup";
+import * as React from 'react';
+import {useFormik} from 'formik';
+import * as Yup from 'yup';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 
-import AuthService from "@/services/auth.service";
+import AuthService from '@/services/auth.service';
 
 type Props = {};
 
@@ -16,71 +16,71 @@ type State = {
   message: string
 };
 
-export default class Register extends Component<Props, State> {
+export default class Register extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.handleRegister = this.handleRegister.bind(this);
 
     this.state = {
-      username: "",
-      email: "",
-      password: "",
+      username: '',
+      email: '',
+      password: '',
       successful: false,
-      message: ""
+      message: '',
     };
   }
 
   validationSchema = Yup.object({
     username: Yup.string()
-      .min(3, "Username must be at least 3 characters.")
-      .max(20, "Username cannot be longer than 20 characters.")
-      .required("Username is required!"),
+        .min(3, 'Username must be at least 3 characters.')
+        .max(20, 'Username cannot be longer than 20 characters.')
+        .required('Username is required!'),
     email: Yup.string()
-      .email("This is not a valid email.")
-      .required("Email is required!"),
+        .email('This is not a valid email.')
+        .required('Email is required!'),
     password: Yup.string()
-      .min(6, "Password must be at least 6 characters.")
-      .required("Password is required!"),
+        .min(6, 'Password must be at least 6 characters.')
+        .required('Password is required!'),
   });
 
   async handleRegister(formValue: { username: string; email: string; password: string }) {
-    const { username, email, password } = formValue;
-    let formData = new FormData();
+    const {username, email, password} = formValue;
+    const formData = new FormData();
     formData.append('username', username);
     formData.append('email', email);
     formData.append('password', password);
 
     this.setState({
-      message: "",
-      successful: false
+      message: '',
+      successful: false,
     });
 
-    let result = await AuthService.register(formData);
+    const result = await AuthService.register(formData);
 
     switch (result.statusCode) {
       case 1: {
         this.setState({
           successful: true,
-          message: "Registration successful! Please login."
+          message: 'Registration successful! Please login.',
         });
       }
       case 0: {
         this.setState({
           successful: false,
-          message: "Username is already registered. Please try again."
-        })
+          message: 'Username is already registered. Please try again.',
+        });
       }
       case -1: {
         this.setState({
           successful: false,
-          message: "The parameters are missing. Please try again."
-        })
+          message: 'The parameters are missing. Please try again.',
+        });
       }
       case -2: {
         this.setState({
           successful: false,
-          message: "Please use POST method"
-        })
+          message: 'Please use POST method',
+        });
       }
     }
   }
@@ -88,9 +88,9 @@ export default class Register extends Component<Props, State> {
   WithMaterialUI = () => {
     const formik = useFormik({
       initialValues: {
-        username: "",
-        email: "",
-        password: ""
+        username: '',
+        email: '',
+        password: '',
       },
       validationSchema: this.validationSchema,
       onSubmit: this.handleRegister,
