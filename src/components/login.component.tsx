@@ -6,10 +6,9 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 
 import {AlertMessage} from '@/services/alert.service';
-import {Alert, AlertColor} from '@mui/material';
+import {Alert, AlertColor, Box} from '@mui/material';
 
 import AuthService from '@/services/auth.service';
-
 export interface ErrorMessage {
   alertType: AlertColor,
   message: string,
@@ -111,7 +110,9 @@ export default class Login extends Component<Props, State> {
     });
 
     return (
-      <div>
+      <Box sx={{
+        '& .MuiTextField-root': {m: 1},
+      }}>
         <form onSubmit={formik.handleSubmit}>
           <TextField
             fullWidth
@@ -138,7 +139,7 @@ export default class Login extends Component<Props, State> {
             Submit
           </Button>
         </form>
-      </div>
+      </Box>
     );
   };
 

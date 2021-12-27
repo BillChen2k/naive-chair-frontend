@@ -1,7 +1,8 @@
 import axios from 'axios';
 import authHeader from './auth-header';
+import config from '@/config';
 
-const API_URL = 'https://412505r54f.imdo.co/naivechair/author/';
+const API_URL = config.API;
 
 class UserService {
   getPublicContent() {

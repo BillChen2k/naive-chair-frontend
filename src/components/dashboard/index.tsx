@@ -11,6 +11,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import {mainPageItems, secondaryPageItems} from './PageItems';
+import {Outlet} from 'react-router-dom';
 import AppBar from './AppBar';
 import Drawer from './Drawer';
 import Copyright from './Copyright';
@@ -91,8 +92,7 @@ function DashboardContent() {
       >
         <Toolbar />
         <Container maxWidth="lg" sx={{mt: 4, mb: 4}}>
-          {/* Page Content */}
-            NaiveChair.
+          <Outlet />
           <Copyright sx={{pt: 4}} />
         </Container>
       </Box>

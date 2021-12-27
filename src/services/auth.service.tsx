@@ -1,12 +1,13 @@
 import axios from 'axios';
+import config from '@/config';
 
-const API_URL = 'https://412505r54f.imdo.co/naivechair/author/';
+const API_URL = config.API;
 
 class AuthService {
   async login(formData: FormData) {
     const response = await axios({
       method: 'post',
-      url: API_URL + 'signin/',
+      url: API_URL + 'author/signin/',
       data: formData,
       headers: {'Content-Type': 'multipart/form-data'},
     },

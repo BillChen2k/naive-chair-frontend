@@ -5,6 +5,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 
 import AuthService from '@/services/auth.service';
+import {Box} from '@mui/material';
 
 type Props = {};
 
@@ -96,7 +97,9 @@ export default class Register extends React.Component<Props, State> {
       onSubmit: this.handleRegister,
     });
     return (
-      <div>
+      <Box sx={{
+        '& .MuiTextField-root': {m: 1},
+      }}>
         <form onSubmit={formik.handleSubmit}>
           <TextField
             fullWidth
@@ -133,7 +136,7 @@ export default class Register extends React.Component<Props, State> {
             Submit
           </Button>
         </form>
-      </div>
+      </Box>
     );
   };
 
