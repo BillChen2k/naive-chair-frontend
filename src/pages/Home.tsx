@@ -85,6 +85,7 @@ export default class Home extends Component<Props, State> {
               </Grid>
             ))}
           </Grid>
+
           <Typography variant={'body1'}></Typography>
         </Stack>
       </Box>

@@ -15,6 +15,9 @@ import {Route, Routes} from 'react-router-dom';
 import Profile from '@/pages/Profile';
 import {AuthProvider} from '@/services/useAuth';
 import Logout from '@/pages/Logout';
+import Forbidden403 from '@/pages/misc/Forbidden403';
+import AppRoutes from '@/config/routes';
+
 type Props = {};
 
 type State = {
@@ -59,15 +62,7 @@ class App extends Component<Props, State> {
     return (
       <ThemeProvider theme={theme}>
         <AuthProvider>
-          <Routes>
-            <Route path='/' element={<Dashboard />}>
-              <Route index element={<Home />}/>
-              <Route path="/login" element={<Login />}/>
-              <Route path="/register" element={<Register />}/>
-              <Route path="/logout" element={<Logout />}/>
-              <Route path='/profile/:username' element={<Profile />}/>
-            </Route>
-          </Routes>
+          <AppRoutes />
         </AuthProvider>
       </ThemeProvider>
     );

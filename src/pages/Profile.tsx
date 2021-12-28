@@ -5,7 +5,7 @@ function Profile() {
   let {username} = useParams();
   return (
     <div>
-      Profile: {username}
+      Profile Page for: {username}
     </div>
   );
 }

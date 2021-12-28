@@ -15,7 +15,6 @@ import AppBar from './AppBar';
 import Drawer from './Drawer';
 import Copyright from './Copyright';
 import SnackBar from '@/components/SnackBar';
-import {InferType} from 'yup';
 import {Button} from '@mui/material';
 import useAuth from '@/services/useAuth';
 
@@ -94,6 +93,7 @@ function DashboardContent() {
       >
         <Toolbar/>
         <Container maxWidth="lg" sx={{mt: 4, mb: 4}}>
+          {/* Child component */}
           <Outlet/>
           <Copyright sx={{mt: 12}}/>
         </Container>

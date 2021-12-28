@@ -18,10 +18,13 @@ import * as React from 'react';
 import {createContext, useContext, useState} from 'react';
 import axios from 'axios';
 import config from '@/config';
+import endpoints from '@/config/endpoints';
 import IUser from '@/types/user.type';
 import {binary2json, json2Binary} from '@/utils';
+import {Navigate} from 'react-router-dom';
 
-const API_URL = config.API;
+
+const api = config.API;
 
 const AuthContext = createContext<
   Partial<ReturnType<Awaited<typeof authContextValue>>>
@@ -52,15 +55,15 @@ function authContextValue() {
     const role = formData.get('role');
     switch (role) {
       case 'author':
-        endpoint = 'author/signin/';
+        endpoint = endpoints.author.signin.url;
         break;
       case 'referee':
-        endpoint = 'referee/signin/';
+        endpoint = endpoints.referee.signin.url;
         break;
     }
     const response = await axios({
       method: 'post',
-      url: API_URL + endpoint,
+      url: api + endpoint,
       data: formData,
       headers: {'Content-Type': 'multipart/form-data'},
     },
@@ -96,7 +99,7 @@ function authContextValue() {
     console.log(formData);
     const response = await axios({
       method: 'post',
-      url: API_URL + 'signup/',
+      url: api + endpoints.author.signup.url,
       data: formData,
       headers: {'Content-Type': 'multipart/form-data'},
     },
@@ -116,6 +119,20 @@ function authContextValue() {
     setUserObj(null);
   };
 
+  type IRole = 'author' | 'referee';
+
+  /**
+   * Add this to the top of the component to access control.
+   * @param availableRoles: Array of roles that can access this component.
+   * @example `{auth.accessControl(['referee'])}`
+   */
+  const accessControl = (availableRoles: IRole[]) => {
+    if (!availableRoles.includes(userObj.role)) {
+      return <Navigate to={'/403'} />;
+    }
+    return null;
+  };
+
   return {
     userObj,
     isAuthenticated,
@@ -123,6 +140,7 @@ function authContextValue() {
     signIn,
     signUp,
     signOut,
+    accessControl,
   };
 }
 
