@@ -1,5 +1,5 @@
 import axios from 'axios';
-import authHeader from './auth-header';
+import authHeader from '@/services/authHeader';
 import config from '@/config';
 
 const API_URL = config.API;

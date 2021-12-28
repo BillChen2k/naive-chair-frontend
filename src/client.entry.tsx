@@ -4,7 +4,7 @@
 import * as React from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter} from 'react-router-dom';
-import App from '@/containers/App';
+import App from '@/pages/App';
 
 ReactDOM.hydrate(
     <BrowserRouter>

@@ -3,20 +3,18 @@ import {Component} from 'react';
 import Dashboard from '@/components/dashboard';
 import {responsiveFontSizes, ThemeProvider} from '@mui/material/styles';
 
-import AuthService from '@/services/auth.service';
+import AuthService from '@/services/authService';
 import IUser from '@/types/user.type';
 
-import Login from '@/containers/Login';
-import Register from '@/containers/Register';
-import Home from '@/containers/Home';
-import BoardUser from '@/components/board-user.component';
-import BoardModerator from '@/components/board-moderator.component';
-import BoardAdmin from '@/components/board-admin.component';
-
+import Login from '@/pages/Login';
+import Register from '@/pages/Register';
+import Home from '@/pages/Home';
 import EventBus from '@/common/EventBus';
 import config from '@/config';
 import {Route, Routes} from 'react-router-dom';
-
+import Profile from '@/pages/Profile';
+import {AuthProvider} from '@/services/useAuth';
+import Logout from '@/pages/Logout';
 type Props = {};
 
 type State = {
@@ -38,7 +36,7 @@ class App extends Component<Props, State> {
   }
 
   componentDidMount() {
-    const user = AuthService.getCurrentUser();
+    const user = AuthService.getCurrentUserToken();
     if (user) {
       this.setState({});
     }
@@ -60,16 +58,17 @@ class App extends Component<Props, State> {
   render() {
     return (
       <ThemeProvider theme={theme}>
-        <Routes>
-          <Route path='/' element={<Dashboard />}>
-            <Route index element={<Home />}/>
-            <Route path="/login" element={<Login />}/>
-            <Route path="/register" element={<Register />}/>
-            <Route path="/user" element={<BoardUser />}/>
-            <Route path="/moderator" element={<BoardModerator />}/>
-            <Route path="/admin" element={<BoardAdmin />}/>
-          </Route>
-        </Routes>
+        <AuthProvider>
+          <Routes>
+            <Route path='/' element={<Dashboard />}>
+              <Route index element={<Home />}/>
+              <Route path="/login" element={<Login />}/>
+              <Route path="/register" element={<Register />}/>
+              <Route path="/logout" element={<Logout />}/>
+              <Route path='/profile/:username' element={<Profile />}/>
+            </Route>
+          </Routes>
+        </AuthProvider>
       </ThemeProvider>
     );
   }

@@ -2,30 +2,30 @@ import * as React from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import Container from '@mui/material/Container';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import {mainPageItems, secondaryPageItems} from './PageItems';
-import {Outlet} from 'react-router-dom';
+import {AccountCircle} from '@mui/icons-material';
+import Navigator from './Navigator';
+import {Link, Outlet} from 'react-router-dom';
 import AppBar from './AppBar';
 import Drawer from './Drawer';
 import Copyright from './Copyright';
 import SnackBar from '@/components/SnackBar';
+import {InferType} from 'yup';
+import {Button} from '@mui/material';
+import useAuth from '@/services/useAuth';
 
 function DashboardContent() {
   const [open, setOpen] = React.useState(true);
-  const toggleDrawer = () => {
-    setOpen(!open);
-  };
+  const auth = useAuth();
 
   return (
     <Box sx={{display: 'flex'}}>
-      <CssBaseline />
+      <CssBaseline/>
       <AppBar position="absolute" open={open}>
         <Toolbar
           sx={{
@@ -36,14 +36,14 @@ function DashboardContent() {
             edge="start"
             color="inherit"
             aria-label="open drawer"
-            onClick={toggleDrawer}
+            onClick={() => setOpen(!open)}
             sx={{
               marginRight: open ? '0' : '36px',
               transition: 'all 0.3s ease-out',
               ...(open && {width: '0', opacity: 0}),
             }}
           >
-            <MenuIcon />
+            <MenuIcon/>
           </IconButton>
           <Typography
             component="h1"
@@ -52,13 +52,15 @@ function DashboardContent() {
             noWrap
             sx={{flexGrow: 1}}
           >
-              NaiveChair
+            NaiveChair
           </Typography>
-          <IconButton color="inherit">
-            {/* <Badge badgeContent={4} color="secondary"> */}
-            <NotificationsIcon />
-            {/* </Badge> */}
-          </IconButton>
+          {auth.isAuthenticated && (
+            <Button sx={{textTransform: 'none'}}
+              component={Link} to={`/profile/${auth.userObj.username}`} variant={'text'} color={'inherit'}>
+              {auth.userObj.role}: {auth.userObj.realname || auth.userObj.username}
+              <AccountCircle sx={{ml: 1}}/>
+            </Button>
+          )}
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={open}>
@@ -70,31 +72,30 @@ function DashboardContent() {
             px: [1],
           }}
         >
-          <IconButton onClick={toggleDrawer}>
-            <ChevronLeftIcon />
+          <IconButton onClick={() => setOpen(!open)}>
+            <ChevronLeftIcon/>
           </IconButton>
         </Toolbar>
-        <Divider />
-        <List>{mainPageItems}</List>
-        <Divider />
-        <List>{secondaryPageItems}</List>
+        <Divider/>
+
+        <Navigator />
       </Drawer>
       <Box
         component="main"
         sx={{
           backgroundColor: (theme) =>
-                            theme.palette.mode === 'light' ?
-                                theme.palette.grey[100] :
-                                theme.palette.grey[900],
+            theme.palette.mode === 'light' ?
+              theme.palette.grey[100] :
+              theme.palette.grey[900],
           flexGrow: 1,
           height: '100vh',
           overflow: 'auto',
         }}
       >
-        <Toolbar />
+        <Toolbar/>
         <Container maxWidth="lg" sx={{mt: 4, mb: 4}}>
-          <Outlet />
-          <Copyright sx={{pt: 4}} />
+          <Outlet/>
+          <Copyright sx={{mt: 12}}/>
         </Container>
       </Box>
     </Box>
@@ -104,14 +105,14 @@ function DashboardContent() {
 function Snackbars() {
   return (
     <div>
-      <SnackBar />
+      <SnackBar/>
     </div>
   );
 }
 
 export default function Dashboard() {
   return (<div>
-    <DashboardContent />
-    <Snackbars />
+    <DashboardContent/>
+    <Snackbars/>
   </div>);
 }

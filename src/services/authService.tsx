@@ -5,9 +5,19 @@ const API_URL = config.API;
 
 class AuthService {
   async login(formData: FormData) {
+    let endpoint = '';
+    const role = formData.get('role');
+    switch (role) {
+      case 'author':
+        endpoint = 'author/signin/';
+        break;
+      case 'referee':
+        endpoint = 'referee/signin/';
+        break;
+    }
     const response = await axios({
       method: 'post',
-      url: API_URL + 'author/signin/',
+      url: API_URL + endpoint,
       data: formData,
       headers: {'Content-Type': 'multipart/form-data'},
     },
@@ -18,15 +28,16 @@ class AuthService {
       return;
     }
     // set the token if status is 1
-    if (response.data.accessToken && response.data.status == 1) {
+    if (response.data.token && response.data.statusCode == 1) {
       localStorage.setItem('token', response.data.token);
+      localStorage.setItem('username', formData.get('username') as string);
     }
-
     return response.data;
   }
 
   logout() {
     localStorage.removeItem('token');
+    localStorage.removeItem('username');
   }
 
   async register(formData: FormData) {
@@ -48,8 +59,12 @@ class AuthService {
     return response.data;
   }
 
-  getCurrentUser() {
+  getCurrentUserToken() {
     return localStorage.getItem('token');
+  }
+
+  getCurrentUserName() {
+    return localStorage.getItem('username');
   }
 }
 

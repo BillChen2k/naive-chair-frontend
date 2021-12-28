@@ -5,7 +5,7 @@ const config = {
   appearance: {
     drawerWidth: '15rem',
   },
-  snackBarAutoHiddenTime: 5000, // in ms
+  snackBarAutoHideDuration: 5000, // in ms
   // MuiThemeProvider options
   theme: createTheme({
     palette: {

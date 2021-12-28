@@ -4,7 +4,7 @@ import * as Yup from 'yup';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 
-import AuthService from '@/services/auth.service';
+import AuthService from '@/services/authService';
 import {Box} from '@mui/material';
 
 type Props = {};

@@ -9,7 +9,6 @@ export default function SnackBar() {
   const dispatch = useAppDispatch();
 
   const {open, message, severity} = useAppSelector( (state) => state.ui.snackbar);
-
   function handleClose() {
     dispatch(clearSnackBar());
   }
@@ -18,14 +17,14 @@ export default function SnackBar() {
     <Snackbar
       anchorOrigin={{
         vertical: 'bottom',
-        horizontal: 'left',
+        horizontal: 'right',
       }}
       open={open}
-      autoHideDuration={config.snackBarAutoHiddenTime}
+      autoHideDuration={config.snackBarAutoHideDuration}
       onClose={handleClose}
-      aria-describedby='client-snackbar'
+      onClick={handleClose}
     >
-      <Alert onClose={handleClose} severity={severity} sx={{width: '100%'}}>
+      <Alert variant={'filled'} onClose={handleClose} severity={severity} sx={{width: '100%'}}>
         {message}
       </Alert>
     </Snackbar>

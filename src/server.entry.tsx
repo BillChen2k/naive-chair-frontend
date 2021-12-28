@@ -5,7 +5,7 @@ import * as React from 'react';
 import express from 'express';
 import ReactDOMServer from 'react-dom/server';
 import {StaticRouter} from 'react-router-dom/server';
-import App from '@/containers/App';
+import App from '@/pages/App';
 
 const app = express();
 
