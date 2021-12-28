@@ -1,3 +1,6 @@
+/**
+ * Entry point for SSR. Not currently used.
+ */
 import * as React from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter} from 'react-router-dom';

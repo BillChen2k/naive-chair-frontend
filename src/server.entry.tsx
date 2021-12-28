@@ -1,3 +1,6 @@
+/**
+ * Entry point for SSR. Not currently used.
+ */
 import * as React from 'react';
 import express from 'express';
 import ReactDOMServer from 'react-dom/server';

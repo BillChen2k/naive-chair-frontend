@@ -5,33 +5,20 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import ListSubheader from '@mui/material/ListSubheader';
 import DashboardIcon from '@mui/icons-material/Dashboard';
-import BugReportIcon from '@mui/icons-material/BugReport';
 import LoginIcon from '@mui/icons-material/Login';
 import LogoutIcon from '@mui/icons-material/Logout';
 import LockIcon from '@mui/icons-material/Lock';
-import MemoryIcon from '@mui/icons-material/Memory';
 
 export const mainPageItems = (() => {
   const items = [
     {
       icon: <DashboardIcon />,
-      text: 'Dashboard',
-    },
-    {
-      icon: <MemoryIcon />,
-      text: 'FMOD',
-    },
-    {
-      icon: <MemoryIcon />,
-      text: 'EMU',
-    },
-    {
-      icon: <MemoryIcon />,
-      text: 'RTL',
+      text: 'Home',
+      linkPath: '/',
     },
   ];
   const listItems = items.map((item, index) => (
-    <ListItem button key={index}>
+    <ListItem button key={index} component={Link} to={item.linkPath}>
       <ListItemIcon>{item.icon}</ListItemIcon>
       <ListItemText primary={item.text} />
     </ListItem>

@@ -2,7 +2,7 @@ import * as React from 'react';
 import Snackbar from '@mui/material/Snackbar';
 import Stack from '@mui/material/Stack';
 import MuiAlert, {AlertColor, AlertProps} from '@mui/material/Alert';
-import {ErrorMessage} from '@/components/login.component';
+import {ErrorMessage} from '@/router/Login';
 
 
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(

@@ -22,9 +22,9 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import AuthService from '@/services/auth.service';
 import IUser from '@/types/user.type';
 
-import Login from '@/components/login.component';
-import Register from '@/components/register.component';
-import Home from '@/components/home.component';
+import Login from '@/router/Login';
+import Register from '@/router/Register';
+import Home from '@/router/Home';
 import BoardUser from '@/components/board-user.component';
 import BoardModerator from '@/components/board-moderator.component';
 import BoardAdmin from '@/components/board-admin.component';
