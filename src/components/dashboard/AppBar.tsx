@@ -2,7 +2,7 @@ import {styled} from '@mui/material/styles';
 import MuiAppBar from '@mui/material/AppBar';
 import config from '@/config';
 
-const drawerWidth = config.apperance.drawerWidth;
+const drawerWidth = config.appearance.drawerWidth;
 
 interface IAppBarProps {
     open?: boolean;

@@ -15,6 +15,7 @@ import {Outlet} from 'react-router-dom';
 import AppBar from './AppBar';
 import Drawer from './Drawer';
 import Copyright from './Copyright';
+import SnackBar from '@/components/SnackBar';
 
 function DashboardContent() {
   const [open, setOpen] = React.useState(true);
@@ -100,6 +101,17 @@ function DashboardContent() {
   );
 }
 
+function Snackbars() {
+  return (
+    <div>
+      <SnackBar />
+    </div>
+  );
+}
+
 export default function Dashboard() {
-  return <DashboardContent />;
+  return (<div>
+    <DashboardContent />
+    <Snackbars />
+  </div>);
 }

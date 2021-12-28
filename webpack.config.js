@@ -12,7 +12,7 @@ const isProduction = process.env.NODE_ENV == 'production';
 const stylesHandler = MiniCssExtractPlugin.loader;
 
 const ProgressHook = new webpack.ProgressPlugin(function(percentage, msg) {
-  if (percentage==0){
+  if (percentage==0) {
     console.log('Building...');
   } else if (percentage==1) {
     console.log('Checkout http://localhost:3000');

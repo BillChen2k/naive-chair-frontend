@@ -2,9 +2,10 @@ import {createTheme} from '@mui/material';
 import {blueGrey, cyan} from '@mui/material/colors';
 
 const config = {
-  apperance: {
+  appearance: {
     drawerWidth: '15rem',
   },
+  snackBarAutoHiddenTime: 5000, // in ms
   // MuiThemeProvider options
   theme: createTheme({
     palette: {

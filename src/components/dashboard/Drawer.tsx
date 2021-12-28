@@ -2,7 +2,7 @@ import {styled} from '@mui/material/styles';
 import MuiDrawer from '@mui/material/Drawer';
 import config from '@/config';
 
-const drawerWidth = config.apperance.drawerWidth;
+const drawerWidth = config.appearance.drawerWidth;
 
 const Drawer = styled(MuiDrawer, {shouldForwardProp: (prop) => prop !== 'open'})(
     ({theme, open}) => ({

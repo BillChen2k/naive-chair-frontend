@@ -1,38 +1,21 @@
 import * as React from 'react';
 import {Component} from 'react';
-
-import AppBar from '@/components/dashboard/AppBar';
-import Drawer from '@/components/dashboard/Drawer';
 import Dashboard from '@/components/dashboard';
-
-import {mainPageItems, secondaryPageItems} from '@/components/dashboard/PageItems';
 import {responsiveFontSizes, ThemeProvider} from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import List from '@mui/material/List';
-import Typography from '@mui/material/Typography';
-import Divider from '@mui/material/Divider';
-import IconButton from '@mui/material/IconButton';
-import Badge from '@mui/material/Badge';
-import Container from '@mui/material/Container';
-import MenuIcon from '@mui/icons-material/Menu';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import NotificationsIcon from '@mui/icons-material/Notifications';
 
 import AuthService from '@/services/auth.service';
 import IUser from '@/types/user.type';
 
-import Login from '@/router/Login';
-import Register from '@/router/Register';
-import Home from '@/router/Home';
+import Login from '@/containers/Login';
+import Register from '@/containers/Register';
+import Home from '@/containers/Home';
 import BoardUser from '@/components/board-user.component';
 import BoardModerator from '@/components/board-moderator.component';
 import BoardAdmin from '@/components/board-admin.component';
 
 import EventBus from '@/common/EventBus';
 import config from '@/config';
-import {Routes, Route} from 'react-router-dom';
+import {Route, Routes} from 'react-router-dom';
 
 type Props = {};
 
