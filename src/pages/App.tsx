@@ -1,21 +1,12 @@
 import * as React from 'react';
 import {Component} from 'react';
-import Dashboard from '@/components/dashboard';
 import {responsiveFontSizes, ThemeProvider} from '@mui/material/styles';
 
 import AuthService from '@/services/authService';
 import IUser from '@/types/user.type';
-
-import Login from '@/pages/Login';
-import Register from '@/pages/Register';
-import Home from '@/pages/Home';
 import EventBus from '@/common/EventBus';
 import config from '@/config';
-import {Route, Routes} from 'react-router-dom';
-import Profile from '@/pages/Profile';
 import {AuthProvider} from '@/services/useAuth';
-import Logout from '@/pages/Logout';
-import Forbidden403 from '@/pages/misc/Forbidden403';
 import AppRoutes from '@/config/routes';
 
 type Props = {};

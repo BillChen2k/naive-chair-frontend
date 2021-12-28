@@ -2,7 +2,7 @@ import React from 'react';
 import {useParams} from 'react-router-dom';
 
 function ConferenceDetail() {
-  let {conferenceId} = useParams();
+  const {conferenceId} = useParams();
   return (
     <div>Conference details for {conferenceId}</div>
   );

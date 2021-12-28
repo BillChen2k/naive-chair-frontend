@@ -18,10 +18,11 @@ import * as React from 'react';
 import {createContext, useContext, useState} from 'react';
 import axios from 'axios';
 import config from '@/config';
-import endpoints from '@/config/endpoints';
+import endpoints, {IEndpoint} from '@/config/endpoints';
 import IUser from '@/types/user.type';
 import {binary2json, json2Binary} from '@/utils';
 import {Navigate} from 'react-router-dom';
+import useAxios from '@/services/useAxios';
 
 
 const api = config.API;
@@ -33,12 +34,11 @@ const AuthContext = createContext<
 function initAuth() {
   const userObj = binary2json<IUser>(localStorage.getItem('userObj'));
   const token = localStorage.getItem('token');
-  //todo: Fetch full userinfo from the server
+  // todo: Fetch full userinfo from the server
   if (token && userObj) {
     const isAuthenticated = true;
     return {userObj, token, isAuthenticated};
-  }
-  else {
+  } else {
     const isAuthenticated = false;
     return {userObj, token, isAuthenticated};
   }
@@ -49,25 +49,18 @@ function authContextValue() {
   const [userObj, setUserObj] = useState<IUser>(initContext.userObj);
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(initContext.isAuthenticated);
   const [token, setToken] = useState<string>(initContext.token);
-
   const signIn = async (formData: FormData) =>{
-    let endpoint = '';
+    let endpoint: IEndpoint;
     const role = formData.get('role');
     switch (role) {
       case 'author':
-        endpoint = endpoints.author.signin.url;
+        endpoint = endpoints.author.signin;
         break;
       case 'referee':
-        endpoint = endpoints.referee.signin.url;
+        endpoint = endpoints.referee.signin;
         break;
     }
-    const response = await axios({
-      method: 'post',
-      url: api + endpoint,
-      data: formData,
-      headers: {'Content-Type': 'multipart/form-data'},
-    },
-    );
+    const response = await axios.post(api + endpoint.url + '/', formData);
     console.log(response);
     if (response.status != 200) {
       console.log('Error: ' + response.statusText);
@@ -114,9 +107,10 @@ function authContextValue() {
 
   const signOut = () => {
     localStorage.removeItem('token');
-    localStorage.removeItem('username');
+    localStorage.removeItem('userObj');
     setIsAuthenticated(false);
     setUserObj(null);
+    setToken('');
   };
 
   type IRole = 'author' | 'referee';

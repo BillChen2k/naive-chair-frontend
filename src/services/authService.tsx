@@ -3,6 +3,9 @@ import config from '@/config';
 
 const API_URL = config.API;
 
+/**
+ * Most of the code had moved to useAuth.tsx
+ */
 class AuthService {
   async login(formData: FormData) {
     let endpoint = '';
@@ -61,10 +64,6 @@ class AuthService {
 
   getCurrentUserToken() {
     return localStorage.getItem('token');
-  }
-
-  getCurrentUserName() {
-    return localStorage.getItem('username');
   }
 }
 

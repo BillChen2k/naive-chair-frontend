@@ -6,7 +6,7 @@ function AuthorManagement() {
   const auth = useAuth();
   return (
     <Box>
-      {auth.accessControl(['referee'])}
+      {auth.accessControl(['author'])}
       Paper Author Management.
     </Box>
   );
