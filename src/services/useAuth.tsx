@@ -113,15 +113,15 @@ function authContextValue() {
     setToken('');
   };
 
-  type IRole = 'author' | 'referee';
-
+  type IRole = 'author' | 'referee' | 'visitor';
   /**
    * Add this to the top of the component to access control.
-   * @param availableRoles: Array of roles that can access this component.
+   * @param accessibleRoles: Array of roles that can access this component.
    * @example `{auth.accessControl(['referee'])}`
    */
-  const accessControl = (availableRoles: IRole[]) => {
-    if (!availableRoles.includes(userObj.role)) {
+  const accessControl = (accessibleRoles: IRole[]) => {
+    const userRole = userObj ? userObj.role : 'visitor';
+    if (!accessibleRoles.includes(userRole)) {
       return <Navigate to={'/403'} />;
     }
     return null;
@@ -135,6 +135,7 @@ function authContextValue() {
     signUp,
     signOut,
     accessControl,
+    403: <Navigate to={'/403'} />,
   };
 }
 

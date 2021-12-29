@@ -4,7 +4,7 @@ import {Box} from '@mui/material';
 function SubmissionHistory() {
   return (
     <Box>
-      Paper Submission.
+      Submission History
     </Box>
   );
 }

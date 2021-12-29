@@ -31,7 +31,7 @@ export default class Home extends Component<Props, State> {
       },
       {
         title: 'Conference management system',
-        content: 'From managing program committees to publishing proceedings, our EasyChair system has got you covered. ' +
+        content: 'From managing program committees to publishing proceedings, our NaiveChair system has got you covered. ' +
           'Support from over 0 million users and 1 conferences show our that professionalism has perfected managing a well-organized conference from scratch.',
         learnMoreLink: '/',
       },

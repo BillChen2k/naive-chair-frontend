@@ -1,11 +1,10 @@
 import React from 'react';
 import {
-  Box, Button,
-  Divider,
-  Grid, IconButton,
+  Button,
   Paper,
   Stack,
-  Table, TableBody,
+  Table,
+  TableBody,
   TableCell,
   TableContainer,
   TableHead,
@@ -15,28 +14,21 @@ import {
 import {Link, Outlet} from 'react-router-dom';
 import useAxios from '@/services/useAxios';
 import endpoints from '@/config/endpoints';
+import IConference, {parseConferences} from '@/types/conference.type';
 import useAuth from '@/services/useAuth';
-import IConference from '@/types/conference.type';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
-import {More} from '@mui/icons-material';
-
-function parseConferences(data: any[]) : IConference[] {
-  return data.map((one): IConference => {
-    return {
-      conferenceId: one.conferenceid,
-      fullName: one.full_name,
-      shortName: one.short_name,
-      location: one.location,
-      dueDate: one.due_date,
-      introduction: one.introduction,
-    };
-  });
-}
 
 function Conferences() {
-  const {response: conferenceResponse, loading, error} = useAxios(endpoints.author.getConferenceList);
+  const auth = useAuth();
+  if (auth.accessControl(['author', 'referee'])) {
+    return auth['403'];
+  };
+
+  const {response: conferenceResponse, loading, error} = useAxios(endpoints[auth.userObj.role].getConferenceList);
+
   return (
     <Stack spacing={2}>
+      {/* Alternative way to do access control. */}
+      {auth.accessControl(['author', 'referee'])}
       <Typography variant="h4">Conferences</Typography>
       {loading && <Typography>Loading...</Typography>}
       {!loading && !error &&

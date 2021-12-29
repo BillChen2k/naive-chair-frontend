@@ -10,10 +10,14 @@ import openSnackBar from '@/store/actions/snackbarActions';
 
 function useAxios(endpoint: IEndpoint, body?: FormData, headers?: any) {
   const [response, setResponse] = useState(null);
-  const [error, setError] = useState('');
+  const [error, setError] = useState<string>('');
   const [loading, setLoading] = useState(true);
   const auth = useAuth();
   const dispatch = useDispatch();
+  if (!auth.isAuthenticated) {
+    dispatch(openSnackBar('User not authenticated.', 'error'));
+    return {response, error, loading};
+  }
   let authorizedBody = body;
   if (!authorizedBody) {
     authorizedBody = new FormData();
