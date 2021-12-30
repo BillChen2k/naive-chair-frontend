@@ -16,52 +16,21 @@ import useAxios from '@/services/useAxios';
 import endpoints from '@/config/endpoints';
 import IConference, {parseConferences} from '@/types/conference.type';
 import useAuth from '@/services/useAuth';
+import ConferenceList from '@/components/conference/ConferenceList';
 
 function Conferences() {
   const auth = useAuth();
   if (auth.accessControl(['author', 'referee'])) {
-    return auth['forbidden403'];
+    return auth.forbidden403;
   };
-
-  const {response: conferenceResponse, loading, error} = useAxios(endpoints[auth.userObj.role].getConferenceList);
 
   return (
     <Stack spacing={2}>
-      {/* Alternative way to do access control. */}
-      {auth.accessControl(['author', 'referee'])}
       <Typography variant="h4">Conferences</Typography>
-      {loading && <LinearProgress />}
-      {!loading && !error &&
-        <TableContainer component={Paper}>
-          <Table sx={{minWidth: 650}}>
-            <TableHead>
-              <TableRow>
-                {['#', 'Full Name', 'Short Name', 'Location', 'Due Date', 'Details'].map((one, index) => (
-                  <TableCell key={index}>{one}</TableCell>
-                ))}
-                <TableCell></TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {parseConferences(conferenceResponse.data).map((one, index) => (
-                <TableRow key={index}>
-                  <TableCell>{one.conferenceId}</TableCell>
-                  <TableCell>{one.fullName}</TableCell>
-                  <TableCell>{one.shortName}</TableCell>
-                  <TableCell>{one.location}</TableCell>
-                  <TableCell>{one.dueDate}</TableCell>
-                  <TableCell>
-                    <Button variant={'outlined'} size={'small'} component={Link} to={`/conferences/${one.conferenceId}`}>
-                      Details
-                    </Button>
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-      }
-      {/* <Outlet/> */}
+      <ConferenceList action={{
+        text: 'Details',
+        routerPath: '/conferences/:conferenceId',
+      }} />
     </Stack>
   );
 }

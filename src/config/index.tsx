@@ -1,5 +1,5 @@
 import {createTheme} from '@mui/material';
-import {blueGrey, cyan} from '@mui/material/colors';
+import {blue, blueGrey, brown} from '@mui/material/colors';
 
 const config = {
   appearance: {
@@ -11,7 +11,7 @@ const config = {
     palette: {
       mode: 'light',
       primary: blueGrey,
-      secondary: cyan,
+      secondary: brown,
     },
     typography: {
       fontFamily: 'Roboto, Helvetica, -apple-system, Segoe UI, Helvetica Neue, Arial',
