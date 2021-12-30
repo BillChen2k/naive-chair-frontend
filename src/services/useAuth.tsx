@@ -19,11 +19,10 @@ import {createContext, useContext, useState} from 'react';
 import axios from 'axios';
 import config from '@/config';
 import endpoints, {IEndpoint} from '@/config/endpoints';
-import IUser from '@/types/user.type';
+import {IUser, UserRole} from '@/types/user.type';
 import {binary2json, json2Binary} from '@/utils';
 import {Navigate} from 'react-router-dom';
 import useAxios from '@/services/useAxios';
-
 
 const api = config.API;
 
@@ -68,17 +67,18 @@ function authContextValue() {
     }
     // set the token if status is 1
     if (response.data.token && response.data.statusCode == 1) {
-      const userObj: IUser = {
-        username: formData.get('username') as string,
-        role: formData.get('role') as ('author' | 'referee'),
-        realname: response.data.realname,
-        email: response.data.email,
-        affiliation: response.data.affilication, // Typo in the backend
-        interest: response.data.interest,
-        bio: response.data.bio,
-        website: response.data.website,
-        signUpDate: response.data.signUpDate,
-      };
+      var userObj: IUser; 
+
+      userObj.username = response.data.username;
+      userObj.role = response.data.role;
+      userObj.realname = response.data.realname;
+      userObj.email = response.data.email;
+      userObj.affiliation = response.data.affiliation;
+      userObj.interest = response.data.interest;
+      userObj.bio = response.data.bio;
+      userObj.website = response.data.website;
+      userObj.signUpDate = response.data.signUpDate;
+
       localStorage.setItem('token', response.data.token);
       localStorage.setItem('userObj', json2Binary(userObj));
       setUserObj(userObj);
@@ -113,14 +113,13 @@ function authContextValue() {
     setToken('');
   };
 
-  type IRole = 'author' | 'referee' | 'visitor';
   /**
    * Add this to the top of the component to access control.
    * @param accessibleRoles: Array of roles that can access this component.
    * @example `{auth.accessControl(['referee'])}`
    */
-  const accessControl = (accessibleRoles: IRole[]) => {
-    const userRole = userObj ? userObj.role : 'visitor';
+  const accessControl = (accessibleRoles: UserRole[]) => {
+    const userRole = userObj ? userObj.role : UserRole.visitor;
     if (!accessibleRoles.includes(userRole)) {
       return <Navigate to={'/403'} />;
     }

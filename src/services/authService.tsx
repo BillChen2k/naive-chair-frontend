@@ -47,7 +47,7 @@ class AuthService {
     console.log(formData);
     const response = await axios({
       method: 'post',
-      url: API_URL + 'signup/',
+      url: API_URL + 'author/signup/',
       data: formData,
       headers: {'Content-Type': 'multipart/form-data'},
     },
