@@ -5,14 +5,12 @@ import PaperService from '@/services/paperService';
 import {makeStyles} from '@mui/material/styles';
 import {UserRole, IUser} from '@/types/user.type';
 import MuiContainer from '@mui/material/Container';
-import {assert} from 'console';
 import {useFormik, Formik, Form, FieldArray, getIn} from 'formik';
 import {AlertColor, Box, Button, FormGroup, FormControl, InputLabel, MenuItem, Select, Stack, Typography} from '@mui/material';
 import * as Yup from 'yup';
 
 function PaperSubmission() {
   const auth = useAuth();
-  assert(auth.isAuthenticated, 'You must be authenticated to access this page.');
 
   const token: string = auth.token;
   const userObj: IUser = auth.userObj;

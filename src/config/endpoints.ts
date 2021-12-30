@@ -1,3 +1,4 @@
+import {IUser, UserRole} from '@/types/user.type';
 import {Method} from 'axios';
 
 export interface IEndpoint {
@@ -6,7 +7,7 @@ export interface IEndpoint {
 }
 
 export type IEndpoints = {
-  [key in 'author' | 'referee']: {
+  [key in UserRole]: {
     [key: string]: IEndpoint;
   };
 };
@@ -29,6 +30,7 @@ const endpoints: IEndpoints = {
     getConferenceList: {url: '/referee/getConferenceList', method: 'POST'},
     removeConferences: {url: '/referee/removeConferences', method: 'POST'},
   },
+  visitor: undefined,
 };
 
 export default endpoints;

@@ -3,7 +3,7 @@ import {Component} from 'react';
 import {responsiveFontSizes, ThemeProvider} from '@mui/material/styles';
 
 import AuthService from '@/services/authService';
-import IUser from '@/types/user.type';
+import {IUser} from '@/types/user.type';
 import EventBus from '@/common/EventBus';
 import config from '@/config';
 import {AuthProvider} from '@/services/useAuth';

@@ -16,10 +16,11 @@ import useAxios from '@/services/useAxios';
 import endpoints from '@/config/endpoints';
 import IConference, {parseConferences} from '@/types/conference.type';
 import useAuth from '@/services/useAuth';
+import {UserRole} from '@/types/user.type';
 
 function Conferences() {
   const auth = useAuth();
-  if (auth.accessControl(['author', 'referee'])) {
+  if (auth.accessControl(['author' as UserRole, 'referee' as UserRole])) {
     return auth['403'];
   };
 
@@ -28,7 +29,7 @@ function Conferences() {
   return (
     <Stack spacing={2}>
       {/* Alternative way to do access control. */}
-      {auth.accessControl(['author', 'referee'])}
+      {auth.accessControl(['author' as UserRole, 'referee' as UserRole])}
       <Typography variant="h4">Conferences</Typography>
       {loading && <Typography>Loading...</Typography>}
       {!loading && !error &&
