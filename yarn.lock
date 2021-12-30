@@ -1948,11 +1948,6 @@
     "@types/connect" "*"
     "@types/node" "*"
 
-"@types/clone@~2.1.1":
-  version "2.1.1"
-  resolved "https://registry.npmmirror.com/@types/clone/download/@types/clone-2.1.1.tgz#9b880d0ce9b1f209b5e0bd6d9caa38209db34024"
-  integrity sha1-m4gNDOmx8gm14L1tnKo4IJ2zQCQ=
-
 "@types/connect@*":
   version "3.4.35"
   resolved "https://registry.npmmirror.com/@types/connect/download/@types/connect-3.4.35.tgz#5fcf6ae445e4021d1fc2219a4873cc73a3bb2ad1"
@@ -2220,15 +2215,6 @@
   version "17.0.37"
   resolved "https://registry.npmmirror.com/@types/react/download/@types/react-17.0.37.tgz#6884d0aa402605935c397ae689deed115caad959"
   integrity sha512-2FS1oTqBGcH/s0E+CjrCCR9+JMpsu9b69RTFO+40ua43ZqP5MmQ4iUde/dMjWR909KxZwmOQIFq6AV6NjEG5xg==
-  dependencies:
-    "@types/prop-types" "*"
-    "@types/scheduler" "*"
-    csstype "^3.0.2"
-
-"@types/react@^16.9.19":
-  version "16.14.21"
-  resolved "https://registry.npmmirror.com/@types/react/download/@types/react-16.14.21.tgz#35199b21a278355ec7a3c40003bd6a334bd4ae4a"
-  integrity sha512-rY4DzPKK/4aohyWiDRHS2fotN5rhBSK6/rz1X37KzNna9HJyqtaGAbq9fVttrEPWF5ywpfIP1ITL8Xi2QZn6Eg==
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
@@ -3114,11 +3100,6 @@ array-differ@^3.0.0:
   version "3.0.0"
   resolved "https://registry.nlark.com/array-differ/download/array-differ-3.0.0.tgz#3cbb3d0f316810eafcc47624734237d6aee4ae6b"
   integrity sha1-PLs9DzFoEOr8xHYkc0I31q7krms=
-
-array-flat-polyfill@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.npm.taobao.org/array-flat-polyfill/download/array-flat-polyfill-1.0.1.tgz#1e3a4255be619dfbffbfd1d635c1cf357cd034e7"
-  integrity sha1-HjpCVb5hnfv/v9HWNcHPNXzQNOc=
 
 array-flatten@1.1.1:
   version "1.1.1"
@@ -4192,15 +4173,6 @@ cliui@^6.0.0:
     strip-ansi "^6.0.0"
     wrap-ansi "^6.2.0"
 
-cliui@^7.0.2:
-  version "7.0.4"
-  resolved "https://registry.nlark.com/cliui/download/cliui-7.0.4.tgz#a0265ee655476fc807aea9df3df8df7783808b4f"
-  integrity sha1-oCZe5lVHb8gHrqnfPfjfd4OAi08=
-  dependencies:
-    string-width "^4.2.0"
-    strip-ansi "^6.0.0"
-    wrap-ansi "^7.0.0"
-
 clone-buffer@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npm.taobao.org/clone-buffer/download/clone-buffer-1.0.0.tgz#e3e25b207ac4e701af721e2cb5a16792cac3dc58"
@@ -4220,7 +4192,7 @@ clone-stats@^1.0.0:
   resolved "https://registry.npm.taobao.org/clone-stats/download/clone-stats-1.0.0.tgz#b3782dff8bb5474e18b9b6bf0fdfe782f8777680"
   integrity sha1-s3gt/4u1R04Yuba/D9/ngvh3doA=
 
-clone@^2.1.1, clone@~2.1.2:
+clone@^2.1.1:
   version "2.1.2"
   resolved "https://registry.nlark.com/clone/download/clone-2.1.2.tgz#1b7f4b9f591f1e8f83670401600345a02887435f"
   integrity sha1-G39Ln1kfHo+DZwQBYANFoCiHQ18=
@@ -4328,15 +4300,15 @@ combined-stream@^1.0.6, combined-stream@^1.0.8, combined-stream@~1.0.6:
   dependencies:
     delayed-stream "~1.0.0"
 
-commander@2, commander@^2.20.0:
-  version "2.20.3"
-  resolved "https://registry.npmmirror.com/commander/download/commander-2.20.3.tgz?cache=0&sync_timestamp=1634886396986&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Fcommander%2Fdownload%2Fcommander-2.20.3.tgz#fd485e84c03eb4881c20722ba48035e8531aeb33"
-  integrity sha1-/UhehMA+tIgcIHIrpIA16FMa6zM=
-
 commander@7, commander@^7.0.0:
   version "7.2.0"
   resolved "https://registry.npmmirror.com/commander/download/commander-7.2.0.tgz?cache=0&sync_timestamp=1634886396986&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Fcommander%2Fdownload%2Fcommander-7.2.0.tgz#a36cb57d0b501ce108e4d20559a150a391d97ab7"
   integrity sha1-o2y1fQtQHOEI5NIFWaFQo5HZerc=
+
+commander@^2.20.0:
+  version "2.20.3"
+  resolved "https://registry.npmmirror.com/commander/download/commander-2.20.3.tgz?cache=0&sync_timestamp=1634886396986&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Fcommander%2Fdownload%2Fcommander-2.20.3.tgz#fd485e84c03eb4881c20722ba48035e8531aeb33"
+  integrity sha1-/UhehMA+tIgcIHIrpIA16FMa6zM=
 
 commander@^4.1.1:
   version "4.1.1"
@@ -4932,13 +4904,6 @@ cyclist@^1.0.1:
   resolved "https://registry.nlark.com/cyclist/download/cyclist-1.0.1.tgz#596e9698fd0c80e12038c2b82d6eb1b35b6224d9"
   integrity sha1-WW6WmP0MgOEgOMK4LW6xs1tiJNk=
 
-"d3-array@1 - 2", d3-array@2, d3-array@^2.3.0, d3-array@^2.5.0, d3-array@^2.7.1:
-  version "2.12.1"
-  resolved "https://registry.npmmirror.com/d3-array/download/d3-array-2.12.1.tgz#e20b41aafcdffdf5d50928004ececf815a465e81"
-  integrity sha1-4gtBqvzf/fXVCSgATs7PgVpGXoE=
-  dependencies:
-    internmap "^1.0.0"
-
 "d3-array@2 - 3", "d3-array@2.10.0 - 3", "d3-array@2.5.0 - 3", d3-array@3:
   version "3.1.1"
   resolved "https://registry.npmmirror.com/d3-array/download/d3-array-3.1.1.tgz#7797eb53ead6b9083c75a45a681e93fc41bc468c"
@@ -4969,11 +4934,6 @@ d3-chord@3:
   dependencies:
     d3-path "1 - 3"
 
-"d3-color@1 - 2", d3-color@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.nlark.com/d3-color/download/d3-color-2.0.0.tgz#8d625cab42ed9b8f601a1760a389f7ea9189d62e"
-  integrity sha1-jWJcq0Ltm49gGhdgo4n36pGJ1i4=
-
 "d3-color@1 - 3", d3-color@3:
   version "3.0.1"
   resolved "https://registry.nlark.com/d3-color/download/d3-color-3.0.1.tgz#03316e595955d1fcd39d9f3610ad41bb90194d0a"
@@ -4992,18 +4952,6 @@ d3-delaunay@6:
   integrity sha1-f9NxetDq3i/Jk59CYKz7UD+YTpI=
   dependencies:
     delaunator "5"
-
-d3-delaunay@^5.3.0:
-  version "5.3.0"
-  resolved "https://registry.nlark.com/d3-delaunay/download/d3-delaunay-5.3.0.tgz#b47f05c38f854a4e7b3cea80e0bb12e57398772d"
-  integrity sha1-tH8Fw4+FSk57POqA4LsS5XOYdy0=
-  dependencies:
-    delaunator "4"
-
-"d3-dispatch@1 - 2":
-  version "2.0.0"
-  resolved "https://registry.npmmirror.com/d3-dispatch/download/d3-dispatch-2.0.0.tgz#8a18e16f76dd3fcaef42163c97b926aa9b55e7cf"
-  integrity sha1-ihjhb3bdP8rvQhY8l7kmqptV588=
 
 "d3-dispatch@1 - 3", d3-dispatch@3:
   version "3.0.1"
@@ -5027,15 +4975,6 @@ d3-delaunay@^5.3.0:
     iconv-lite "0.6"
     rw "1"
 
-d3-dsv@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.npmmirror.com/d3-dsv/download/d3-dsv-2.0.0.tgz#b37b194b6df42da513a120d913ad1be22b5fe7c5"
-  integrity sha1-s3sZS230LaUToSDZE60b4itf58U=
-  dependencies:
-    commander "2"
-    iconv-lite "0.4"
-    rw "1"
-
 "d3-ease@1 - 3", d3-ease@3:
   version "3.0.1"
   resolved "https://registry.nlark.com/d3-ease/download/d3-ease-3.0.1.tgz#9658ac38a2140d59d346160f1f6c30fda0bd12f4"
@@ -5057,41 +4996,10 @@ d3-force@3:
     d3-quadtree "1 - 3"
     d3-timer "1 - 3"
 
-d3-force@^2.1.1:
-  version "2.1.1"
-  resolved "https://registry.nlark.com/d3-force/download/d3-force-2.1.1.tgz?cache=0&sync_timestamp=1629961361901&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fd3-force%2Fdownload%2Fd3-force-2.1.1.tgz#f20ccbf1e6c9e80add1926f09b51f686a8bc0937"
-  integrity sha1-8gzL8ebJ6ArdGSbwm1H2hqi8CTc=
-  dependencies:
-    d3-dispatch "1 - 2"
-    d3-quadtree "1 - 2"
-    d3-timer "1 - 2"
-
-"d3-format@1 - 2", d3-format@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.npmmirror.com/d3-format/download/d3-format-2.0.0.tgz#a10bcc0f986c372b729ba447382413aabf5b0767"
-  integrity sha1-oQvMD5hsNytym6RHOCQTqr9bB2c=
-
 "d3-format@1 - 3", d3-format@3:
   version "3.1.0"
   resolved "https://registry.npmmirror.com/d3-format/download/d3-format-3.1.0.tgz#9260e23a28ea5cb109e93b21a06e24e2ebd55641"
   integrity sha512-YyUI6AEuY/Wpt8KWLgZHsIU86atmikuoOmCfommt0LYHiQSPjvX2AcFc38PX0CBpr2RCyZhjex+NS/LPOv6YqA==
-
-d3-geo-projection@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.nlark.com/d3-geo-projection/download/d3-geo-projection-3.0.0.tgz#45ad8ce756cdbfa8340b11b2988644d8e1fa42e4"
-  integrity sha1-Ra2M51bNv6g0CxGymIZE2OH6QuQ=
-  dependencies:
-    commander "2"
-    d3-array "1 - 2"
-    d3-geo "1.12.0 - 2"
-    resolve "^1.1.10"
-
-"d3-geo@1.12.0 - 2", d3-geo@^2.0.1:
-  version "2.0.2"
-  resolved "https://registry.npmmirror.com/d3-geo/download/d3-geo-2.0.2.tgz#c065c1b71fe8c5f1be657e5f43d9bdd010383c40"
-  integrity sha1-wGXBtx/oxfG+ZX5fQ9m90BA4PEA=
-  dependencies:
-    d3-array "^2.5.0"
 
 d3-geo@3:
   version "3.0.1"
@@ -5105,29 +5013,12 @@ d3-hierarchy@3:
   resolved "https://registry.npmmirror.com/d3-hierarchy/download/d3-hierarchy-3.1.1.tgz#9cbb0ffd2375137a351e6cfeed344a06d4ff4597"
   integrity sha512-LtAIu54UctRmhGKllleflmHalttH3zkfSi4NlKrTAoFKjC+AFBJohsCAdgCBYQwH0F8hIOGY89X1pPqAchlMkA==
 
-d3-hierarchy@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.npmmirror.com/d3-hierarchy/download/d3-hierarchy-2.0.0.tgz#dab88a58ca3e7a1bc6cab390e89667fcc6d20218"
-  integrity sha1-2riKWMo+ehvGyrOQ6JZn/MbSAhg=
-
 "d3-interpolate@1 - 3", "d3-interpolate@1.2.0 - 3", d3-interpolate@3:
   version "3.0.1"
   resolved "https://registry.nlark.com/d3-interpolate/download/d3-interpolate-3.0.1.tgz#3c47aa5b32c5b3dfb56ef3fd4342078a632b400d"
   integrity sha1-PEeqWzLFs9+1bvP9Q0IHimMrQA0=
   dependencies:
     d3-color "1 - 3"
-
-"d3-interpolate@1.2.0 - 2", d3-interpolate@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.nlark.com/d3-interpolate/download/d3-interpolate-2.0.1.tgz#98be499cfb8a3b94d4ff616900501a64abc91163"
-  integrity sha1-mL5JnPuKO5TU/2FpAFAaZKvJEWM=
-  dependencies:
-    d3-color "1 - 2"
-
-"d3-path@1 - 2", d3-path@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.nlark.com/d3-path/download/d3-path-2.0.0.tgz#55d86ac131a0548adae241eebfb56b4582dd09d8"
-  integrity sha1-VdhqwTGgVIra4kHuv7VrRYLdCdg=
 
 "d3-path@1 - 3", d3-path@3:
   version "3.0.1"
@@ -5138,11 +5029,6 @@ d3-polygon@3:
   version "3.0.1"
   resolved "https://registry.npmmirror.com/d3-polygon/download/d3-polygon-3.0.1.tgz#0b45d3dd1c48a29c8e057e6135693ec80bf16398"
   integrity sha1-C0XT3RxIopyOBX5hNWk+yAvxY5g=
-
-"d3-quadtree@1 - 2":
-  version "2.0.0"
-  resolved "https://registry.nlark.com/d3-quadtree/download/d3-quadtree-2.0.0.tgz#edbad045cef88701f6fee3aee8e93fb332d30f9d"
-  integrity sha1-7brQRc74hwH2/uOu6Ok/szLTD50=
 
 "d3-quadtree@1 - 3", d3-quadtree@3:
   version "3.0.1"
@@ -5173,17 +5059,6 @@ d3-scale@4:
     d3-time "2.1.1 - 3"
     d3-time-format "2 - 4"
 
-d3-scale@^3.2.2:
-  version "3.3.0"
-  resolved "https://registry.npmmirror.com/d3-scale/download/d3-scale-3.3.0.tgz#28c600b29f47e5b9cd2df9749c206727966203f3"
-  integrity sha1-KMYAsp9H5bnNLfl0nCBnJ5ZiA/M=
-  dependencies:
-    d3-array "^2.3.0"
-    d3-format "1 - 2"
-    d3-interpolate "1.2.0 - 2"
-    d3-time "^2.1.1"
-    d3-time-format "2 - 3"
-
 "d3-selection@2 - 3", d3-selection@3:
   version "3.0.0"
   resolved "https://registry.nlark.com/d3-selection/download/d3-selection-3.0.0.tgz#c25338207efa72cc5b9bd1458a1a41901f1e1b31"
@@ -5196,20 +5071,6 @@ d3-shape@3:
   dependencies:
     d3-path "1 - 3"
 
-d3-shape@^2.0.0:
-  version "2.1.0"
-  resolved "https://registry.nlark.com/d3-shape/download/d3-shape-2.1.0.tgz#3b6a82ccafbc45de55b57fcf956c584ded3b666f"
-  integrity sha1-O2qCzK+8Rd5VtX/PlWxYTe07Zm8=
-  dependencies:
-    d3-path "1 - 2"
-
-"d3-time-format@2 - 3", d3-time-format@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.npmmirror.com/d3-time-format/download/d3-time-format-3.0.0.tgz#df8056c83659e01f20ac5da5fdeae7c08d5f1bb6"
-  integrity sha1-34BWyDZZ4B8grF2l/ernwI1fG7Y=
-  dependencies:
-    d3-time "1 - 2"
-
 "d3-time-format@2 - 4", d3-time-format@4:
   version "4.1.0"
   resolved "https://registry.npmmirror.com/d3-time-format/download/d3-time-format-4.1.0.tgz#7ab5257a5041d11ecb4fe70a5c7d16a195bb408a"
@@ -5217,24 +5078,12 @@ d3-shape@^2.0.0:
   dependencies:
     d3-time "1 - 3"
 
-"d3-time@1 - 2", d3-time@^2.0.0, d3-time@^2.1.1:
-  version "2.1.1"
-  resolved "https://registry.npmmirror.com/d3-time/download/d3-time-2.1.1.tgz#e9d8a8a88691f4548e68ca085e5ff956724a6682"
-  integrity sha1-6dioqIaR9FSOaMoIXl/5VnJKZoI=
-  dependencies:
-    d3-array "2"
-
 "d3-time@1 - 3", "d3-time@2.1.1 - 3", d3-time@3:
   version "3.0.0"
   resolved "https://registry.npmmirror.com/d3-time/download/d3-time-3.0.0.tgz#65972cb98ae2d4954ef5c932e8704061335d4975"
   integrity sha1-ZZcsuYri1JVO9cky6HBAYTNdSXU=
   dependencies:
     d3-array "2 - 3"
-
-"d3-timer@1 - 2", d3-timer@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.nlark.com/d3-timer/download/d3-timer-2.0.0.tgz#055edb1d170cfe31ab2da8968deee940b56623e6"
-  integrity sha1-BV7bHRcM/jGrLaiWje7pQLVmI+Y=
 
 "d3-timer@1 - 3", d3-timer@3:
   version "3.0.1"
@@ -5494,11 +5343,6 @@ del@^6.0.0:
     p-map "^4.0.0"
     rimraf "^3.0.2"
     slash "^3.0.0"
-
-delaunator@4:
-  version "4.0.1"
-  resolved "https://registry.npmmirror.com/delaunator/download/delaunator-4.0.1.tgz#3d779687f57919a7a418f8ab947d3bddb6846957"
-  integrity sha1-PXeWh/V5GaekGPirlH073baEaVc=
 
 delaunator@5:
   version "5.0.0"
@@ -6536,7 +6380,7 @@ extsprintf@^1.2.0:
   resolved "https://registry.npmmirror.com/extsprintf/download/extsprintf-1.4.1.tgz#8d172c064867f235c0c84a596806d279bf4bcc07"
   integrity sha1-jRcsBkhn8jXAyEpZaAbSeb9LzAc=
 
-fast-deep-equal@^3.1.1, fast-deep-equal@^3.1.3, fast-deep-equal@~3.1.3:
+fast-deep-equal@^3.1.1, fast-deep-equal@^3.1.3:
   version "3.1.3"
   resolved "https://registry.npm.taobao.org/fast-deep-equal/download/fast-deep-equal-3.1.3.tgz#3a7d56b559d6cbc3eb512325244e619a65c6c525"
   integrity sha1-On1WtVnWy8PrUSMlJE5hmmXGxSU=
@@ -6569,12 +6413,7 @@ fast-glob@^3.1.1, fast-glob@^3.2.7:
     merge2 "^1.3.0"
     micromatch "^4.0.4"
 
-fast-json-patch@^3.1.0:
-  version "3.1.0"
-  resolved "https://registry.nlark.com/fast-json-patch/download/fast-json-patch-3.1.0.tgz#ec8cd9b9c4c564250ec8b9140ef7a55f70acaee6"
-  integrity sha1-7IzZucTFZCUOyLkUDvelX3CsruY=
-
-fast-json-stable-stringify@^2.0.0, fast-json-stable-stringify@^2.1.0, fast-json-stable-stringify@~2.1.0:
+fast-json-stable-stringify@^2.0.0, fast-json-stable-stringify@^2.1.0:
   version "2.1.0"
   resolved "https://registry.npm.taobao.org/fast-json-stable-stringify/download/fast-json-stable-stringify-2.1.0.tgz#874bf69c6f404c2b5d99c481341399fd55892633"
   integrity sha1-h0v2nG9ATCtdmcSBNBOZ/VWJJjM=
@@ -6950,7 +6789,7 @@ gensync@^1.0.0-beta.1, gensync@^1.0.0-beta.2:
   resolved "https://registry.npm.taobao.org/gensync/download/gensync-1.0.0-beta.2.tgz#32a6ee76c3d7f52d46b2b1ae5d93fea8580a25e0"
   integrity sha1-MqbudsPX9S1GsrGuXZP+qFgKJeA=
 
-get-caller-file@^2.0.1, get-caller-file@^2.0.5:
+get-caller-file@^2.0.1:
   version "2.0.5"
   resolved "https://registry.npm.taobao.org/get-caller-file/download/get-caller-file-2.0.5.tgz#4f94412a82db32f36e3b0b9741f8a97feb031f7e"
   integrity sha1-T5RBKoLbMvNuOwuXQfipf+sDH34=
@@ -7632,7 +7471,7 @@ human-signals@^2.1.0:
   resolved "https://registry.nlark.com/human-signals/download/human-signals-2.1.0.tgz?cache=0&sync_timestamp=1624364612113&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fhuman-signals%2Fdownload%2Fhuman-signals-2.1.0.tgz#dc91fcba42e4d06e4abaed33b3e7a3c02f514ea0"
   integrity sha1-3JH8ukLk0G5Kuu0zs+ejwC9RTqA=
 
-iconv-lite@0.4, iconv-lite@0.4.24, iconv-lite@^0.4.24:
+iconv-lite@0.4.24, iconv-lite@^0.4.24:
   version "0.4.24"
   resolved "https://registry.nlark.com/iconv-lite/download/iconv-lite-0.4.24.tgz?cache=0&sync_timestamp=1621826393472&other_urls=https%3A%2F%2Fregistry.nlark.com%2Ficonv-lite%2Fdownload%2Ficonv-lite-0.4.24.tgz#2022b4b25fbddc21d2f524974a474aafe733908b"
   integrity sha1-ICK0sl+93CHS9SSXSkdKr+czkIs=
@@ -7844,11 +7683,6 @@ internal-slot@^1.0.3:
   version "2.0.3"
   resolved "https://registry.nlark.com/internmap/download/internmap-2.0.3.tgz#6685f23755e43c524e251d29cbc97248e3061009"
   integrity sha1-ZoXyN1XkPFJOJR0py8lySOMGEAk=
-
-internmap@^1.0.0:
-  version "1.0.1"
-  resolved "https://registry.nlark.com/internmap/download/internmap-1.0.1.tgz#0017cc8a3b99605f0302f2b198d272e015e5df95"
-  integrity sha1-ABfMijuZYF8DAvKxmNJy4BXl35U=
 
 interpret@^1.0.0:
   version "1.4.0"
@@ -8844,6 +8678,11 @@ js-base64@^2.1.8:
   resolved "https://registry.npmmirror.com/js-base64/download/js-base64-2.6.4.tgz#f4e686c5de1ea1f867dbcad3d46d969428df98c4"
   integrity sha1-9OaGxd4eofhn28rT1G2WlCjfmMQ=
 
+js-base64@^3.7.2:
+  version "3.7.2"
+  resolved "https://registry.npmmirror.com/js-base64/download/js-base64-3.7.2.tgz#816d11d81a8aff241603d19ce5761e13e41d7745"
+  integrity sha512-NnRs6dsyqUXejqk/yv2aiXlAvOs56sLkX6nUdeaNezI5LFFLlsZjOThmwnrcwh5ZZRwZlCMnVAY3CvhIhoVEKQ==
+
 "js-tokens@^3.0.0 || ^4.0.0", js-tokens@^4.0.0:
   version "4.0.0"
   resolved "https://registry.nlark.com/js-tokens/download/js-tokens-4.0.0.tgz?cache=0&sync_timestamp=1619345319573&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fjs-tokens%2Fdownload%2Fjs-tokens-4.0.0.tgz#19203fb59991df98e3a287050d4647cdeaf32499"
@@ -8934,11 +8773,6 @@ json-stable-stringify-without-jsonify@^1.0.1:
   version "1.0.1"
   resolved "https://registry.nlark.com/json-stable-stringify-without-jsonify/download/json-stable-stringify-without-jsonify-1.0.1.tgz#9db7b59496ad3f3cfef30a75142d2d930ad72651"
   integrity sha1-nbe1lJatPzz+8wp1FC0tkwrXJlE=
-
-json-stringify-pretty-compact@^3.0.0, json-stringify-pretty-compact@~3.0.0:
-  version "3.0.0"
-  resolved "https://registry.npmmirror.com/json-stringify-pretty-compact/download/json-stringify-pretty-compact-3.0.0.tgz#f71ef9d82ef16483a407869556588e91b681d9ab"
-  integrity sha1-9x752C7xZIOkB4aVVliOkbaB2as=
 
 json-stringify-safe@~5.0.1:
   version "5.0.1"
@@ -9783,7 +9617,7 @@ no-case@^3.0.4:
     lower-case "^2.0.2"
     tslib "^2.0.3"
 
-node-fetch@^2.6.0, node-fetch@^2.6.1:
+node-fetch@^2.6.0:
   version "2.6.6"
   resolved "https://registry.npmmirror.com/node-fetch/download/node-fetch-2.6.6.tgz#1751a7c01834e8e1697758732e9efb6eeadfaf89"
   integrity sha1-F1GnwBg06OFpd1hzLp77burfr4k=
@@ -11735,15 +11569,6 @@ react-transition-group@^4.4.2:
     loose-envify "^1.4.0"
     prop-types "^15.6.2"
 
-react-vega@^7.4.4:
-  version "7.4.4"
-  resolved "https://registry.npmmirror.com/react-vega/download/react-vega-7.4.4.tgz#098bca8761e8f9b9e7ab300beef434ca18dbb843"
-  integrity sha1-CYvKh2Ho+bnnqzAL7vQ0yhjbuEM=
-  dependencies:
-    "@types/react" "^16.9.19"
-    fast-deep-equal "^3.1.1"
-    vega-embed "^6.5.1"
-
 react@^17.0.2:
   version "17.0.2"
   resolved "https://registry.npmmirror.com/react/download/react-17.0.2.tgz#d0b5cc516d29eb3eee383f75b62864cfb6800037"
@@ -12101,7 +11926,7 @@ resolve@1.18.1:
     is-core-module "^2.0.0"
     path-parse "^1.0.6"
 
-resolve@^1.1.10, resolve@^1.1.6, resolve@^1.10.0, resolve@^1.12.0, resolve@^1.14.2, resolve@^1.17.0, resolve@^1.18.1, resolve@^1.19.0, resolve@^1.20.0, resolve@^1.3.2, resolve@^1.9.0:
+resolve@^1.1.6, resolve@^1.10.0, resolve@^1.12.0, resolve@^1.14.2, resolve@^1.17.0, resolve@^1.18.1, resolve@^1.19.0, resolve@^1.20.0, resolve@^1.3.2, resolve@^1.9.0:
   version "1.20.0"
   resolved "https://registry.nlark.com/resolve/download/resolve-1.20.0.tgz#629a013fb3f70755d6f0b7935cc1c2c5378b1975"
   integrity sha1-YpoBP7P3B1XW8LeTXMHCxTeLGXU=
@@ -13568,13 +13393,6 @@ toidentifier@1.0.1:
   resolved "https://registry.npmmirror.com/toidentifier/download/toidentifier-1.0.1.tgz?cache=0&sync_timestamp=1636938516387&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Ftoidentifier%2Fdownload%2Ftoidentifier-1.0.1.tgz#3be34321a88a820ed1bd80dfaa33e479fbb8dd35"
   integrity sha512-o5sSPKEkg/DIQNmH43V0/uerLrpzVedkUh8tGNvaeXpfpuwjKenlSox/2O/BTlZUtEe+JG7s5YhEz608PlAHRA==
 
-topojson-client@^3.1.0:
-  version "3.1.0"
-  resolved "https://registry.npm.taobao.org/topojson-client/download/topojson-client-3.1.0.tgz#22e8b1ed08a2b922feeb4af6f53b6ef09a467b99"
-  integrity sha1-Iuix7QiiuSL+60r29Ttu8JpGe5k=
-  dependencies:
-    commander "2"
-
 toposort@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/toposort/-/toposort-2.0.2.tgz#ae21768175d1559d48bef35420b2f4962f09c330"
@@ -13663,7 +13481,7 @@ tslib@^1.10.0, tslib@^1.8.1, tslib@^1.9.0:
   resolved "https://registry.nlark.com/tslib/download/tslib-1.14.1.tgz?cache=0&sync_timestamp=1628722833529&other_urls=https%3A%2F%2Fregistry.nlark.com%2Ftslib%2Fdownload%2Ftslib-1.14.1.tgz#cf2d38bdc34a134bcaf1091c41f6619e2f672d00"
   integrity sha1-zy04vcNKE0vK8QkcQfZhni9nLQA=
 
-tslib@^2.0.3, tslib@^2.3.1, tslib@~2.3.1:
+tslib@^2.0.3:
   version "2.3.1"
   resolved "https://registry.nlark.com/tslib/download/tslib-2.3.1.tgz?cache=0&sync_timestamp=1628722833529&other_urls=https%3A%2F%2Fregistry.nlark.com%2Ftslib%2Fdownload%2Ftslib-2.3.1.tgz#e8a335add5ceae51aa261d32a490158ef042ef01"
   integrity sha1-6KM1rdXOrlGqJh0ypJAVjvBC7wE=
@@ -14037,372 +13855,6 @@ vary@~1.1.2:
   version "1.1.2"
   resolved "https://registry.nlark.com/vary/download/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
   integrity sha1-IpnwLG3tMNSllhsLn3RSShj2NPw=
-
-vega-canvas@^1.2.5:
-  version "1.2.6"
-  resolved "https://registry.npm.taobao.org/vega-canvas/download/vega-canvas-1.2.6.tgz#55e032ce9a62acd17229f6bac66d99db3d6879cd"
-  integrity sha1-VeAyzppirNFyKfa6xm2Z2z1oec0=
-
-vega-crossfilter@~4.0.5:
-  version "4.0.5"
-  resolved "https://registry.nlark.com/vega-crossfilter/download/vega-crossfilter-4.0.5.tgz#cf6a5fca60821928f976b32f22cf66cfd9cbeeae"
-  integrity sha1-z2pfymCCGSj5drMvIs9mz9nL7q4=
-  dependencies:
-    d3-array "^2.7.1"
-    vega-dataflow "^5.7.3"
-    vega-util "^1.15.2"
-
-vega-dataflow@^5.7.3, vega-dataflow@^5.7.4, vega-dataflow@~5.7.4:
-  version "5.7.4"
-  resolved "https://registry.nlark.com/vega-dataflow/download/vega-dataflow-5.7.4.tgz#7cafc0a41b9d0b11dd2e34a513f8b7ca345dfd74"
-  integrity sha1-fK/ApBudCxHdLjSlE/i3yjRd/XQ=
-  dependencies:
-    vega-format "^1.0.4"
-    vega-loader "^4.3.2"
-    vega-util "^1.16.1"
-
-vega-embed@^6.20.5, vega-embed@^6.5.1:
-  version "6.20.5"
-  resolved "https://registry.npmmirror.com/vega-embed/download/vega-embed-6.20.5.tgz#c92a6ecf754f1c13c6b7860b945b1e50cfc29259"
-  integrity sha512-WmKzYPVUw6x+I2ucoeHySoWWqWO/oBvBGiDq+79hN1vvHc0g7QkDtRpfndSxkDWoagSTkuYTXSb9r1THrj/kfw==
-  dependencies:
-    fast-json-patch "^3.1.0"
-    json-stringify-pretty-compact "^3.0.0"
-    semver "^7.3.5"
-    tslib "^2.3.1"
-    vega-interpreter "^1.0.4"
-    vega-schema-url-parser "^2.2.0"
-    vega-themes "^2.10.0"
-    vega-tooltip "^0.27.0"
-
-vega-encode@~4.8.3:
-  version "4.8.3"
-  resolved "https://registry.npmmirror.com/vega-encode/download/vega-encode-4.8.3.tgz#b3048fb39845d72f18d8dc302ad697f826e0ff83"
-  integrity sha1-swSPs5hF1y8Y2NwwKtaX+Cbg/4M=
-  dependencies:
-    d3-array "^2.7.1"
-    d3-interpolate "^2.0.1"
-    vega-dataflow "^5.7.3"
-    vega-scale "^7.0.3"
-    vega-util "^1.15.2"
-
-vega-event-selector@^3.0.0, vega-event-selector@~3.0.0:
-  version "3.0.0"
-  resolved "https://registry.npmmirror.com/vega-event-selector/download/vega-event-selector-3.0.0.tgz#7b855ac0c3ddb59bc5b5caa0d96dbbc9fbd33a4c"
-  integrity sha1-e4VawMPdtZvFtcqg2W27yfvTOkw=
-
-vega-expression@^5.0.0, vega-expression@~5.0.0:
-  version "5.0.0"
-  resolved "https://registry.npmmirror.com/vega-expression/download/vega-expression-5.0.0.tgz#938f26689693a1e0d26716030cdaed43ca7abdfb"
-  integrity sha1-k48maJaToeDSZxYDDNrtQ8p6vfs=
-  dependencies:
-    "@types/estree" "^0.0.50"
-    vega-util "^1.16.0"
-
-vega-force@~4.0.7:
-  version "4.0.7"
-  resolved "https://registry.nlark.com/vega-force/download/vega-force-4.0.7.tgz#6dc39ecb7889d9102661244d62fbc8d8714162ee"
-  integrity sha1-bcOey3iJ2RAmYSRNYvvI2HFBYu4=
-  dependencies:
-    d3-force "^2.1.1"
-    vega-dataflow "^5.7.3"
-    vega-util "^1.15.2"
-
-vega-format@^1.0.4, vega-format@~1.0.4:
-  version "1.0.4"
-  resolved "https://registry.nlark.com/vega-format/download/vega-format-1.0.4.tgz#40c0c252d11128738b845ee73d8173f8064d6626"
-  integrity sha1-QMDCUtERKHOLhF7nPYFz+AZNZiY=
-  dependencies:
-    d3-array "^2.7.1"
-    d3-format "^2.0.0"
-    d3-time-format "^3.0.0"
-    vega-time "^2.0.3"
-    vega-util "^1.15.2"
-
-vega-functions@^5.10.0, vega-functions@^5.12.1, vega-functions@~5.12.1:
-  version "5.12.1"
-  resolved "https://registry.npmmirror.com/vega-functions/download/vega-functions-5.12.1.tgz#b69f9ad4cd9f777dbc942587c02261b2f4cdba2c"
-  integrity sha1-tp+a1M2fd328lCWHwCJhsvTNuiw=
-  dependencies:
-    d3-array "^2.7.1"
-    d3-color "^2.0.0"
-    d3-geo "^2.0.1"
-    vega-dataflow "^5.7.3"
-    vega-expression "^5.0.0"
-    vega-scale "^7.1.1"
-    vega-scenegraph "^4.9.3"
-    vega-selections "^5.3.1"
-    vega-statistics "^1.7.9"
-    vega-time "^2.0.4"
-    vega-util "^1.16.0"
-
-vega-geo@~4.3.8:
-  version "4.3.8"
-  resolved "https://registry.nlark.com/vega-geo/download/vega-geo-4.3.8.tgz#5629d18327bb4f3700cdf05db4aced0a43abbf4a"
-  integrity sha1-VinRgye7TzcAzfBdtKztCkOrv0o=
-  dependencies:
-    d3-array "^2.7.1"
-    d3-color "^2.0.0"
-    d3-geo "^2.0.1"
-    vega-canvas "^1.2.5"
-    vega-dataflow "^5.7.3"
-    vega-projection "^1.4.5"
-    vega-statistics "^1.7.9"
-    vega-util "^1.15.2"
-
-vega-hierarchy@~4.0.9:
-  version "4.0.9"
-  resolved "https://registry.nlark.com/vega-hierarchy/download/vega-hierarchy-4.0.9.tgz#4b4bafbc181a14a280ecdbee8874c0db7e369f47"
-  integrity sha1-S0uvvBgaFKKA7NvuiHTA2342n0c=
-  dependencies:
-    d3-hierarchy "^2.0.0"
-    vega-dataflow "^5.7.3"
-    vega-util "^1.15.2"
-
-vega-interpreter@^1.0.4:
-  version "1.0.4"
-  resolved "https://registry.npmmirror.com/vega-interpreter/download/vega-interpreter-1.0.4.tgz#291ebf85bc2d1c3550a3da22ff75b3ba0d326a39"
-  integrity sha1-KR6/hbwtHDVQo9oi/3Wzug0yajk=
-
-vega-label@~1.1.0:
-  version "1.1.0"
-  resolved "https://registry.npmmirror.com/vega-label/download/vega-label-1.1.0.tgz#0a11ae3ba18d7aed909c51ec67c2a9dde4426c6f"
-  integrity sha1-ChGuO6GNeu2QnFHsZ8Kp3eRCbG8=
-  dependencies:
-    vega-canvas "^1.2.5"
-    vega-dataflow "^5.7.3"
-    vega-scenegraph "^4.9.2"
-    vega-util "^1.15.2"
-
-vega-lite@^5.2.0:
-  version "5.2.0"
-  resolved "https://registry.npmmirror.com/vega-lite/download/vega-lite-5.2.0.tgz#bc3c5c70a38d9de8f3fb9644c7dd52f3b9f47a1b"
-  integrity sha512-Yxcg8MvYfxHcG6BbkaKT0oVCIMIcE19UvqIsEwBmyd/7h2nzW7oRnID81T8UrY7hpDrIr6wa2JADOT2dhGNErw==
-  dependencies:
-    "@types/clone" "~2.1.1"
-    array-flat-polyfill "^1.0.1"
-    clone "~2.1.2"
-    fast-deep-equal "~3.1.3"
-    fast-json-stable-stringify "~2.1.0"
-    json-stringify-pretty-compact "~3.0.0"
-    tslib "~2.3.1"
-    vega-event-selector "~3.0.0"
-    vega-expression "~5.0.0"
-    vega-util "~1.17.0"
-    yargs "~17.2.1"
-
-vega-loader@^4.3.2, vega-loader@^4.3.3, vega-loader@~4.4.1:
-  version "4.4.1"
-  resolved "https://registry.npmmirror.com/vega-loader/download/vega-loader-4.4.1.tgz#8f9de46202f33659d1a2737f6e322a9fc3364275"
-  integrity sha1-j53kYgLzNlnRonN/bjIqn8M2QnU=
-  dependencies:
-    d3-dsv "^2.0.0"
-    node-fetch "^2.6.1"
-    topojson-client "^3.1.0"
-    vega-format "^1.0.4"
-    vega-util "^1.16.0"
-
-vega-parser@~6.1.4:
-  version "6.1.4"
-  resolved "https://registry.npmmirror.com/vega-parser/download/vega-parser-6.1.4.tgz#4868e41af2c9645b6d7daeeb205cfad06b9d465c"
-  integrity sha1-SGjkGvLJZFttfa7rIFz60GudRlw=
-  dependencies:
-    vega-dataflow "^5.7.3"
-    vega-event-selector "^3.0.0"
-    vega-functions "^5.12.1"
-    vega-scale "^7.1.1"
-    vega-util "^1.16.0"
-
-vega-projection@^1.4.5, vega-projection@~1.4.5:
-  version "1.4.5"
-  resolved "https://registry.npm.taobao.org/vega-projection/download/vega-projection-1.4.5.tgz#020cb646b4eaae535359da25f4f48eef8d324af2"
-  integrity sha1-Agy2RrTqrlNTWdol9PSO740ySvI=
-  dependencies:
-    d3-geo "^2.0.1"
-    d3-geo-projection "^3.0.0"
-
-vega-regression@~1.0.9:
-  version "1.0.9"
-  resolved "https://registry.npmmirror.com/vega-regression/download/vega-regression-1.0.9.tgz#f33da47fe457e03ad134782c11414bcef7b1da82"
-  integrity sha1-8z2kf+RX4DrRNHgsEUFLzvex2oI=
-  dependencies:
-    d3-array "^2.7.1"
-    vega-dataflow "^5.7.3"
-    vega-statistics "^1.7.9"
-    vega-util "^1.15.2"
-
-vega-runtime@^6.1.3, vega-runtime@~6.1.3:
-  version "6.1.3"
-  resolved "https://registry.nlark.com/vega-runtime/download/vega-runtime-6.1.3.tgz#01e18246f7a80cee034a96017ac30113b92c4034"
-  integrity sha1-AeGCRveoDO4DSpYBesMBE7ksQDQ=
-  dependencies:
-    vega-dataflow "^5.7.3"
-    vega-util "^1.15.2"
-
-vega-scale@^7.0.3, vega-scale@^7.1.1, vega-scale@~7.1.1:
-  version "7.1.1"
-  resolved "https://registry.npm.taobao.org/vega-scale/download/vega-scale-7.1.1.tgz#b69a38d1980f6fc1093390f796e556be63fdc808"
-  integrity sha1-tpo40ZgPb8EJM5D3luVWvmP9yAg=
-  dependencies:
-    d3-array "^2.7.1"
-    d3-interpolate "^2.0.1"
-    d3-scale "^3.2.2"
-    vega-time "^2.0.4"
-    vega-util "^1.15.2"
-
-vega-scenegraph@^4.9.2, vega-scenegraph@^4.9.3, vega-scenegraph@^4.9.4, vega-scenegraph@~4.9.4:
-  version "4.9.4"
-  resolved "https://registry.nlark.com/vega-scenegraph/download/vega-scenegraph-4.9.4.tgz#468408c1e89703fa9d3450445daabff623de2757"
-  integrity sha1-RoQIweiXA/qdNFBEXaq/9iPeJ1c=
-  dependencies:
-    d3-path "^2.0.0"
-    d3-shape "^2.0.0"
-    vega-canvas "^1.2.5"
-    vega-loader "^4.3.3"
-    vega-scale "^7.1.1"
-    vega-util "^1.15.2"
-
-vega-schema-url-parser@^2.2.0:
-  version "2.2.0"
-  resolved "https://registry.nlark.com/vega-schema-url-parser/download/vega-schema-url-parser-2.2.0.tgz#a0d1e02915adfbfcb1fd517c8c2ebe2419985c1e"
-  integrity sha1-oNHgKRWt+/yx/VF8jC6+JBmYXB4=
-
-vega-selections@^5.3.1:
-  version "5.3.1"
-  resolved "https://registry.npmmirror.com/vega-selections/download/vega-selections-5.3.1.tgz#af5c3cc6532a55a5b692eb0fcc2a1d8d521605a4"
-  integrity sha1-r1w8xlMqVaW2kusPzCodjVIWBaQ=
-  dependencies:
-    vega-expression "^5.0.0"
-    vega-util "^1.16.0"
-
-vega-statistics@^1.7.9, vega-statistics@~1.7.10:
-  version "1.7.10"
-  resolved "https://registry.npmmirror.com/vega-statistics/download/vega-statistics-1.7.10.tgz#4353637402e5e96bff2ebd16bd58e2c15cac3018"
-  integrity sha1-Q1NjdALl6Wv/Lr0WvVjiwVysMBg=
-  dependencies:
-    d3-array "^2.7.1"
-
-vega-themes@^2.10.0:
-  version "2.10.0"
-  resolved "https://registry.npmmirror.com/vega-themes/download/vega-themes-2.10.0.tgz#82768b14686e3fbfbdab0e77cb63e12c62b4911e"
-  integrity sha1-gnaLFGhuP7+9qw53y2PhLGK0kR4=
-
-vega-time@^2.0.3, vega-time@^2.0.4, vega-time@~2.0.4:
-  version "2.0.4"
-  resolved "https://registry.nlark.com/vega-time/download/vega-time-2.0.4.tgz#ff308358a831de927caa44e281cdc96f0863ba08"
-  integrity sha1-/zCDWKgx3pJ8qkTigc3Jbwhjugg=
-  dependencies:
-    d3-array "^2.7.1"
-    d3-time "^2.0.0"
-    vega-util "^1.15.2"
-
-vega-tooltip@^0.27.0:
-  version "0.27.0"
-  resolved "https://registry.npmmirror.com/vega-tooltip/download/vega-tooltip-0.27.0.tgz#e03c150cdec78f68938a0dab5ef67a24e6d685da"
-  integrity sha1-4DwVDN7Hj2iTig2rXvZ6JObWhdo=
-  dependencies:
-    vega-util "^1.16.0"
-
-vega-transforms@~4.9.4:
-  version "4.9.4"
-  resolved "https://registry.npmmirror.com/vega-transforms/download/vega-transforms-4.9.4.tgz#5cf6b91bda9f184bbbaba63838be8e5e6a571235"
-  integrity sha1-XPa5G9qfGEu7q6Y4OL6OXmpXEjU=
-  dependencies:
-    d3-array "^2.7.1"
-    vega-dataflow "^5.7.4"
-    vega-statistics "^1.7.9"
-    vega-time "^2.0.4"
-    vega-util "^1.16.1"
-
-vega-typings@~0.22.0:
-  version "0.22.1"
-  resolved "https://registry.npmmirror.com/vega-typings/download/vega-typings-0.22.1.tgz#287c646cfa93b1822d0fb6ea11d5543632f8b56e"
-  integrity sha512-88cIrjmoTxo/0nWTf+GuitkFhirHWVWCfymADiCUXt6s9arpQ6XPP5xjrN5KDc0LZd9xr7p4FIiEgADghgLTgw==
-  dependencies:
-    vega-event-selector "^3.0.0"
-    vega-expression "^5.0.0"
-    vega-util "^1.15.2"
-
-vega-util@^1.15.2, vega-util@^1.16.0, vega-util@^1.16.1, vega-util@~1.17.0:
-  version "1.17.0"
-  resolved "https://registry.npmmirror.com/vega-util/download/vega-util-1.17.0.tgz#b72ae0baa97f943bf591f8f5bb27ceadf06834ac"
-  integrity sha1-tyrguql/lDv1kfj1uyfOrfBoNKw=
-
-vega-view-transforms@~4.5.8:
-  version "4.5.8"
-  resolved "https://registry.nlark.com/vega-view-transforms/download/vega-view-transforms-4.5.8.tgz#c8dc42c3c7d4aa725d40b8775180c9f23bc98f4e"
-  integrity sha1-yNxCw8fUqnJdQLh3UYDJ8jvJj04=
-  dependencies:
-    vega-dataflow "^5.7.3"
-    vega-scenegraph "^4.9.2"
-    vega-util "^1.15.2"
-
-vega-view@~5.10.1:
-  version "5.10.1"
-  resolved "https://registry.nlark.com/vega-view/download/vega-view-5.10.1.tgz#b69348bb32a9845a1bd341fdd946df98684fadc3"
-  integrity sha1-tpNIuzKphFob00H92UbfmGhPrcM=
-  dependencies:
-    d3-array "^2.7.1"
-    d3-timer "^2.0.0"
-    vega-dataflow "^5.7.3"
-    vega-format "^1.0.4"
-    vega-functions "^5.10.0"
-    vega-runtime "^6.1.3"
-    vega-scenegraph "^4.9.4"
-    vega-util "^1.16.1"
-
-vega-voronoi@~4.1.5:
-  version "4.1.5"
-  resolved "https://registry.nlark.com/vega-voronoi/download/vega-voronoi-4.1.5.tgz#e7af574d4c27fd9cb12d70082f12c6f59b80b445"
-  integrity sha1-569XTUwn/ZyxLXAILxLG9ZuAtEU=
-  dependencies:
-    d3-delaunay "^5.3.0"
-    vega-dataflow "^5.7.3"
-    vega-util "^1.15.2"
-
-vega-wordcloud@~4.1.3:
-  version "4.1.3"
-  resolved "https://registry.nlark.com/vega-wordcloud/download/vega-wordcloud-4.1.3.tgz#ce90900333f4e0d3ee706ba4f36bb0905f8b4a9f"
-  integrity sha1-zpCQAzP04NPucGuk82uwkF+LSp8=
-  dependencies:
-    vega-canvas "^1.2.5"
-    vega-dataflow "^5.7.3"
-    vega-scale "^7.1.1"
-    vega-statistics "^1.7.9"
-    vega-util "^1.15.2"
-
-vega@^5.21.0:
-  version "5.21.0"
-  resolved "https://registry.npmmirror.com/vega/download/vega-5.21.0.tgz#f3d858d7544bfe4ffa3d8cd43d9ea978bf7391e8"
-  integrity sha1-89hY11RL/k/6PYzUPZ6peL9zkeg=
-  dependencies:
-    vega-crossfilter "~4.0.5"
-    vega-dataflow "~5.7.4"
-    vega-encode "~4.8.3"
-    vega-event-selector "~3.0.0"
-    vega-expression "~5.0.0"
-    vega-force "~4.0.7"
-    vega-format "~1.0.4"
-    vega-functions "~5.12.1"
-    vega-geo "~4.3.8"
-    vega-hierarchy "~4.0.9"
-    vega-label "~1.1.0"
-    vega-loader "~4.4.1"
-    vega-parser "~6.1.4"
-    vega-projection "~1.4.5"
-    vega-regression "~1.0.9"
-    vega-runtime "~6.1.3"
-    vega-scale "~7.1.1"
-    vega-scenegraph "~4.9.4"
-    vega-statistics "~1.7.10"
-    vega-time "~2.0.4"
-    vega-transforms "~4.9.4"
-    vega-typings "~0.22.0"
-    vega-util "~1.17.0"
-    vega-view "~5.10.1"
-    vega-view-transforms "~4.5.8"
-    vega-voronoi "~4.1.5"
-    vega-wordcloud "~4.1.3"
 
 vendors@^1.0.0:
   version "1.0.4"
@@ -15197,15 +14649,6 @@ wrap-ansi@^6.2.0:
     string-width "^4.1.0"
     strip-ansi "^6.0.0"
 
-wrap-ansi@^7.0.0:
-  version "7.0.0"
-  resolved "https://registry.nlark.com/wrap-ansi/download/wrap-ansi-7.0.0.tgz?cache=0&sync_timestamp=1631557213005&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fwrap-ansi%2Fdownload%2Fwrap-ansi-7.0.0.tgz#67e145cff510a6a6984bdf1152911d69d2eb9e43"
-  integrity sha1-Z+FFz/UQpqaYS98RUpEdadLrnkM=
-  dependencies:
-    ansi-styles "^4.0.0"
-    string-width "^4.1.0"
-    strip-ansi "^6.0.0"
-
 wrappy@1:
   version "1.0.2"
   resolved "https://registry.nlark.com/wrappy/download/wrappy-1.0.2.tgz#b5243d8f3ec1aa35f1364605bc0d1036e30ab69f"
@@ -15258,11 +14701,6 @@ y18n@^4.0.0:
   resolved "https://registry.npm.taobao.org/y18n/download/y18n-4.0.3.tgz#b5f259c82cd6e336921efd7bfd8bf560de9eeedf"
   integrity sha1-tfJZyCzW4zaSHv17/Yv1YN6e7t8=
 
-y18n@^5.0.5:
-  version "5.0.8"
-  resolved "https://registry.npm.taobao.org/y18n/download/y18n-5.0.8.tgz#7f4934d0f7ca8c56f95314939ddcd2dd91ce1d55"
-  integrity sha1-f0k00PfKjFb5UxSTndzS3ZHOHVU=
-
 yallist@^3.0.2:
   version "3.1.1"
   resolved "https://registry.npm.taobao.org/yallist/download/yallist-3.1.1.tgz#dbb7daf9bfd8bac9ab45ebf602b8cbad0d5d08fd"
@@ -15294,7 +14732,7 @@ yargs-parser@^18.1.2:
     camelcase "^5.0.0"
     decamelize "^1.2.0"
 
-yargs-parser@^20.2.2, yargs-parser@^20.2.3:
+yargs-parser@^20.2.3:
   version "20.2.9"
   resolved "https://registry.npmmirror.com/yargs-parser/download/yargs-parser-20.2.9.tgz?cache=0&sync_timestamp=1637031013438&other_urls=https%3A%2F%2Fregistry.npmmirror.com%2Fyargs-parser%2Fdownload%2Fyargs-parser-20.2.9.tgz#2eb7dc3b0289718fc295f362753845c41a0c94ee"
   integrity sha1-LrfcOwKJcY/ClfNidThFxBoMlO4=
@@ -15331,19 +14769,6 @@ yargs@^15.4.1:
     which-module "^2.0.0"
     y18n "^4.0.0"
     yargs-parser "^18.1.2"
-
-yargs@~17.2.1:
-  version "17.2.1"
-  resolved "https://registry.npmmirror.com/yargs/download/yargs-17.2.1.tgz#e2c95b9796a0e1f7f3bf4427863b42e0418191ea"
-  integrity sha1-4slbl5ag4ffzv0QnhjtC4EGBkeo=
-  dependencies:
-    cliui "^7.0.2"
-    escalade "^3.1.1"
-    get-caller-file "^2.0.5"
-    require-directory "^2.1.1"
-    string-width "^4.2.0"
-    y18n "^5.0.5"
-    yargs-parser "^20.2.2"
 
 yeoman-environment@^2.10.3, yeoman-environment@^2.9.5:
   version "2.10.3"
