@@ -1,6 +1,6 @@
-import {Component} from 'react';
 import * as React from 'react';
-import {Box, Button, Card, Link as MUILink, Divider, Grid, Stack, Typography} from '@mui/material';
+import {Component} from 'react';
+import {Box, Divider, Grid, Link as MUILink, Stack, Typography} from '@mui/material';
 import {Link} from 'react-router-dom';
 
 type Props = {};
@@ -68,8 +68,9 @@ export default class Home extends Component<Props, State> {
           <Typography variant={'h2'}>Welcome</Typography>
           <Typography variant={'h4'}>Everything you need for your conference,</Typography>
           <Typography variant={'h5'}>None in this place.</Typography>
-          <Typography variant={'body1'}>We do not have anything you need to organize a conference of any size or complexity.</Typography>
-          <Divider />
+          <Typography variant={'body1'}>We do not have anything you need to organize a conference of any size or
+            complexity.</Typography>
+          <Divider/>
           <Typography variant={'h5'} sx={{pt: 2}}>Services we do not provide</Typography>
 
           <Grid container spacing={2}>
@@ -77,7 +78,7 @@ export default class Home extends Component<Props, State> {
               <Grid item xs={12} sm={6} md={4} key={index} sx={{p: 2}}>
                 <Box sx={{p: 2}} textAlign={'left'}>
                   <Typography variant={'h6'}>{service.title}</Typography>
-                  <Typography variant={'body1'} >{service.content}</Typography>
+                  <Typography variant={'body1'}>{service.content}</Typography>
                   <MUILink sx={{p: '12'}} variant={'body1'} component={Link} to={service.learnMoreLink}>
                     Learn more
                   </MUILink>

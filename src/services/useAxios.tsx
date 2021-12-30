@@ -3,13 +3,13 @@ import * as React from 'react';
 import {useEffect, useState} from 'react';
 import config from '@/config';
 import {IEndpoint} from '@/config/endpoints';
-import axios from 'axios';
+import axios, {AxiosResponse} from 'axios';
 import useAuth from '@/services/useAuth';
 import {useDispatch} from 'react-redux';
 import openSnackBar from '@/store/actions/snackbarActions';
 
 function useAxios(endpoint: IEndpoint, body?: FormData, headers?: any) {
-  const [response, setResponse] = useState(null);
+  const [response, setResponse] = useState<AxiosResponse>(undefined);
   const [error, setError] = useState<string>('');
   const [loading, setLoading] = useState(true);
   const auth = useAuth();
