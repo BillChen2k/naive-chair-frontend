@@ -1,6 +1,16 @@
 import IConference, {parseConference} from '@/types/conference.type';
-import IUser from '@/types/user.type';
 import {IResearcher, parseResearcher} from '@/types/researcher.type';
+import * as React from 'react';
+
+export function paperStatus2Readable(status: IPaperStatus): string {
+  const map = {
+    'not reviewed': '📪 Not Reviewed',
+    'reviewed': '📖 Reviewing',
+    'accepted': '✅ Accepted',
+    'rejected': '❌ Rejected',
+  };
+  return map[status] || 'Unknown';
+}
 
 export function parsePaperList(paperListResponseData: any[]) {
   const papers: IPaper[] = [];
@@ -39,7 +49,7 @@ export interface IPaperResearcherInfo {
   order: number;
 }
 
-export type paperStatus = 'not reviewed' | 'reviewed' | 'rejected' | 'accepted';
+export type IPaperStatus = 'not reviewed' | 'reviewed' | 'rejected' | 'accepted';
 
 export interface IPaper {
   paperId: number;
@@ -48,8 +58,8 @@ export interface IPaper {
   abstract: String;
   paperResearchers: IPaperResearcherInfo[];
   opinion: string;
-  score: 10;
-  status: paperStatus;
+  score: number;
+  status: IPaperStatus;
  // Foreign key data
   conferenceDetail?: IConference;
   researcherDetails?: IResearcher[];

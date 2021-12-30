@@ -71,7 +71,7 @@ export default function Login() {
         .min(6, 'Password must be at least 6 characters.')
         .required('This field is required!'),
     role: Yup.string()
-        .matches(/^(author|referee)$/, 'Role must be either author or referee.')
+        .matches(/^(author|referee)$/, 'Role must be either author or conference.')
         .required('This field is required!'),
   });
 

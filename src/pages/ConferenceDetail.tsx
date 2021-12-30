@@ -23,7 +23,6 @@ function ConferenceDetail() {
   }
 
   const conference = parseConferences(response.data).find((c) => c.conferenceId === parseInt(conferenceId));
-
   return (
     <Box>
       <Stack spacing={1}>
@@ -42,7 +41,7 @@ function ConferenceDetail() {
           }
           {auth.userObj.role == 'referee' &&
             <Grid item>
-              <Button component={Link} variant={'contained'} to={`/conference-management/edit/${conferenceId}`}>
+              <Button component={Link} variant={'contained'} to={`/conferences/edit/${conferenceId}`}>
                 <Edit sx={{mr: 1}}/>
                 Edit Conference
               </Button>

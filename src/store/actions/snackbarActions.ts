@@ -5,6 +5,7 @@ export type SnackbarAction = {
   payload?: {
     message: string;
     severity: 'success' | 'error' | 'warning' | 'info';
+    hash: string;
   };
 }
 
@@ -14,6 +15,7 @@ export function openSnackBar(message: string, severity: 'success' | 'error' | 'w
     payload: {
       message,
       severity,
+      hash: (new Date().getTime()).toString(),
     },
   };
 }

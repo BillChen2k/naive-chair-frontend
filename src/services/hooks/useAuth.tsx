@@ -116,7 +116,7 @@ function authContextValue() {
   /**
    * Add this to the top of the component to access control.
    * @param accessibleRoles: Array of roles that can access this component.
-   * @example `{auth.accessControl(['referee'])}`
+   * @example `{auth.accessControl(['conference'])}`
    */
   const accessControl = (accessibleRoles: IRole[]) => {
     const userRole = userObj ? userObj.role : 'visitor';

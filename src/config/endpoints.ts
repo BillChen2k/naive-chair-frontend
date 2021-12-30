@@ -31,6 +31,7 @@ const endpoints: IEndpoints = {
     getConferenceList: {url: '/referee/getConferenceList', method: 'POST'},
     removeConferences: {url: '/referee/removeConferences', method: 'POST'},
     changeInfo: {url: '/referee/changeInfo', method: 'POST'},
+    changeConferenceInfo: {url: '/referee/changeConferenceInfo', method: 'POST'},
   },
 };
 

@@ -8,14 +8,14 @@ import {clearSnackBar} from '@/store/actions/snackbarActions';
 export default function SnackBar() {
   const dispatch = useAppDispatch();
 
-  const {open, message, severity} = useAppSelector( (state) => state.ui.snackbar);
+  const {open, message, severity, hash} = useAppSelector( (state) => state.ui.snackbar);
 
   function handleClose() {
     dispatch(clearSnackBar());
   }
 
   return (
-    <Snackbar
+    <Snackbar id={hash}
       anchorOrigin={{
         vertical: 'bottom',
         horizontal: 'right',

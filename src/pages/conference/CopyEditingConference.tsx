@@ -19,6 +19,9 @@ const CopyEditingConference: React.FC<Props> = () => {
   const dispatch = useDispatch();
   const callConferenceList = useAxios(endpoints[auth.userObj.role].getConferenceList);
   const callPaperList= useAxios(endpoints.referee.getPaperList);
+  if (auth.accessControl(['referee'])) {
+    return auth.forbidden403;
+  }
   if (callConferenceList.loading || callPaperList.loading) {
     return <LinearProgress />;
   }

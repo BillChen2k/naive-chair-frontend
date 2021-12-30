@@ -43,7 +43,7 @@ const ConferenceList: React.FC<Props> = (props) => {
       <Table sx={{minWidth: 650}}>
         <TableHead>
           <TableRow>
-            {['#', 'Full Name', 'Short Name', 'Location', 'Due Date', 'Action'].map((one, index) => (
+            {['#', 'Full Name', 'Short Name', 'Location', 'Due Date', 'Accept Num', 'Action'].map((one, index) => (
               <TableCell key={index}>{one}</TableCell>
             ))}
             <TableCell></TableCell>
@@ -57,6 +57,7 @@ const ConferenceList: React.FC<Props> = (props) => {
               <TableCell>{one.shortName}</TableCell>
               <TableCell>{one.location}</TableCell>
               <TableCell>{one.dueDate}</TableCell>
+              <TableCell>{one.acceptNum}</TableCell>
               <TableCell>
                 {props.action && props.action.routerPath &&
                   <Button variant={'outlined'} size={'small'} component={Link}

@@ -15,7 +15,7 @@ class AuthService {
         endpoint = 'author/signin/';
         break;
       case 'referee':
-        endpoint = 'referee/signin/';
+        endpoint = 'conference/signin/';
         break;
     }
     const response = await axios({

@@ -9,6 +9,7 @@ interface IUIReducerState {
     open: boolean;
     message: string;
     severity: 'info' | 'success' | 'warning' | 'error';
+    hash: string;
   };
   title: string;
 }
@@ -18,6 +19,7 @@ const initState: IUIReducerState = {
     open: false,
     message: '',
     severity: 'info',
+    hash: '',
   },
   title: 'NaiveChair',
 };
@@ -31,6 +33,7 @@ const uiReducer = (state = initState, action: IUIReducerAction) => {
           open: true,
           message: action.payload.message,
           severity: action.payload.severity,
+          hash: action.payload.hash,
         },
       };
     case 'SNACKBAR_CLEAR':

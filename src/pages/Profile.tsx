@@ -23,13 +23,16 @@ import openSnackBar from '@/store/actions/snackbarActions';
 import MDEditor from '@uiw/react-md-editor';
 import {Simulate} from 'react-dom/test-utils';
 import {axiosAuthed} from '@/services/axiosAuthed';
+import {useSearchParams} from 'react-router-dom';
+import TextBadge from '@/components/TextBadge';
 
 function Profile() {
   const {username} = useParams();
   const dispatch = useDispatch();
   const auth = useAuth();
-  const [editing, setEditing] = useState(false);
   const [userObj, setUserObj] = useState<IUser>(undefined);
+  const [searchParams, setSearchParams] = useSearchParams({});
+  const [editing, setEditing] = useState(searchParams.has('edit'));
   if (auth.accessControl(['author', 'referee'])) {
     return auth.forbidden403;
   }
@@ -79,39 +82,26 @@ function Profile() {
                     }
                     <Typography variant={'h6'}>@{userObj.username}</Typography>
                   </Stack>
-                  <Box sx={{
-                    userSelect: 'none',
-                    borderRadius: 1,
-                    backgroundColor: blue[700],
-                    color: '#FFFFFF',
-                    textAlign: 'center',
-                    height: '1.5rem',
-                    verticalAlign: 'middle',
-                    px: '0.5rem',
-                    ml: '0.5rem',
-                  }}>
-                    <Typography sx={{
-                      lineHeight: '1.5rem',
-                      fontSize: '0.75rem',
-                      textAlign: 'center',
-                      verticalAlign: 'middle',
-                    }}>{userObj.role}</Typography>
-                  </Box>
+                  <TextBadge text={userObj.role} />
+                  { username === auth.userObj.username &&
+                    <TextBadge text={'Me'} />
+                  }
                   <Box sx={{flexGrow: 1}}></Box>
                   <Box>
-                    <Button variant={editing ? 'contained' : 'outlined'}
-                      onClick={() => {
-                        if (editing) {
-                          axiosAuthed(endpoints[userObj.role].changeInfo, {...userObj})
-                              .then((res) => res.data.statusCode == 1 && dispatch(openSnackBar('User info changed', 'success')))
-                              .catch((err) => dispatch(openSnackBar(err.message, 'error')));
-                          ;
-                        }
-                        setEditing(!editing);
-                      }}>
-                      <Edit sx={{mr: 1}}/>
-                      {editing ? 'Quit And Save' : 'Edit'}
-                    </Button>
+                    {username == auth.userObj.username &&
+                      <Button variant={editing ? 'contained' : 'outlined'}
+                        onClick={() => {
+                          if (editing) {
+                            axiosAuthed(endpoints[userObj.role].changeInfo, {...userObj})
+                                .then((res) => dispatch(openSnackBar('User info changed', 'success')))
+                                .catch((err) => dispatch(openSnackBar(err.message, 'error')));
+                          }
+                          setEditing(!editing);
+                        }}>
+                        <Edit sx={{mr: 1}}/>
+                        {editing ? 'Quit And Save' : 'Edit'}
+                      </Button>
+                    }
                   </Box>
                 </Stack>
                 <Grid container spacing={0}>
