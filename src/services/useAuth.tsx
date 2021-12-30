@@ -67,7 +67,7 @@ function authContextValue() {
     }
     // set the token if status is 1
     if (response.data.token && response.data.statusCode == 1) {
-      var userObj: IUser; 
+      let userObj: IUser;
 
       userObj.username = response.data.username;
       userObj.role = response.data.role;

@@ -2,11 +2,11 @@ import React from 'react';
 import TextField from '@mui/material/TextField';
 import useAuth from '@/services/useAuth';
 import PaperService from '@/services/paperService';
-import { makeStyles } from "@mui/material/styles";
-import { UserRole, IUser } from '@/types/user.type';
+import {makeStyles} from '@mui/material/styles';
+import {UserRole, IUser} from '@/types/user.type';
 import MuiContainer from '@mui/material/Container';
-import { assert } from 'console';
-import { useFormik, Formik, Form, FieldArray, getIn } from 'formik';
+import {assert} from 'console';
+import {useFormik, Formik, Form, FieldArray, getIn} from 'formik';
 import {AlertColor, Box, Button, FormGroup, FormControl, InputLabel, MenuItem, Select, Stack, Typography} from '@mui/material';
 import * as Yup from 'yup';
 
@@ -21,14 +21,14 @@ function PaperSubmission() {
 
   const validationSchema = Yup.object().shape({
     abstract: Yup.string()
-      .required('This field is required!'),
+        .required('This field is required!'),
     file: Yup.mixed()
-      .required('file is required!'),
+        .required('file is required!'),
     authors: Yup.array().of(
-      Yup.object().shape({
-        name: Yup.string().required('Name is required!'),
-        affiliation: Yup.string().required('Affiliation is required!'),
-      })
+        Yup.object().shape({
+          name: Yup.string().required('Name is required!'),
+          affiliation: Yup.string().required('Affiliation is required!'),
+        }),
     ).required('Authors are required!'),
   });
 
@@ -52,8 +52,7 @@ function PaperSubmission() {
   });
 
 
-
-  return (
+  return ( <p>placeholder</p> /*
     <div className={MuiContainer}>
     <Formik
       initialValues={formik.initialValues}
@@ -165,7 +164,9 @@ function PaperSubmission() {
       )}
     </Formik>
   </div>
-  /** 
+  */
+
+  /**
     <Box>
       {auth.accessControl(['author' as UserRole])}
       {status === LoginStatus.SUCCESS && (
@@ -205,7 +206,7 @@ function PaperSubmission() {
       </Box>
     </Box>
     */
- );
+  );
 }
 
 export default PaperSubmission;

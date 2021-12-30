@@ -80,7 +80,6 @@ class IUser {
   public isVisitor(): boolean {
     return this.role === UserRole.visitor;
   }
-
 }
 
 export {IUser, UserRole};
