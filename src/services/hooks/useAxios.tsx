@@ -4,7 +4,7 @@ import {useEffect, useState} from 'react';
 import config from '@/config';
 import {IEndpoint} from '@/config/endpoints';
 import axios, {AxiosResponse} from 'axios';
-import useAuth from '@/services/useAuth';
+import useAuth from '@/services/hooks/useAuth';
 import {useDispatch} from 'react-redux';
 import openSnackBar from '@/store/actions/snackbarActions';
 

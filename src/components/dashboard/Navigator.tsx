@@ -17,7 +17,7 @@ import EventAvailableIcon from '@mui/icons-material/EventAvailable';
 import RateReviewIcon from '@mui/icons-material/RateReview';
 import InsertCommentIcon from '@mui/icons-material/InsertComment';
 import {Divider, List} from '@mui/material';
-import useAuth from '@/services/useAuth';
+import useAuth from '@/services/hooks/useAuth';
 
 export interface INavigateItem {
   type: 'link' | 'divider',

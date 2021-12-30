@@ -22,7 +22,7 @@ import endpoints, {IEndpoint} from '@/config/endpoints';
 import IUser from '@/types/user.type';
 import {binary2json, json2Binary} from '@/utils';
 import {Navigate} from 'react-router-dom';
-import useAxios from '@/services/useAxios';
+import useAxios from '@/services/hooks/useAxios';
 
 const api = config.API;
 

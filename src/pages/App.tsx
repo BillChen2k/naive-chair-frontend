@@ -6,7 +6,7 @@ import AuthService from '@/services/authService';
 import IUser from '@/types/user.type';
 import EventBus from '@/common/EventBus';
 import config from '@/config';
-import {AuthProvider} from '@/services/useAuth';
+import {AuthProvider} from '@/services/hooks/useAuth';
 import AppRoutes from '@/config/routes';
 import SnackBar from '@/components/SnackBar';
 

@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Navigate} from 'react-router-dom';
 import {Box, Button, Stack, Typography} from '@mui/material';
-import useAuth from '@/services/useAuth';
+import useAuth from '@/services/hooks/useAuth';
 import {useDispatch} from 'react-redux';
 import openSnackBar from '@/store/actions/snackbarActions';
 

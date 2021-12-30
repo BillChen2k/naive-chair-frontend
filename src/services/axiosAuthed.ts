@@ -1,11 +1,11 @@
 import {IEndpoint} from '@/config/endpoints';
 import axios from 'axios';
-import config from '@/config';
+import appConfig from '@/config';
 import openSnackBar from '@/store/actions/snackbarActions';
 import {binary2json} from '@/utils';
 import IUser from '@/types/user.type';
 
-export async function axiosAuthed(endpoint: IEndpoint, body?: FormData | any, headers?: any) {
+export async function axiosAuthed(endpoint: IEndpoint, body?: FormData | any, config?: any) {
   const authorizedBody = new FormData();
   authorizedBody.append('token', localStorage.getItem('token'));
   authorizedBody.append('username', binary2json<IUser>(localStorage.getItem('userObj')).username);
@@ -26,8 +26,17 @@ export async function axiosAuthed(endpoint: IEndpoint, body?: FormData | any, he
   return axios({
     method: endpoint.method,
     url: url,
-    baseURL: config.API,
+    baseURL: appConfig.API,
     data: authorizedBody,
-    headers: {...headers},
-  });
+    ...config,
+  })
+      .then((response) => {
+        if (response.data.statusCode && response.data.statusCode != 1) {
+          throw new Error(`Server error, status code = ${response.data.statusCode}`);
+        }
+        return response;
+      })
+      .catch((err) => {
+        throw Error(err.message);
+      });
 }

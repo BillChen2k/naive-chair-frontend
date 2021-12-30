@@ -12,9 +12,9 @@ import {
 } from '@mui/material';
 import {parseConferences} from '@/types/conference.type';
 import {Link} from 'react-router-dom';
-import useAxios from '@/services/useAxios';
+import useAxios from '@/services/hooks/useAxios';
 import endpoints from '@/config/endpoints';
-import useAuth from '@/services/useAuth';
+import useAuth from '@/services/hooks/useAuth';
 import {useDispatch} from 'react-redux';
 import openSnackBar from '@/store/actions/snackbarActions';
 

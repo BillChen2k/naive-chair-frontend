@@ -9,7 +9,7 @@ import {AlertColor, Box, FormControl, InputLabel, MenuItem, Select, Stack, Typog
 import openSnackBar from '@/store/actions/snackbarActions';
 import {useDispatch} from 'react-redux';
 import {Navigate} from 'react-router-dom';
-import useAuth from '@/services/useAuth';
+import useAuth from '@/services/hooks/useAuth';
 import axios from 'axios';
 
 export interface ErrorMessage {

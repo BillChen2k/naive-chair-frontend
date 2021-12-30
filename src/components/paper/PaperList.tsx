@@ -12,9 +12,9 @@ import {
 } from '@mui/material';
 import {Link} from 'react-router-dom';
 import {IPaper} from '@/types/paper.type';
-import useAuth from '@/services/useAuth';
+import useAuth from '@/services/hooks/useAuth';
 import {useDispatch} from 'react-redux';
-import useAxios from '@/services/useAxios';
+import useAxios from '@/services/hooks/useAxios';
 import endpoints from '@/config/endpoints';
 import openSnackBar from '@/store/actions/snackbarActions';
 

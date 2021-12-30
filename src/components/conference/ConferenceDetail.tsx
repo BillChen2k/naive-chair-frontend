@@ -1,8 +1,8 @@
 import React from 'react';
 import {Link, useParams} from 'react-router-dom';
-import useAxios from '@/services/useAxios';
+import useAxios from '@/services/hooks/useAxios';
 import endpoints from '@/config/endpoints';
-import useAuth from '@/services/useAuth';
+import useAuth from '@/services/hooks/useAuth';
 import {Box, Button, Grid, LinearProgress, Stack, Typography} from '@mui/material';
 import {parseConferences} from '@/types/conference.type';
 import {Edit, Outbox, RateReview} from '@mui/icons-material';

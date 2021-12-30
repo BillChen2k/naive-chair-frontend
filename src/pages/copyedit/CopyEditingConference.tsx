@@ -2,12 +2,12 @@ import * as React from 'react';
 import {Box, LinearProgress, Stack, Typography} from '@mui/material';
 import {useParams} from 'react-router-dom';
 import ConferenceMeta from '@/components/conference/ConferenceMeta';
-import useAuth from '@/services/useAuth';
+import useAuth from '@/services/hooks/useAuth';
 import {useDispatch} from 'react-redux';
-import useAxios from '@/services/useAxios';
+import useAxios from '@/services/hooks/useAxios';
 import endpoints from '@/config/endpoints';
 import IConference, {parseConferences} from '@/types/conference.type';
-import {parsePapers} from '@/types/paper.type';
+import {parsePaperList} from '@/types/paper.type';
 import PaperList from '@/components/paper/PaperList';
 
 type Props = {};
@@ -26,7 +26,7 @@ const CopyEditingConference: React.FC<Props> = () => {
     return <Box>Error</Box>;
   }
   const conference: IConference = parseConferences(callConferenceList.response.data).find((c) => c.conferenceId === parseInt(conferenceId));
-  let papers = parsePapers(callPaperList.response.data);
+  let papers = parsePaperList(callPaperList.response.data);
   console.log(papers);
   papers = papers.filter((p) => p.conferenceId === parseInt(conferenceId));
   console.log(papers);

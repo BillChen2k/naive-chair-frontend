@@ -1,6 +1,6 @@
 import React from 'react';
 import {Box} from '@mui/material';
-import useAuth from '@/services/useAuth';
+import useAuth from '@/services/hooks/useAuth';
 
 function AuthorManagement() {
   const auth = useAuth();

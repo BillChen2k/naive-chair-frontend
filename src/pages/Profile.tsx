@@ -12,10 +12,10 @@ import {
   Stack, TextField,
   Typography,
 } from '@mui/material';
-import useAuth from '@/services/useAuth';
+import useAuth from '@/services/hooks/useAuth';
 import {blue} from '@mui/material/colors';
 import {Apartment, Edit, Mail, MenuBook, Web} from '@mui/icons-material';
-import useAxios from '@/services/useAxios';
+import useAxios from '@/services/hooks/useAxios';
 import endpoints from '@/config/endpoints';
 import IUser, {parseUser} from '@/types/user.type';
 import {useDispatch} from 'react-redux';
@@ -104,7 +104,7 @@ function Profile() {
                         if (editing) {
                           axiosAuthed(endpoints[userObj.role].changeInfo, {...userObj})
                               .then((res) => res.data.statusCode == 1 && dispatch(openSnackBar('User info changed', 'success')))
-                              .catch((err) => dispatch(openSnackBar(err, 'error')));
+                              .catch((err) => dispatch(openSnackBar(err.message, 'error')));
                           ;
                         }
                         setEditing(!editing);

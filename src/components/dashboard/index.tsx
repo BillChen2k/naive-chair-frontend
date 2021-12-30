@@ -16,7 +16,7 @@ import Drawer from './Drawer';
 import Copyright from './Copyright';
 import SnackBar from '@/components/SnackBar';
 import {Button} from '@mui/material';
-import useAuth from '@/services/useAuth';
+import useAuth from '@/services/hooks/useAuth';
 import {useAppSelector} from '@/store/hooks';
 
 function DashboardContent() {

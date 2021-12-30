@@ -2,17 +2,18 @@ import IConference, {parseConference} from '@/types/conference.type';
 import IUser from '@/types/user.type';
 import {IResearcher, parseResearcher} from '@/types/researcher.type';
 
-export function parsePapers(paperListResponseData: any[]) {
+export function parsePaperList(paperListResponseData: any[]) {
   const papers: IPaper[] = [];
   for (const paper of paperListResponseData) {
     const researchers: any = JSON.parse(paper.paper_authors);
     const paperAuthors: IPaperResearcherInfo[] = researchers.data.map((one: any) => {
-      return {
+      const info: IPaperResearcherInfo = {
         researcherId: one.rs_id,
         notify: one.notify,
         corresponding: one.coressponding, // typo in the backend
         order: one.order,
       };
+      return info;
     });
     const onePaper: IPaper = {
       paperId: paper.paperid,
