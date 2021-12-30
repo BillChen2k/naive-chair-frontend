@@ -23,11 +23,15 @@ function useAxios(endpoint: IEndpoint, body?: FormData | any, headers?: any) {
   authorizedBody.append('username', auth.userObj.username);
   if (body && body.entries) {
     (body as FormData).forEach((value, key) => {
-      authorizedBody.append(key, value);
+      if (!authorizedBody.has(key)) {
+        authorizedBody.set(key, value);
+      }
     });
   } else if (body) {
     Object.keys(body).forEach((key) => {
-      authorizedBody.append(key, body[key]);
+      if (!authorizedBody.has(key)) {
+        authorizedBody.set(key, body[key]);
+      }
     });
   }
   const url = !endpoint.url.endsWith('/') ? endpoint.url + '/' : endpoint.url;

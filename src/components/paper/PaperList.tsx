@@ -42,7 +42,7 @@ const PaperList: React.FC<Props> = (props) => {
       <Table sx={{minWidth: 650}}>
         <TableHead>
           <TableRow>
-            {['Title', 'Authors', 'Status', 'Reviewed Date', 'Reviewed By', 'Action'].map((one, index) => (
+            {['#', 'Title', 'Authors', 'Conference', 'Status', 'Review Score', 'Action'].map((one, index) => (
               <TableCell key={index}>{one}</TableCell>
             ))}
           </TableRow>
@@ -50,10 +50,12 @@ const PaperList: React.FC<Props> = (props) => {
         <TableBody>
           {props.papers.map((one, index) => (
             <TableRow key={index}>
+              <TableCell>{index + 1}</TableCell>
               <TableCell>{one.title}</TableCell>
-              <TableCell>{one.paperResearchers.map((one) => one.researcherId).join(', ')}</TableCell>
-              <TableCell>{'reviewdate'}</TableCell>
-              <TableCell>{'reviewer'}</TableCell>
+              <TableCell>{one.researcherDetails.map((one) => one.name).join(', ')}</TableCell>
+              <TableCell>{one.conferenceDetail.shortName}</TableCell>
+              <TableCell>{one.status}</TableCell>
+              <TableCell>{one.score}</TableCell>
               <TableCell>
                 {props.action && props.action.routerPath &&
                   <Button variant={'outlined'} size={'small'} component={Link}

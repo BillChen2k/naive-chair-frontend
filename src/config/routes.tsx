@@ -16,6 +16,7 @@ import Conferences from '@/pages/Conferences';
 import ConferenceDetail from '@/components/conference/ConferenceDetail';
 import Settings from '@/pages/Settings';
 import CopyEditingConference from '@/pages/copyedit/CopyEditingConference';
+import CopyEditingPaper from '@/pages/copyedit/CopyEditingPaper';
 
 export default function AppRoute() {
   return (
@@ -37,6 +38,8 @@ export default function AppRoute() {
         <Route path='/conference-management' element={<ConferenceManagement />}/>
         <Route path='/copy-editing' element={<CopyEditing />}/>
         <Route path='/copy-editing/conference/:conferenceId' element={<CopyEditingConference />}/>
+
+        <Route path='/paper/copy-edit/:paperId' element={<CopyEditingPaper />}/>
         {/* Misc */}
         <Route path='/403' element={<Forbidden403 />} />
       </Route>

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
 import {
   Box,
@@ -6,7 +6,7 @@ import {
   Grid,
   IconButton,
   LinearProgress,
-  ListItem,
+  ListItem, ListItemButton,
   ListItemIcon,
   ListItemText,
   Stack, TextField,
@@ -21,15 +21,17 @@ import IUser, {parseUser} from '@/types/user.type';
 import {useDispatch} from 'react-redux';
 import openSnackBar from '@/store/actions/snackbarActions';
 import MDEditor from '@uiw/react-md-editor';
+import {Simulate} from 'react-dom/test-utils';
+import {axiosAuthed} from '@/services/axiosAuthed';
 
 function Profile() {
   const {username} = useParams();
   const dispatch = useDispatch();
-  const {accessControl, forbidden403} = useAuth();
+  const auth = useAuth();
   const [editing, setEditing] = useState(false);
-
-  if (accessControl(['author', 'referee'])) {
-    return forbidden403;
+  const [userObj, setUserObj] = useState<IUser>(undefined);
+  if (auth.accessControl(['author', 'referee'])) {
+    return auth.forbidden403;
   }
   const {response, loading, error} = useAxios(endpoints.author.getUserInfo, {
     target_username: username,
@@ -37,119 +39,148 @@ function Profile() {
   if (loading) {
     return <LinearProgress />;
   }
-  if (error) {
+  if (!loading && error) {
     dispatch(openSnackBar(error, 'error'));
     return <Typography variant={'body1'}>{error}</Typography>;
   }
-
-  let userObj: IUser = parseUser(response);
+  if (!loading && !error && !userObj) {
+    setUserObj(parseUser(response));
+    return <Typography variant={'body1'}>User not found</Typography>;
+  }
+  console.log(userObj);
   const avatarSize = 240;
-
   return (
-    <Box>
-      {loading && <LinearProgress />}
-      {!loading && !error &&
-        <Stack spacing={3}>
-          <Grid container spacing={1}>
-            <Grid item xs={12} md={3}>
-              <Box sx={{
-                width: avatarSize,
-                height: avatarSize,
-                maxWidth: '100%',
-                border: '1px solid #cccccc',
-                borderRadius: 2,
-                overflow: 'hidden',
-              }}>
-                <img src={`https://picsum.photos/${avatarSize}/${avatarSize}?random=${username}`} alt="profile" />
-              </Box>
-            </Grid>
-            <Grid item xs={12} md={9}>
-              <Stack direction={'row'} sx={{mb: 2}}>
-                <Stack direction={'column'}>
-                  <Typography variant={'h2'}>{userObj.realname}</Typography>
-                  <Typography variant={'h6'}>@{userObj.username}</Typography>
-                </Stack>
+    <div>
+      {userObj &&
+        <Box>
+          <Stack spacing={3}>
+            <Grid container spacing={1}>
+              <Grid item xs={12} md={3}>
                 <Box sx={{
-                  userSelect: 'none',
-                  borderRadius: 1,
-                  backgroundColor: blue[700],
-                  color: '#FFFFFF',
-                  textAlign: 'center',
-                  height: '1.5rem',
-                  verticalAlign: 'middle',
-                  px: '0.5rem',
-                  ml: '0.5rem',
+                  width: avatarSize,
+                  height: avatarSize,
+                  maxWidth: '100%',
+                  border: '1px solid #cccccc',
+                  borderRadius: 2,
+                  overflow: 'hidden',
                 }}>
-                  <Typography sx={{
-                    lineHeight: '1.5rem',
-                    fontSize: '0.75rem',
+                  <img src={`https://picsum.photos/${avatarSize}/${avatarSize}?random=${username}`} alt="profile" />
+                </Box>
+              </Grid>
+              <Grid item xs={12} md={9}>
+                <Stack direction={'row'} sx={{mb: 2}}>
+                  <Stack direction={'column'}>
+                    {editing ?
+                      <TextField
+                        label={'Real Name'}
+                        value={userObj.realname}
+                        onChange={(e) => setUserObj({...userObj, realname: e.target.value})} /> :
+                      <Typography variant={'h2'}>{userObj.realname}</Typography>
+                    }
+                    <Typography variant={'h6'}>@{userObj.username}</Typography>
+                  </Stack>
+                  <Box sx={{
+                    userSelect: 'none',
+                    borderRadius: 1,
+                    backgroundColor: blue[700],
+                    color: '#FFFFFF',
                     textAlign: 'center',
+                    height: '1.5rem',
                     verticalAlign: 'middle',
-                  }}>{userObj.role}</Typography>
-                </Box>
-                <Box sx={{flexGrow: 1}}></Box>
-                <Box>
-                  <Button variant={editing ? 'contained' : 'outlined'}
-                    onClick={() => setEditing(!editing)}>
-                    <Edit sx={{mr: 1}}/>
-                    {editing ? 'Quit Editing' : 'Edit'}
-                  </Button>
-                </Box>
-              </Stack>
-              <Grid container>
-                {[
-                  {
-                    icon: <Apartment />,
-                    text: 'Affiliation',
-                    value: userObj.affiliation,
-                    field: 'affiliation',
-                  },
-                  {
-                    icon: <MenuBook />,
-                    text: 'Research Interests',
-                    value: userObj.interest,
-                    field: 'interest',
-                  },
-                  {
-                    icon: <Web />,
-                    text: 'Website',
-                    value: <a href={!userObj.website.startsWith('http') ? 'https://' + userObj.website : userObj.website}>{userObj.website}</a>,
-                    field: 'website',
-                  },
-                  {
-                    icon: <Mail />,
-                    text: 'Email',
-                    value: userObj.email,
-                    field: 'email',
-                  },
-                ].map(({icon, text, value, field}, index) => (
-                  <Grid key={index} item xs={12} md={6}>
-                    <ListItem key={index}
-                    >
-                      <ListItemIcon>{icon}</ListItemIcon>
-                      <ListItemText primary={
-                        editing ?
-                          <TextField
-                            value={value}
-                            onChange={(e) => userObj = {...userObj, [field]: e.target.value}}
-                            fullWidth
-                            multiline
-                            rows={2}
-                            variant={'outlined'}
-                            size={'small'} /> :
-                          value
-                      } secondary={text} />
-                    </ListItem>
-                  </Grid>
-                ))}
+                    px: '0.5rem',
+                    ml: '0.5rem',
+                  }}>
+                    <Typography sx={{
+                      lineHeight: '1.5rem',
+                      fontSize: '0.75rem',
+                      textAlign: 'center',
+                      verticalAlign: 'middle',
+                    }}>{userObj.role}</Typography>
+                  </Box>
+                  <Box sx={{flexGrow: 1}}></Box>
+                  <Box>
+                    <Button variant={editing ? 'contained' : 'outlined'}
+                      onClick={() => {
+                        if (editing) {
+                          axiosAuthed(endpoints[userObj.role].changeInfo, {...userObj})
+                              .then((res) => res.data.statusCode == 1 && dispatch(openSnackBar('User info changed', 'success')))
+                              .catch((err) => dispatch(openSnackBar(err, 'error')));
+                          ;
+                        }
+                        setEditing(!editing);
+                      }}>
+                      <Edit sx={{mr: 1}}/>
+                      {editing ? 'Quit And Save' : 'Edit'}
+                    </Button>
+                  </Box>
+                </Stack>
+                <Grid container spacing={0}>
+                  {[
+                    {
+                      icon: <Apartment />,
+                      text: 'Affiliation',
+                      value: userObj.affiliation,
+                      field: 'affiliation',
+                    },
+                    {
+                      icon: <MenuBook />,
+                      text: 'Research Interests',
+                      value: userObj.interest,
+                      field: 'interest',
+                    },
+                    {
+                      icon: <Web />,
+                      text: 'Website',
+                      value: userObj.website,
+                      field: 'website',
+                    },
+                    {
+                      icon: <Mail />,
+                      text: 'Email',
+                      value: userObj.email,
+                      field: 'email',
+                    },
+                  ].map(({icon, text, value, field}, index) => (
+                    <Grid key={index} item xs={12} md={6}>
+                      <ListItem key={index}>
+                        <ListItemButton onClick={() => {
+                          if (editing) return;
+                          if (field == 'website') {
+                            window.open(value.startsWith('http') ? value : 'https://' + value, '_blank');
+                          } else {
+                            navigator.clipboard.writeText(value);
+                            dispatch(openSnackBar(`Copied.`, 'info'));
+                          }
+                        }}>
+                          <ListItemIcon>{icon}</ListItemIcon>
+                          <ListItemText primary={
+                            editing ?
+                              <TextField
+                                value={value}
+                                onChange={(e) => setUserObj({...userObj, [field]: e.target.value})}
+                                fullWidth
+                                variant={'outlined'}
+                                size={'small'} /> :
+                              value
+                          } secondary={text} />
+                        </ListItemButton>
+                      </ListItem>
+                    </Grid>
+                  ))}
+                </Grid>
               </Grid>
             </Grid>
-          </Grid>
-          <Typography variant={'h4'} sx={{my: 2}}>Biography</Typography>
-          <MDEditor.Markdown source={userObj.bio} />
-        </Stack>
+            <Typography variant={'h4'} sx={{my: 2}}>Biography</Typography>
+            {editing ?
+              <MDEditor value={userObj.bio} onChange={(val) => setUserObj({...userObj, bio: val})} /> :
+              <MDEditor.Markdown source={userObj.bio} />
+            }
+          </Stack>
+        </Box>
       }
-    </Box>
+    </div>
+
+
   );
 }
 

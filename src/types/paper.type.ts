@@ -1,7 +1,8 @@
-import IConference from '@/types/conference.type';
+import IConference, {parseConference} from '@/types/conference.type';
 import IUser from '@/types/user.type';
+import {IResearcher, parseResearcher} from '@/types/researcher.type';
 
-export function parsePapers(paperListResponseData: any) {
+export function parsePapers(paperListResponseData: any[]) {
   const papers: IPaper[] = [];
   for (const paper of paperListResponseData) {
     const researchers: any = JSON.parse(paper.paper_authors);
@@ -20,8 +21,10 @@ export function parsePapers(paperListResponseData: any) {
       opinion: paper.opinion,
       conferenceId: paper.conferenceid,
       abstract: paper.abstract,
+      status: paper.status,
       paperResearchers: paperAuthors,
-      researcherDetails: undefined,
+      researcherDetails: paper.researcherDetails.map(parseResearcher),
+      conferenceDetail: parseConference(paper.conferenceDetail),
     };
     papers.push(onePaper);
   }
@@ -35,13 +38,7 @@ export interface IPaperResearcherInfo {
   order: number;
 }
 
-export interface IResearcher {
-  researcherId: number;
-  realname: string;
-  email: string;
-  affiliation: string;
-  interest: string;
-}
+export type paperStatus = 'not reviewed' | 'reviewed' | 'rejected' | 'accepted';
 
 export interface IPaper {
   paperId: number;
@@ -51,8 +48,8 @@ export interface IPaper {
   paperResearchers: IPaperResearcherInfo[];
   opinion: string;
   score: 10;
+  status: paperStatus;
  // Foreign key data
   conferenceDetail?: IConference;
   researcherDetails?: IResearcher[];
-  refereeDetails?: IUser[];
 }

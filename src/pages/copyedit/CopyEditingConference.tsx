@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Box, LinearProgress, Typography} from '@mui/material';
+import {Box, LinearProgress, Stack, Typography} from '@mui/material';
 import {useParams} from 'react-router-dom';
 import ConferenceMeta from '@/components/conference/ConferenceMeta';
 import useAuth from '@/services/useAuth';
@@ -33,11 +33,12 @@ const CopyEditingConference: React.FC<Props> = () => {
   // dispatch(setAppTitle(`Copy Edit Conference: ${conference.shortName}`));
 
   return (
-    <Box>
-      <Typography variant="h4">Copy Editing: {conference.shortName}</Typography>
+    <Stack spacing={2}>
+      <Typography variant="h4">{conference.shortName}</Typography>
       <ConferenceMeta conference={conference} />
-      <PaperList papers={papers} action={{text: 'url', routerPath: `/paper/copy-edit/:paperId`}} />
-    </Box>
+      <Typography variant="h6">Paper List</Typography>
+      <PaperList papers={papers} action={{text: 'Review Now', routerPath: `/paper/copy-edit/:paperId`}} />
+    </Stack>
   );
 };
 

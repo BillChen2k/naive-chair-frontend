@@ -5,8 +5,8 @@ export interface IEndpoint {
   method: Method;
 }
 
-export interface IEndpoints {
-  [key: string]: {
+export type IEndpoints = {
+  [key in 'author' | 'referee']: {
     [key: string] : IEndpoint
   };
 };
@@ -20,6 +20,7 @@ const endpoints: IEndpoints = {
     getConferenceList: {url: '/author/getConferenceList', method: 'POST'},
     changePaper: {url: '/author/changePaper', method: 'POST'},
     getUserInfo: {url: '/getAuthorInfo', method: 'POST'},
+    changeInfo: {url: '/author/changeInfo', method: 'POST'},
   },
   referee: {
     signin: {url: '/referee/signin', method: 'POST'},
@@ -29,6 +30,7 @@ const endpoints: IEndpoints = {
     createConference: {url: '/referee/createConference', method: 'POST'},
     getConferenceList: {url: '/referee/getConferenceList', method: 'POST'},
     removeConferences: {url: '/referee/removeConferences', method: 'POST'},
+    changeInfo: {url: '/referee/changeInfo', method: 'POST'},
   },
 };
 

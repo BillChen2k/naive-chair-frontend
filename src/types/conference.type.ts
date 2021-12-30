@@ -1,14 +1,17 @@
+
+export function parseConference(responseData: any): IConference {
+  return {
+    conferenceId: responseData.conferenceid,
+    fullName: responseData.full_name,
+    shortName: responseData.short_name,
+    location: responseData.location,
+    dueDate: responseData.due_date,
+    introduction: responseData.introduction,
+  };
+}
+
 export function parseConferences(responseData: any[]) : IConference[] {
-  return responseData.map((one): IConference => {
-    return {
-      conferenceId: one.conferenceid,
-      fullName: one.full_name,
-      shortName: one.short_name,
-      location: one.location,
-      dueDate: one.due_date,
-      introduction: one.introduction,
-    };
-  });
+  return responseData.map(parseConference);
 }
 
 interface IConference {

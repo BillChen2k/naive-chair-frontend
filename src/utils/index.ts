@@ -6,7 +6,7 @@ export function json2Binary(json: any): string {
 
 export function binary2json<T = any>(binary: string): T {
   try {
-    return JSON.parse(Base64.decode(binary));
+    return JSON.parse(Base64.decode(binary)) as T;
   } catch (e) {
     return null;
   }

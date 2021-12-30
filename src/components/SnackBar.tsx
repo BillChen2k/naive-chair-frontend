@@ -9,6 +9,7 @@ export default function SnackBar() {
   const dispatch = useAppDispatch();
 
   const {open, message, severity} = useAppSelector( (state) => state.ui.snackbar);
+
   function handleClose() {
     dispatch(clearSnackBar());
   }
