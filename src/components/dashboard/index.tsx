@@ -17,9 +17,11 @@ import Copyright from './Copyright';
 import SnackBar from '@/components/SnackBar';
 import {Button} from '@mui/material';
 import useAuth from '@/services/useAuth';
+import {useAppSelector} from '@/store/hooks';
 
 function DashboardContent() {
   const [open, setOpen] = React.useState(true);
+  const appTitle = useAppSelector((state) => state.ui.title);
   const auth = useAuth();
 
   return (
@@ -51,7 +53,7 @@ function DashboardContent() {
             noWrap
             sx={{flexGrow: 1}}
           >
-            NaiveChair
+            {appTitle}
           </Typography>
           {auth.isAuthenticated && (
             <Button sx={{textTransform: 'none'}}

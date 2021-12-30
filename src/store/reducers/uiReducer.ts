@@ -1,7 +1,8 @@
 import {SnackbarAction} from '@/store/actions/snackbarActions';
 import {AnyAction} from '@reduxjs/toolkit';
+import {SetTitleAction} from '@/store/actions/uiActions';
 
-type IUIReducerAction = SnackbarAction | AnyAction;
+type IUIReducerAction = SnackbarAction | SetTitleAction | AnyAction;
 
 interface IUIReducerState {
   snackbar: {
@@ -9,6 +10,7 @@ interface IUIReducerState {
     message: string;
     severity: 'info' | 'success' | 'warning' | 'error';
   };
+  title: string;
 }
 
 const initState: IUIReducerState = {
@@ -17,6 +19,7 @@ const initState: IUIReducerState = {
     message: '',
     severity: 'info',
   },
+  title: 'NaiveChair',
 };
 
 const uiReducer = (state = initState, action: IUIReducerAction) => {
@@ -37,6 +40,11 @@ const uiReducer = (state = initState, action: IUIReducerAction) => {
           ...state.snackbar,
           open: false,
         },
+      };
+    case 'SET_TITLE':
+      return {
+        ...state,
+        title: action.payload,
       };
     default:
       return state;

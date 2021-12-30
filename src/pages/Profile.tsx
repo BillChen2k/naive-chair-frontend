@@ -1,38 +1,50 @@
-import React from 'react';
-import {Link, useParams} from 'react-router-dom';
+import React, {useState} from 'react';
+import {useParams} from 'react-router-dom';
 import {
   Box,
   Button,
   Grid,
+  IconButton,
   LinearProgress,
   ListItem,
   ListItemIcon,
   ListItemText,
-  Stack,
+  Stack, TextField,
   Typography,
 } from '@mui/material';
 import useAuth from '@/services/useAuth';
 import {blue} from '@mui/material/colors';
-import {AccountCircle, Apartment, Edit, Mail, MenuBook, Web} from '@mui/icons-material';
+import {Apartment, Edit, Mail, MenuBook, Web} from '@mui/icons-material';
 import useAxios from '@/services/useAxios';
 import endpoints from '@/config/endpoints';
 import IUser, {parseUser} from '@/types/user.type';
+import {useDispatch} from 'react-redux';
+import openSnackBar from '@/store/actions/snackbarActions';
+import MDEditor from '@uiw/react-md-editor';
 
 function Profile() {
   const {username} = useParams();
-  const avatarSize = 240;
+  const dispatch = useDispatch();
   const {accessControl, forbidden403} = useAuth();
+  const [editing, setEditing] = useState(false);
+
   if (accessControl(['author', 'referee'])) {
     return forbidden403;
   }
   const {response, loading, error} = useAxios(endpoints.author.getUserInfo, {
     target_username: username,
   });
-  let userObj: IUser;
-  if (!loading && !error) {
-    console.log(response);
-    userObj = parseUser(response);
+  if (loading) {
+    return <LinearProgress />;
   }
+  if (error) {
+    dispatch(openSnackBar(error, 'error'));
+    return <Typography variant={'body1'}>{error}</Typography>;
+  }
+
+  let userObj: IUser = parseUser(response);
+  const avatarSize = 240;
+
   return (
     <Box>
       {loading && <LinearProgress />}
@@ -55,7 +67,7 @@ function Profile() {
               <Stack direction={'row'} sx={{mb: 2}}>
                 <Stack direction={'column'}>
                   <Typography variant={'h2'}>{userObj.realname}</Typography>
-                  <Typography variant={'h6'}>{userObj.username}</Typography>
+                  <Typography variant={'h6'}>@{userObj.username}</Typography>
                 </Stack>
                 <Box sx={{
                   userSelect: 'none',
@@ -77,9 +89,10 @@ function Profile() {
                 </Box>
                 <Box sx={{flexGrow: 1}}></Box>
                 <Box>
-                  <Button variant={'outlined'}>
+                  <Button variant={editing ? 'contained' : 'outlined'}
+                    onClick={() => setEditing(!editing)}>
                     <Edit sx={{mr: 1}}/>
-                    Edit
+                    {editing ? 'Quit Editing' : 'Edit'}
                   </Button>
                 </Box>
               </Stack>
@@ -89,38 +102,51 @@ function Profile() {
                     icon: <Apartment />,
                     text: 'Affiliation',
                     value: userObj.affiliation,
+                    field: 'affiliation',
                   },
                   {
                     icon: <MenuBook />,
                     text: 'Research Interests',
                     value: userObj.interest,
+                    field: 'interest',
                   },
                   {
                     icon: <Web />,
                     text: 'Website',
                     value: <a href={!userObj.website.startsWith('http') ? 'https://' + userObj.website : userObj.website}>{userObj.website}</a>,
+                    field: 'website',
                   },
                   {
                     icon: <Mail />,
                     text: 'Email',
                     value: userObj.email,
+                    field: 'email',
                   },
-                ].map(({icon, text, value}, index) => (
+                ].map(({icon, text, value, field}, index) => (
                   <Grid key={index} item xs={12} md={6}>
-                    <ListItem key={index}>
+                    <ListItem key={index}
+                    >
                       <ListItemIcon>{icon}</ListItemIcon>
-                      <ListItemText primary={value} secondary={text} />
+                      <ListItemText primary={
+                        editing ?
+                          <TextField
+                            value={value}
+                            onChange={(e) => userObj = {...userObj, [field]: e.target.value}}
+                            fullWidth
+                            multiline
+                            rows={2}
+                            variant={'outlined'}
+                            size={'small'} /> :
+                          value
+                      } secondary={text} />
                     </ListItem>
                   </Grid>
                 ))}
               </Grid>
             </Grid>
           </Grid>
-
-          <Typography variant={'h4'} sx={{mb: 2}}>
-            Biography
-          </Typography>
-          {userObj.bio}
+          <Typography variant={'h4'} sx={{my: 2}}>Biography</Typography>
+          <MDEditor.Markdown source={userObj.bio} />
         </Stack>
       }
     </Box>

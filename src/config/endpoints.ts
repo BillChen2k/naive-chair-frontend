@@ -5,9 +5,9 @@ export interface IEndpoint {
   method: Method;
 }
 
-export type IEndpoints = {
-  [key in 'author' | 'referee']: {
-    [key: string]: IEndpoint;
+export interface IEndpoints {
+  [key: string]: {
+    [key: string] : IEndpoint
   };
 };
 

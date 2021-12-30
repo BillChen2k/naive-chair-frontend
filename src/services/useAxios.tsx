@@ -50,6 +50,7 @@ function useAxios(endpoint: IEndpoint, body?: FormData | any, headers?: any) {
           }
         })
         .catch((err) => {
+          dispatch(openSnackBar(error, 'error'));
           setError(err.message);
           console.log(err);
         })
