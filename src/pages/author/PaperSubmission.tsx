@@ -37,13 +37,14 @@ export default function PaperSubmission() {
     formData.append('title', title);
     formData.append('abstract', abstract);
     formData.append('file', file);
-    formData.append('conferenceid', '');
+    formData.append('conferenceid', '1');
     formData.append('username', auth.userObj.username);
     formData.append('token', auth.token);
     formData.append('paper_authors', auth.userObj.realname.concat('|').concat(auth.userObj.affiliation));
+    console.log(formData);
     const response = await axios({
       method: 'post',
-      url: 'https://412505r54f.imdo.co/naivechair/api/papers',
+      url: 'https://412505r54f.imdo.co/naivechair/author/addPaper/',
       data: formData,
       headers: {
         'Content-Type': 'multipart/form-data',
