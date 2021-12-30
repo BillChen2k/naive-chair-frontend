@@ -134,7 +134,7 @@ function authContextValue() {
     signUp,
     signOut,
     accessControl,
-    403: <Navigate to={'/403'} />,
+    forbidden403: <Navigate to={'/403'} />,
   };
 }
 

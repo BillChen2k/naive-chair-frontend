@@ -8,7 +8,7 @@ import useAuth from '@/services/useAuth';
 import {useDispatch} from 'react-redux';
 import openSnackBar from '@/store/actions/snackbarActions';
 
-function useAxios(endpoint: IEndpoint, body?: FormData, headers?: any) {
+function useAxios(endpoint: IEndpoint, body?: FormData | any, headers?: any) {
   const [response, setResponse] = useState<AxiosResponse>(undefined);
   const [error, setError] = useState<string>('');
   const [loading, setLoading] = useState(true);
@@ -18,12 +18,18 @@ function useAxios(endpoint: IEndpoint, body?: FormData, headers?: any) {
     dispatch(openSnackBar('User not authenticated.', 'error'));
     return {response, error, loading};
   }
-  let authorizedBody = body;
-  if (!authorizedBody) {
-    authorizedBody = new FormData();
-  }
+  const authorizedBody = new FormData();
   authorizedBody.append('token', auth.token);
   authorizedBody.append('username', auth.userObj.username);
+  if (body && body.entries) {
+    (body as FormData).forEach((value, key) => {
+      authorizedBody.append(key, value);
+    });
+  } else if (body) {
+    Object.keys(body).forEach((key) => {
+      authorizedBody.append(key, body[key]);
+    });
+  }
   const url = !endpoint.url.endsWith('/') ? endpoint.url + '/' : endpoint.url;
   const fetchData = () => {
     // @ts-ignore
@@ -54,7 +60,7 @@ function useAxios(endpoint: IEndpoint, body?: FormData, headers?: any) {
 
   useEffect(() => {
     fetchData();
-  }, [endpoint.url, endpoint.method, body, headers]);
+  }, [endpoint.url, endpoint.method, headers]);
 
   return {response, error, loading};
 };

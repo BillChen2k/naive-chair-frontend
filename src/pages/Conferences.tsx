@@ -20,7 +20,7 @@ import useAuth from '@/services/useAuth';
 function Conferences() {
   const auth = useAuth();
   if (auth.accessControl(['author', 'referee'])) {
-    return auth['403'];
+    return auth['forbidden403'];
   };
 
   const {response: conferenceResponse, loading, error} = useAxios(endpoints[auth.userObj.role].getConferenceList);

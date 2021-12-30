@@ -19,6 +19,7 @@ const endpoints: IEndpoints = {
     getPaperList: {url: '/author/getPaperList', method: 'POST'},
     getConferenceList: {url: '/author/getConferenceList', method: 'POST'},
     changePaper: {url: '/author/changePaper', method: 'POST'},
+    getUserInfo: {url: '/getAuthorInfo', method: 'POST'},
   },
   referee: {
     signin: {url: '/referee/signin', method: 'POST'},
