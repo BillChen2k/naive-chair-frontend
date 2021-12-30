@@ -1,6 +1,16 @@
 import React from 'react';
 import {Link, useParams} from 'react-router-dom';
-import {Box, Button, Grid, ListItem, ListItemIcon, ListItemText, Stack, Typography} from '@mui/material';
+import {
+  Box,
+  Button,
+  Grid,
+  LinearProgress,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Stack,
+  Typography,
+} from '@mui/material';
 import useAuth from '@/services/useAuth';
 import {blue} from '@mui/material/colors';
 import {AccountCircle, Apartment, Edit, Mail, MenuBook, Web} from '@mui/icons-material';
@@ -25,7 +35,7 @@ function Profile() {
   }
   return (
     <Box>
-      {loading && <Typography>Loading...</Typography>}
+      {loading && <LinearProgress />}
       {!loading && !error &&
         <Stack spacing={3}>
           <Grid container spacing={1}>
@@ -96,7 +106,7 @@ function Profile() {
                     value: userObj.email,
                   },
                 ].map(({icon, text, value}, index) => (
-                  <Grid key={index} item spacing={3} xs={12} md={6}>
+                  <Grid key={index} item xs={12} md={6}>
                     <ListItem key={index}>
                       <ListItemIcon>{icon}</ListItemIcon>
                       <ListItemText primary={value} secondary={text} />

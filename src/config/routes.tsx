@@ -25,9 +25,8 @@ export default function AppRoute() {
         <Route path='/register' element={<Register />}/>
         <Route path='/logout' element={<Logout />}/>
         <Route path='/profile/:username' element={<Profile />}/>
-        <Route path='/conferences' element={<Conferences />}>
-          <Route path=':conferenceId' element={<ConferenceDetail />}/>
-        </Route>
+        <Route path='/conferences' element={<Conferences />}></Route>
+        <Route path='/conferences/:conferenceId' element={<ConferenceDetail />}/>
         <Route path='/settings' element={<Settings />} />
         {/* Authors */}
         <Route path='/author-management' element={<AuthorManagement />}/>

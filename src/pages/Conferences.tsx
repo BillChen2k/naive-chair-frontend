@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Button,
+  Button, LinearProgress,
   Paper,
   Stack,
   Table,
@@ -30,7 +30,7 @@ function Conferences() {
       {/* Alternative way to do access control. */}
       {auth.accessControl(['author', 'referee'])}
       <Typography variant="h4">Conferences</Typography>
-      {loading && <Typography>Loading...</Typography>}
+      {loading && <LinearProgress />}
       {!loading && !error &&
         <TableContainer component={Paper}>
           <Table sx={{minWidth: 650}}>
@@ -61,7 +61,7 @@ function Conferences() {
           </Table>
         </TableContainer>
       }
-      <Outlet/>
+      {/* <Outlet/> */}
     </Stack>
   );
 }

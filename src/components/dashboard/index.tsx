@@ -102,17 +102,9 @@ function DashboardContent() {
   );
 }
 
-function Snackbars() {
-  return (
-    <div>
-      <SnackBar/>
-    </div>
-  );
-}
 
 export default function Dashboard() {
   return (<div>
     <DashboardContent/>
-    <Snackbars/>
   </div>);
 }

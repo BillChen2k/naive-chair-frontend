@@ -46,12 +46,12 @@ function useAxios(endpoint: IEndpoint, body?: FormData | any, headers?: any) {
             setResponse(res.data);
           } else {
             const errMsg = `Server error. Status code: ${res.data.statusCode}`;
-            dispatch(openSnackBar(errMsg, 'error'));
             throw Error(errMsg);
           }
         })
         .catch((err) => {
-          setError(err);
+          setError(err.message);
+          console.log(err);
         })
         .finally(() => {
           setLoading(false);

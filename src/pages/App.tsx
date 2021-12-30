@@ -8,6 +8,7 @@ import EventBus from '@/common/EventBus';
 import config from '@/config';
 import {AuthProvider} from '@/services/useAuth';
 import AppRoutes from '@/config/routes';
+import SnackBar from '@/components/SnackBar';
 
 type Props = {};
 
@@ -54,6 +55,7 @@ class App extends Component<Props, State> {
       <ThemeProvider theme={theme}>
         <AuthProvider>
           <AppRoutes />
+          <SnackBar/>
         </AuthProvider>
       </ThemeProvider>
     );

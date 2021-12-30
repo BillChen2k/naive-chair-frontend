@@ -41,17 +41,17 @@ export default function Navigator() {
     },
     {
       type: 'link',
-      visible: auth.isAuthenticated && auth.userObj.role === 'referee',
-      icon: <RateReviewIcon />,
-      text: 'Copy Editing',
-      linkPath: '/copy-editing',
-    },
-    {
-      type: 'link',
       visible: true,
       icon: <EventIcon />,
       text: 'Conferences',
       linkPath: '/conferences',
+    },
+    {
+      type: 'link',
+      visible: auth.isAuthenticated && auth.userObj.role === 'referee',
+      icon: <RateReviewIcon />,
+      text: 'Copy Editing',
+      linkPath: '/copy-editing',
     },
     {
       type: 'link',
