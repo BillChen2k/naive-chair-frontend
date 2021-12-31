@@ -33,7 +33,7 @@ function ConferenceDetail() {
           <Box sx={{flexGrow: 1}}></Box>
           {auth.userObj.role == 'author' &&
             <Grid item>
-              <Button component={Link} variant={'contained'} to={`/paper-submission/${conferenceId}`}>
+              <Button component={Link} variant={'contained'} to={`/paper/submission/${conferenceId}`}>
                 <Outbox sx={{mr: 1}}/>
                 Submit Paper
               </Button>

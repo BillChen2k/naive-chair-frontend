@@ -77,6 +77,7 @@ const PaperDetails: React.FC<Props> = (props) => {
           <Box sx={{flexGrow: 1}}></Box>
           <Button variant={'contained'} sx={{px: 2}} color={'secondary'} onClick={() => {
             dispatch(openSnackBar('Downloading paper...', 'info'));
+
             downloadPaper(paper.paperId, paper.title, auth.userObj.role).catch((err) => {
               dispatch(openSnackBar(err.message, 'error'));
             });
