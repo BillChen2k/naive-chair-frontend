@@ -66,11 +66,11 @@ const ConferenceEdit: React.FC<Props> = (props) => {
 
   function handleDelete() {
     axiosAuthed(endpoints.referee.removeConference, {conferenceid: conference.conferenceId})
-      .then(() => {
-        setDeleted(true);
-        dispatch(openSnackBar('Conference removed.', 'success'));
-      })
-      .catch((err) => dispatch(openSnackBar(err.message, 'error')));
+        .then(() => {
+          setDeleted(true);
+          dispatch(openSnackBar('Conference removed.', 'success'));
+        })
+        .catch((err) => dispatch(openSnackBar(err.message, 'error')));
   }
 
   return (
@@ -129,7 +129,7 @@ const ConferenceEdit: React.FC<Props> = (props) => {
           height={400}
         />
         <Grid container mx={{mt: 2}} spacing={2}>
-          <Button variant={'contained'} color={'error'} onClick={handleSave} startIcon={<Delete />}>
+          <Button variant={'contained'} color={'error'} onClick={handleDelete} startIcon={<Delete />}>
             Delete
           </Button>
           <Box sx={{flexGrow: 1}}></Box>

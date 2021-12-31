@@ -77,13 +77,19 @@ const PaperSubmitConference: React.FC<Props> = (props) => {
 
   function handleSubmit() {
     const formData = new FormData();
-    const paperAuthors: IPaperResearcherInfo[] = [];
+    const paperAuthors: any = [];
     console.log(researcherInfo);
     // Object to array
     Object.keys(researcherInfo).forEach((key) => {
-      paperAuthors.push(researcherInfo[key]);
+      const original = researcherInfo[key];
+      paperAuthors.push( {
+        notify: original.notify,
+        corresponding: original.corresponding,
+        order: original.order,
+        rs_id: original.researcherId,
+      });
     });
-    paperAuthors.sort((a, b) => a.order - b.order);
+    paperAuthors.sort((a: any, b: any) => a.order - b.order);
     console.warn(paperAuthors);
     formData.append('title', paper.title);
     formData.append('file', selectedFile);

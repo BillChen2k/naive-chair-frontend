@@ -17,6 +17,7 @@ import {useDispatch} from 'react-redux';
 import useAxios from '@/services/hooks/useAxios';
 import endpoints from '@/config/endpoints';
 import openSnackBar from '@/store/actions/snackbarActions';
+import {green, red, yellow} from '@mui/material/colors';
 
 type Props = {
   papers: IPaper[],
@@ -24,7 +25,8 @@ type Props = {
     text: string;
     routerPath? : string;
     url?: string;
-  }
+  },
+  page? : 'history' | 'conference';
 };
 
 const PaperList: React.FC<Props> = (props) => {
@@ -49,7 +51,11 @@ const PaperList: React.FC<Props> = (props) => {
         </TableHead>
         <TableBody>
           {props.papers.map((one, index) => (
-            <TableRow key={index}>
+            <TableRow key={index} sx={{
+              ...(props.page === 'conference' && one.status == 'not reviewed' ? {backgroundColor: yellow[200]} : {}),
+              ...(props.page === 'conference' && one.status == 'accepted' ? {backgroundColor: green[200]} : {}),
+              ...(props.page === 'conference' && one.status == 'rejected' ? {backgroundColor: red[200]} : {}),
+            }}>
               <TableCell>{index + 1}</TableCell>
               <TableCell>{one.title}</TableCell>
               <TableCell>{one.researcherDetails.map((one) => one.name).join(', ')}</TableCell>
@@ -66,6 +72,12 @@ const PaperList: React.FC<Props> = (props) => {
                 {props.action && props.action.url &&
                   <Button variant={'outlined'} size={'small'} target={'_blank'} href={props.action.url}>
                     {props.action.text}
+                  </Button>
+                }
+                {props.page === 'history' &&
+                  <Button variant={'outlined'} size={'small'} component={Link}
+                    to={'/paper/' + one.paperId}>
+                    View Details
                   </Button>
                 }
                 {!props.action &&

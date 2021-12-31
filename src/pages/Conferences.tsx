@@ -26,7 +26,7 @@ function Conferences() {
 
   return (
     <Stack spacing={2}>
-      <Typography variant="h4">Conferences</Typography>
+      <Typography variant="h2">Conferences</Typography>
       <ConferenceList action={{
         text: 'Details',
         routerPath: '/conferences/:conferenceId',

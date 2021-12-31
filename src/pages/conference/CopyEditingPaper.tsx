@@ -157,7 +157,7 @@ const CopyEditingPaper: React.FC<Props> = (props) => {
                       }}
                     >
                       {['not reviewed', 'reviewed', 'accepted', 'rejected'].map((status: IPaperStatus) =>
-                        (<MenuItem key={status} value={status}>{paperStatus2Readable(status)}</MenuItem>)
+                        (<MenuItem key={status} value={status}>{paperStatus2Readable(status)}</MenuItem>),
                       )}
                     </Select>
                   ),

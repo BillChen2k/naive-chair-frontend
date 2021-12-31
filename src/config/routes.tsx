@@ -7,7 +7,7 @@ import Logout from '@/pages/Logout';
 import Profile from '@/pages/Profile';
 import Forbidden403 from '@/pages/misc/Forbidden403';
 import * as React from 'react';
-import MyResearchers from '@/pages/author/My Researchers';
+import MyResearchers from '@/pages/author/MyResearchers';
 import PaperSubmission from '@/pages/author/PaperSubmission';
 import SubmissionHistory from '@/pages/author/SubmissionHistory';
 import ConferenceManagement from '@/pages/conference/ConferenceManagement';

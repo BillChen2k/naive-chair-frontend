@@ -13,7 +13,6 @@ import PaperList from '@/components/paper/PaperList';
 type Props = {};
 
 const CopyEditingConference: React.FC<Props> = () => {
-
   const {conferenceId} = useParams();
   const auth = useAuth();
   const dispatch = useDispatch();
@@ -40,7 +39,10 @@ const CopyEditingConference: React.FC<Props> = () => {
       <Typography variant="h4">{conference.shortName}</Typography>
       <ConferenceMeta conference={conference} />
       <Typography variant="h6">Paper List</Typography>
-      <PaperList papers={papers} action={{text: 'Review Now', routerPath: `/paper/copy-edit/:paperId`}} />
+      <Typography variant="body1">Yellow: not reviewed; Green: Accepted; Red: Rejected; No Color: Reviewed.</Typography>
+      <PaperList papers={papers} action={{text: 'Review Now', routerPath: `/paper/copy-edit/:paperId`}}
+                 page={'conference'}
+      />
     </Stack>
   );
 };
