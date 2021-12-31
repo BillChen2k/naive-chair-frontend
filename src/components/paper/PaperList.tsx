@@ -11,7 +11,7 @@ import {
   TableRow,
 } from '@mui/material';
 import {Link} from 'react-router-dom';
-import {IPaper} from '@/types/paper.type';
+import {IPaper, IPaperStatus} from '@/types/paper.type';
 import useAuth from '@/services/hooks/useAuth';
 import {useDispatch} from 'react-redux';
 import useAxios from '@/services/hooks/useAxios';
@@ -33,6 +33,12 @@ const PaperList: React.FC<Props> = (props) => {
   const auth = useAuth();
   const dispatch = useDispatch();
   const {response: conferenceResponse, loading, error} = useAxios(endpoints[auth.userObj.role].getConferenceList);
+  const status2color = {
+    'not reviewed': yellow[200],
+    'accepted': green[200],
+    'rejected': red[200],
+    'reviewed': 'inherit',
+  };
   if (loading) {
     return <LinearProgress />;
   }
@@ -51,12 +57,8 @@ const PaperList: React.FC<Props> = (props) => {
         </TableHead>
         <TableBody>
           {props.papers.map((one, index) => (
-            <TableRow key={index} sx={{
-              ...(props.page === 'conference' && one.status == 'not reviewed' ? {backgroundColor: yellow[200]} : {}),
-              ...(props.page === 'conference' && one.status == 'accepted' ? {backgroundColor: green[200]} : {}),
-              ...(props.page === 'conference' && one.status == 'rejected' ? {backgroundColor: red[200]} : {}),
-            }}>
-              <TableCell>{index + 1}</TableCell>
+            <TableRow key={index} sx={props.page === 'conference' ? {backgroundColor: status2color[one.status]} : {}}>
+              <TableCell>{one.paperId}</TableCell>
               <TableCell>{one.title}</TableCell>
               <TableCell>{one.researcherDetails.map((one) => one.name).join(', ')}</TableCell>
               <TableCell>{one.conferenceDetail.shortName}</TableCell>

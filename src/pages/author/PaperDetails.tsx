@@ -35,9 +35,6 @@ const PaperDetails: React.FC<Props> = (props) => {
   const [paper, setPaper] = useState<IPaper>(undefined);
   const [deleted, setDeleted] = useState(false);
   const auth = useAuth();
-  if (auth.accessControl(['author', 'referee', 'visitor'])) {
-    return auth.forbidden403;
-  }
 
   const {response, loading, error} = useAxios(endpoints[auth.userObj.role].getPaperList);
   if (loading) {
@@ -51,6 +48,9 @@ const PaperDetails: React.FC<Props> = (props) => {
     // To avoid loop rendering
     const papers = parsePaperList(response.data);
     const paperObj: IPaper = papers.find((p) => p.paperId === Number(paperId));
+    if (!paperObj) {
+      return auth.forbidden403;
+    }
     setPaper(paperObj);
     console.log(paper);
     return null;
