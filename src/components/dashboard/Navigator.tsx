@@ -71,8 +71,8 @@ export default function Navigator() {
       type: 'link',
       visible: auth.isAuthenticated && auth.userObj.role === 'author',
       icon: <SupervisedUserCircleIcon />,
-      text: 'Author Management',
-      linkPath: '/author-management',
+      text: 'My Researchers',
+      linkPath: '/researcher',
     },
     {
       type: 'link',

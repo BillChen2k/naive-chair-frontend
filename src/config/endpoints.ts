@@ -21,6 +21,10 @@ const endpoints: IEndpoints = {
     changePaper: {url: '/author/changePaper', method: 'POST'},
     getUserInfo: {url: '/getAuthorInfo', method: 'POST'},
     changeInfo: {url: '/author/changeInfo', method: 'POST'},
+    getResearcherList: {url: '/author/getResearcherList', method: 'POST'},
+    changeResearcherInfo: {url: '/author/changeResearcherInfo', method: 'POST'},
+    addResearcher: {url: '/author/addResearcher', method: 'POST'},
+    removeResearcher: {url: '/author/removeResearcher', method: 'POST'},
   },
   referee: {
     signin: {url: '/referee/signin', method: 'POST'},

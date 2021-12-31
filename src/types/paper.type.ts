@@ -52,14 +52,14 @@ export interface IPaperResearcherInfo {
 export type IPaperStatus = 'not reviewed' | 'reviewed' | 'rejected' | 'accepted';
 
 export interface IPaper {
-  paperId: number;
+  paperId?: number;
   conferenceId: number;
   title: string;
-  abstract: String;
-  paperResearchers: IPaperResearcherInfo[];
-  opinion: string;
-  score: number;
-  status: IPaperStatus;
+  abstract: string;
+  paperResearchers?: IPaperResearcherInfo[];
+  opinion?: string;
+  score?: number;
+  status?: IPaperStatus;
  // Foreign key data
   conferenceDetail?: IConference;
   researcherDetails?: IResearcher[];

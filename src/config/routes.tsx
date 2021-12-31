@@ -7,7 +7,7 @@ import Logout from '@/pages/Logout';
 import Profile from '@/pages/Profile';
 import Forbidden403 from '@/pages/misc/Forbidden403';
 import * as React from 'react';
-import AuthorManagement from '@/pages/author/AuthorManagement';
+import MyResearchers from '@/pages/author/My Researchers';
 import PaperSubmission from '@/pages/author/PaperSubmission';
 import SubmissionHistory from '@/pages/author/SubmissionHistory';
 import ConferenceManagement from '@/pages/conference/ConferenceManagement';
@@ -20,6 +20,7 @@ import CopyEditingPaper from '@/pages/conference/CopyEditingPaper';
 import ConferenceEdit from '@/pages/conference/ConferenceEdit';
 import PaperDetails from '@/pages/author/PaperDetails';
 import ConferenceCreation from '@/pages/conference/ConferenceCreation';
+import PaperSubmitConference from '@/pages/author/PaperSubmitConference';
 
 export default function AppRoute() {
   return (
@@ -35,7 +36,7 @@ export default function AppRoute() {
         <Route path='/conferences' element={<Conferences />}></Route>
         <Route path='/conferences/:conferenceId' element={<ConferenceDetail />}/>
         {/* Authors */}
-        <Route path='/author-management' element={<AuthorManagement />}/>
+        <Route path='/researcher' element={<MyResearchers />}/>
         <Route path='/paper-submission' element={<PaperSubmission />}/>
         <Route path='/submission-history' element={<SubmissionHistory />}/>
         {/* Referees */}
@@ -47,6 +48,7 @@ export default function AppRoute() {
         <Route path='/copy-editing/conference/:conferenceId' element={<CopyEditingConference />}/>
 
         <Route path='/paper/copy-edit/:paperId' element={<CopyEditingPaper />}/>
+        <Route path='/paper/submit/:conferenceId' element={<PaperSubmitConference />}/>
         <Route path='/paper/:paperId' element={<PaperDetails />}/>
         {/* Misc */}
         <Route path='/403' element={<Forbidden403 />} />

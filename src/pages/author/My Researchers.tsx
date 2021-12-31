@@ -2,7 +2,7 @@ import React from 'react';
 import {Box} from '@mui/material';
 import useAuth from '@/services/hooks/useAuth';
 
-function AuthorManagement() {
+function MyResearchers() {
   const auth = useAuth();
   return (
     <Box>
@@ -12,4 +12,4 @@ function AuthorManagement() {
   );
 }
 
-export default AuthorManagement;
+export default MyResearchers;
