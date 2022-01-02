@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {useState} from 'react';
 import useAuth from '@/services/hooks/useAuth';
 import {useParams} from 'react-router-dom';
 import {
@@ -8,34 +9,32 @@ import {
   CardContent,
   Checkbox,
   Chip,
-  FormControl, FormControlLabel,
-  Grid, IconButton,
+  FormControl,
+  FormControlLabel,
+  Grid,
+  IconButton,
   InputLabel,
   LinearProgress,
   ListItem,
-  ListItemButton,
   ListItemIcon,
   ListItemText,
   MenuItem,
   OutlinedInput,
-  Paper,
   Select,
   SelectChangeEvent,
   Stack,
   TextField,
   Typography,
 } from '@mui/material';
-import {useState} from 'react';
 import {IPaper, IPaperResearcherInfo} from '@/types/paper.type';
 import useAxios from '@/services/hooks/useAxios';
 import endpoints from '@/config/endpoints';
 import {parseConferences} from '@/types/conference.type';
 import styled from '@emotion/styled';
 import {IResearcher, parseResearcher} from '@/types/researcher.type';
-import {ArrowDownward, ArrowUpward, AssignmentInd, Person, Send} from '@mui/icons-material';
+import {ArrowDownward, ArrowUpward, AssignmentInd, Send} from '@mui/icons-material';
 import openSnackBar from '@/store/actions/snackbarActions';
 import {useDispatch} from 'react-redux';
-import {bool} from 'yup';
 import {axiosAuthed} from '@/services/axiosAuthed';
 
 

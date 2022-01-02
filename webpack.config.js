@@ -6,6 +6,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const webpack = require('webpack');
+const {DefinePlugin} = require('webpack');
 
 const isProduction = process.env.NODE_ENV == 'production';
 
@@ -30,6 +31,9 @@ const clientConfig = {
   },
   devtool: 'inline-source-map',
   plugins: [
+    new DefinePlugin({
+      'process.env.API': JSON.stringify(process.env.API || 'https://412505r54f.imdo.co/naivechair'),
+    }),
     new HtmlWebpackPlugin({
       template: 'index.html',
     }),
@@ -42,6 +46,7 @@ const clientConfig = {
         },
       ],
     }),
+    ProgressHook,
   ],
   module: {
     rules: [

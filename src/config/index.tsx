@@ -17,7 +17,7 @@ const config = {
       fontFamily: 'Roboto, Helvetica, -apple-system, Segoe UI, Helvetica Neue, Arial',
     },
   }),
-  API: 'https://412505r54f.imdo.co/naivechair',
+  API: process.env.API, // Will be injected by DefinePlugin
 };
 
 export default config;
