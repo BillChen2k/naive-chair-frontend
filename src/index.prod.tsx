@@ -9,9 +9,9 @@ ReactDOM.render(
     <React.StrictMode>
       {/* Using hash containers to avoid complex SSR configurations. */}
       <Provider store={store}>
-        <HashRouter>
+        <BrowserRouter>
           <App />
-        </HashRouter>
+        </BrowserRouter>
       </Provider>
     </React.StrictMode>
     ,

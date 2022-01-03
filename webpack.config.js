@@ -32,7 +32,7 @@ const clientConfig = {
   devtool: 'inline-source-map',
   plugins: [
     new DefinePlugin({
-      'process.env.API': JSON.stringify(process.env.API || 'https://412505r54f.imdo.co/naivechair'),
+      'process.env.API': JSON.stringify(process.env.API || 'https://naivechair.billc.io/api'),
     }),
     new HtmlWebpackPlugin({
       template: 'index.html',
